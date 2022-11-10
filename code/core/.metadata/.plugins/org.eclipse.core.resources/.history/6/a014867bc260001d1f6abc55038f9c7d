@@ -1,0 +1,12 @@
+
+public class DemoArray {
+	
+	public static void main(String[] args) {
+		//how to create array in java
+		int x[]=new int[4];
+		x=null;
+		System.out.println(x[1]);
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+
+public class DemoArray {
+	
+	public static void main(String[] args) {
+		//how to create array in java
+		int x[]=new int[4];
+	
+		//enhance for loop
+		for(int temp: x)
+			System.out.print(temp+" ");
+		
+//		for(int i=0; i<4;i++)
+//			System.out.println(x[i]);
+//		
+		
+	}
+
+}

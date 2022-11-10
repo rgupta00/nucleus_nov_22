@@ -1,0 +1,26 @@
+class Dog{
+	
+	private String color;
+	
+	Dog(String dogColor){
+		color=dogColor;
+	}
+	
+	public void printDogValues() {
+		System.out.println("dog color is : "+ color);
+	}
+}
+
+public class DemoArrayOfObjects {
+	
+	public static void main(String[] args) {
+		
+		Dog[]dogs=new Dog[4];
+		dogs[2].printDogValues();
+		
+	}
+
+}
+
+
+

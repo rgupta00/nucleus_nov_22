@@ -1,0 +1,38 @@
+
+public class NextDateProblem {
+	
+	public static void main(String[] args) {
+		//10/11/2022 - 11/11/2022
+
+		/*
+		 * 1. leap year
+		 * 2. we need to care about no of days in a month
+		 * 3. logic to calculete next date
+		 * 
+		 */
+		System.out.println(isLeapYear(2022));
+		System.out.println(getNoOfWaysInAnMonth(2, 2022));
+	}
+	
+	public static int getNoOfWaysInAnMonth(int month, int  year) {
+		int noOfDays[]= {-1, 31,28,31,30,31,30,31,31,30,31,30,31 };
+		if(isLeapYear(year))
+			noOfDays[2]=29;
+		return noOfDays[month];
+	}
+	public static boolean isLeapYear(int year) {
+	    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

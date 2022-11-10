@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Hello {
+	public static void main(String[] args) {
+		
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("PE no of star");
+		
+		int n=scanner.nextInt();
+		
+		printStars(n);
+		scanner.close();
+	}
+
+	static void printStars(int n) {
+		for (int j = n; j < n; j++) {
+			for(int k=n; k>0; k--)
+				System.out.print(" ");
+			for (int i = 0; i <= j; i++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	
+}
+
+
+
+
+
+

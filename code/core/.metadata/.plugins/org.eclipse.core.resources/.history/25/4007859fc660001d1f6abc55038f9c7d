@@ -1,0 +1,22 @@
+
+public class IdentityMatix {
+	
+	public static void main(String[] args) {
+		//how to create array in java
+		int x[][]= {{1,0,0},{0,1,0},{0,0,1}};
+	
+		print2D(x);
+		
+	}
+	
+	
+	static void print2D(int[][] x) {
+		for(int temp[]:x) {
+			for(int temp2: temp) {
+				System.out.print(temp2+" ");
+			}
+			System.out.println();
+		}
+	}
+
+}

@@ -1,0 +1,31 @@
+
+public class Demo2DArray {
+	
+	public static void main(String[] args) {
+		//how to create array in java
+		int x[][]=new int[4][];
+	
+		x[0]=new int [44];
+		x[1]=new int [4];
+		
+		x[2]=new int [440];
+		x[3]=new int [7];
+		
+		
+		
+		
+		
+	//	print2D(x);
+		
+	}
+
+	static void print2D(int[][] x) {
+		for(int temp[]:x) {
+			for(int temp2: temp) {
+				System.out.print(temp2+" ");
+			}
+			System.out.println();
+		}
+	}
+
+}
