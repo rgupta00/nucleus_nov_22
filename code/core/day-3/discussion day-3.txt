@@ -1,0 +1,476 @@
+Core Java - Classes and Objects
+- Static variables and Methods
+- private Constructor
+- Singleton Object
+- inheritance 
+- string class
+- assignment tips
+
+
+
+
+
+
+"change is the only constant in life"
+
+
+
+
+
+
+
+
+
+
+
+
+-relationship bw the object
+------------------
+
+	"loose coupling and high cohesion"
+	use a 
+
+	Passanger ------------------- Metro
+
+
+	is a
+
+	has a
+
+	Inheritance
+
+	
+
+
+	Employee
+
+	FullTimeEmployee
+
+    private  int id;
+    private String name;
+    private double salary;
+    private LocalDate dateOfBirth;
+
+	private String ppf;
+	....................
+
+
+	PartTimeEmployee
+	
+	private  int id;
+    private String name;
+    private double salary;
+    private LocalDate dateOfBirth;
+
+	private int noOfDaysWork;
+	private double payPerDay;
+	
+
+
+public class Employee {
+    private  int id;
+    private String name;
+    private double salary;
+    private LocalDate dateOfBirth;
+
+    private static int employeeCounter=0;
+
+    //non static method can access this , static methnod can not access this
+    public static int getEmployeeCounter(){
+        return employeeCounter;
+    }
+   // public Employee(){}
+    public Employee( String name, double salary, LocalDate dateOfBirth) {
+        this.id = ++employeeCounter;
+        this.name = name;
+        this.salary = salary;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public  void printEmployeeDetails(){
+        System.out.println("----------------------");
+        System.out.println("id: "+ id);
+        System.out.println("name: "+ name);
+        System.out.println("salary: "+ salary);
+        System.out.println("dob: "+ dateOfBirth);
+        System.out.println("----------------------");
+    }
+}
+
+
+
+public class FullTimeEmployee extends Employee{
+  
+    private String ppf;
+
+    private static int employeeCounter=0;
+
+    //non static method can access this , static methnod can not access this
+    public static int getEmployeeCounter(){
+        return employeeCounter;
+    }
+  
+//
+
+    public  void printEmployeeDetails(){
+        
+    }
+}
+
+
+public class PartTimeEmployee {
+    private  int id;
+    private String name;
+    private double salary;
+    private LocalDate dateOfBirth;
+   
+     private int noOfDaysWork;
+	private double payPerDay;
+
+    private static int employeeCounter=0;
+
+    //non static method can access this , static methnod can not access this
+    public static int getEmployeeCounter(){
+        return employeeCounter;
+    }
+   // public Employee(){}
+    public Employee( String name, double salary, LocalDate dateOfBirth) {
+        this.id = ++employeeCounter;
+        this.name = name;
+        this.salary = salary;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public  void printEmployeeDetails(){
+        System.out.println("----------------------");
+        System.out.println("id: "+ id);
+        System.out.println("name: "+ name);
+        System.out.println("salary: "+ salary);
+        System.out.println("dob: "+ dateOfBirth);
+        System.out.println("----------------------");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class A{
+     private int i=0;
+
+    public A(int i){
+	this.i=i;
+   }
+    public void printI(){
+        System.out.println(i);
+    }
+}
+
+
+class B extends A{
+    private int j=0;
+    public  void printJ(){
+        System.out.println(j);
+    }
+}
+public class DemoInheritance {
+    public static void main(String[] args) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Polymorphism : Method Overloading
+- String class
+- finally keyword
+
+
+* ctr cant return anything not even void
+----------------------------------------
+class Foo{
+
+	Foo(){
+	 sout("1");
+	}
+
+	void Foo(){
+	sout("2");
+	}
+
+	psvm(....){
+		new Foo().Foo();
+	}
+
+}
+
+* ctr cant static : will not compile
+-------------------------------------
+class Foo{
+
+	static Foo(){
+	 sout("1");
+	}
+
+}
+
+
+
+* private ctr: singleton design pattern
+-------------------------------------
+class Foo{
+	private stataic Foo foo=new Foo();
+
+	private Foo(){
+	 sout("dare to call me!");
+	}
+
+	public static Foo getFooInstancce(){
+		return foo;
+	}
+
+}
+
+
+FooTester
+--------
+	Foo f=Foo.getFooInstancce();
+	Foo f2=Foo.getFooInstancce();
+	Foo f3=Foo.getFooInstancce();
+
+
+
+
+class Foo{
+
+	Foo(){
+	 sout("1");
+	}
+
+	void Foo(){
+	sout("2");
+	}
+
+	psvm(....){
+		new Foo().Foo();
+	}
+
+}
+
+
+
+
+
+
+class Foo{
+
+	private  int i=55;
+
+	public static void main(String args[]){
+		i++;
+
+		System.out.println(i);
+	}
+
+}
+
+
+
+static data and method 
+
+
+
+
+
+
+
+
+
+
+
+
+class Foo{
+
+	public Foo abc(){
+		
+		return this;
+
+	}
+
+}
+
+
+Foo f=new Foo();
+	f.abc();
+
+
+
+
+
+
+
+
+
+
+    private  int id;
+    private String name;
+    private double salary;
+   
+
+    private String ppf;
+	
+
+	
+     private int noOfDaysWork;
+     private double payPerDay;
+
+
+
+
+
+
+
+funcation overloading:
+---------------------
+
+class Cal{
+
+    int add(int a, int b){
+        System.out.println("int add(int a, int b) ");
+        return a+b;
+    }
+
+    int add(int a, int b, int c){
+        System.out.println(" int add(int a, int b, int c)");
+        return a+b+c;
+    }
+
+    int add(int ...a){
+        System.out.println("int add(int ...a)");
+        int sum=0;
+        for(int temp: a){
+            sum+=temp;
+        }
+        return sum;
+    }
+}
+
+public class FunctionOverloading {
+
+    public static void main(String[] args) {
+        Cal cal=new Cal();
+        int sum=cal.add(3,5,55,66);
+        System.out.println(sum);
+    }
+}
+
+
+
+now some time compiler can get confused: 
+------------------------------------
+
+class Cal{
+
+    long add(long a, int b){
+        System.out.println(" long add(long a, int b)");
+        return a+b;
+    }
+
+    long add(int a, long b){
+        System.out.println("long add(int a, long b)");
+        return a+b;
+    }
+}
+
+public class FunctionOverloading {
+
+    public static void main(String[] args) {
+        Cal cal=new Cal();
+        long sum=cal.add(3L,5);
+        System.out.println(sum);
+    }
+}
+
+
+
+
+------------------------------------
+
+java is strongly typed lanaguage
+
+long i=9;
+
+int j=i;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
