@@ -1,0 +1,118 @@
+Regex is seq of char that create a search patterns
+When you search data into a text you can use this search pattern to describe 
+what you are looking for 
+
+eg: [a-z0-9_-]{3,15}
+
+
+Java regex:
+
+//API  used to define a pattern for searching , manipulating strings
+
+
+ boolean matches()=> wheter given regex matches or not
+
+	Pattern class:
+static Pattern compile(String regex)
+Matcher matcher(CharSeq input)
+
+Ex:
+        
+        Pattern pattern=Pattern.compile(".xx.");
+        Matcher matcher=pattern.matcher("AxxB");
+        System.out.println(matcher.matches());
+
+
+            [abc]       a b or c
+
+            [^abc]     Any char then  a b or c
+
+            [A-Za-z]  A to Z or a-z (range)
+
+            [a-d[m-p]] a throgh d or m through p (union)
+
+
+	    [a-z&&[def]]  d e or f (intersection)
+
+	     [a-z&&[^bc]] a through z except b or c
+
+
+Ex 
+   System.out.println( Pattern.matches("[xyz]","wbcd"));;//false not x or y or z
+
+        System.out.println( Pattern.matches("[xyz]","x"));;//true anythong x or y or z
+
+        System.out.println( Pattern.matches("[xyz]","xxyyyyz"));;//fals s and y comes more then once
+
+
+
+
+regex quantifier:
+----------------
+x?	x=0 or 1 time 
+
+x+	x=1 or many
+
+x*	x=0 or many
+
+x{n}	x occour n time only
+
+x{n,}	x occour n or more time
+	
+x{y,z}	x occour at least y time but less then z time
+
+
+Ex:
+     Pattern.matches("[xyz]?","a");
+     Pattern.matches("[xyz]?","aaa");
+     Pattern.matches("[xyz]?","ay");
+     Pattern.matches("[xyz]+","aaa");
+     Pattern.matches("[xyz]+","aammta");
+     Pattern.matches("[xyz]*","ayyyyza");
+
+
+Reg meta char:
+
+.	any char
+d	any digit		D not a digit
+
+s	white space		S not white space
+
+w	word char		Not word char
+
+b	word boundry		Not word boundry
+
+ 	Pattern.matches("d","abc");
+
+        Pattern.matches("d","1");
+
+        Pattern.matches("d","2345");
+
+        Pattern.matches("D","abc");
+
+        Pattern.matches("D","1");
+
+        Pattern.matches("D*","abc");
+
+
+
+Regex example : 10 digit mobile no 1st digit must be 6, 7,8,9
+
+[6-9][0-9]{9} or [789][0-9]{9}
+
+phone start with 0
+	0?[789][0-9]{9}
+
+digit 0/91
+
+	(0|91)?[789][0-9]{9}
+
+
+email : [a-zA-Z0-9][a-zA-Z0-9_.]*@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+
+
+
+
+
+
+
+         

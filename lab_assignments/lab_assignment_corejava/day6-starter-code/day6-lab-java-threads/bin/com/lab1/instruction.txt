@@ -1,5 +1,0 @@
-Q1.create a simple program that creates and runs 10 threads.
- Each thread calculates and prints the multiplication table of a number between one and 10.
-Run the program and see how the different threads work in parallel.
-	1. try program by extending Thread class
-	1. try program by implementing Runnable interface
