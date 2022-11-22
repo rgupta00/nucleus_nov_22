@@ -25,11 +25,23 @@ class LinkList{
         }
     }
     public void addFirst(int data){
-
+        Node temp=new Node(data);
+        if(first==null){
+            first=last=temp;
+        }else {
+            temp.next=first;
+            first=temp;
+        }
     }
 
     public void addLast(int data){
-
+        Node temp=new Node(data);
+        if(first==null){
+            first=last=temp;
+        }else {
+           last.next=temp;
+           last=temp;
+        }
     }
     //660 -> 550
     public void addAfter(int target, int data){
@@ -61,8 +73,11 @@ public class B_UseOfInnerClass {
         list.addNode(660);
         list.addNode(6996);
         list.addNode(6);
-        list.print();
 
+        list.addLast(70089);
+
+
+        list.print();
 
 
     }

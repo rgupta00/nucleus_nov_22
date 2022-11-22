@@ -5,14 +5,16 @@ class Employee extends Object implements Cloneable{
     private String name;
     private double salary;
 
-    public Employee(int id, String name, double salary){
-        this.id = id;
+    private static int empCounter=0;
+
+    public Employee( String name, double salary){
+        this.id = +empCounter;
         this.name = name;
         this.salary = salary;
 
     }
-
-
+//
+//
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Employee{");

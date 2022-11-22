@@ -1,0 +1,7 @@
+This quick article is focused on JMH the Java Microbenchmark Harness First
+we get familiar with the API and learn its basics
+Then we would see a few best practices that we should consider when writing microbenchmarks
+Simply put JMH takes care of the things like JVM warm-up
+and code optimization paths, making benchmarking as simple as possible
+optimization optimization
+

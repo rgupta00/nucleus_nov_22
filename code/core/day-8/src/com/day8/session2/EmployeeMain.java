@@ -2,13 +2,15 @@ package com.day8.session2;
 
 public class EmployeeMain {
     public static void main(String[] args) {
+        Employee e1=new Employee("raj",700);
+        System.out.println(e1);
 
-        for (int i=0;i<10; i++){
-            Employee e1=new Employee(1,"raj",700);
-            System.gc();
-            e1=null;
-        }
-        System.out.println("done");
+//        for (int i=0;i<10; i++){
+//            Employee e1=new Employee(1,"raj",700);
+//            System.gc();
+//            e1=null;
+//        }
+//        System.out.println("done");
 
 //       try{
 //           Employee e1=new Employee(1,"raj",700);
