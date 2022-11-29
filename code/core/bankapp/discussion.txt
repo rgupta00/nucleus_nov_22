@@ -1,0 +1,6 @@
+
+Bankapp
+    customer
+        crud
+    loan
+        crud

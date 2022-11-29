@@ -1,0 +1,52 @@
+1. Instant
+===========
+Instant i = Instant.now();
+Sample O/P: 2020-07-31T15:02:48.635Z
+Note: Z indicates the time is Coordinated Universal Time (or UTC)
+
+Note: Instant.MIN is 1 billion years ago  and Instant.MAX is Dec 31 of year 1,000,000,000
+
+2. Duration
+=============
+Instant i2 = Instant.now();
+Duration d = Duration.between(i, i2);
+
+3. LocalDate
+============
+LocalDate currentDate = LocalDate.now();
+
+4. Period
+===========
+LocalDate birthDate = LocalDate.of(1990, 11, 14);
+Period p = Period.between(birthDate, currentDate);
+
+5. LocalTime
+============
+LocalTime t = LocalTime.now();
+
+6. LocalDateTime
+===============
+LocalDateTime dt = LocalDateTime.now();
+LocalDateTime dt2 = LocalDateTime.of(1990, Month.NOVEMBER, 14, 16, 12, 15);
+
+7. DateTimeFormatter
+================
+DateTimeFormatter aFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+LocalDateTime ldt = LocalDateTime.of(2017, Month.AUGUST, 3, 12, 30); 
+String formattedString = ldt.format(aFormatter);
+
+8. Year
+=========
+Year y = Year.now();
+
+9. ZoneId
+=========
+ZoneId z = ZoneId.systemDefault();
+
+URL:
+https://docs.oracle.com/javase/8/docs...
+
+10. ZonedDateTime
+===============
+ZoneId zUS = ZoneId.of("America/Chicago");
+ZonedDateTime zdt = ZonedDateTime.now(zUS);

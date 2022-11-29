@@ -1,0 +1,138 @@
+
+Q. public interface Foo
+	{
+  	 	default boolean equals(Object o)
+   	 	{
+      		return false;
+   		}
+	}
+A) Code will not compile 
+B) Code with compile
+C) Code compile but run time error
+D) none of these
+
+
+
+Q. Which one of the following abstract methods does not take any argument but
+returns a value?
+
+A.The accept() method in java.util.function.Consumer<T> interface
+B.The get() method in java.util.function.Supplier<T> interface
+C.The test() method in java.util.function.Predicate<T> interface
+D.The apply() method in java.util.function.Function<T, R> interface
+
+
+
+Q. Consider code snippet :
+
+class Foo {
+	void method() {
+		int cnt = 16;
+		Runnable r = new Runnable() {
+			public void run() {
+				System.out.println("count: " + cnt);
+			}
+		};
+		Thread t = new Thread(r);
+		t.start();
+		cnt++;
+	}
+}
+ A. Code will not compile 
+B. Code with compile
+C. Code compile but run time error
+D. none of these
+
+
+
+Q. Consider code snippet, what would be the output?
+
+class Foo {
+	int i = 55;
+
+	void method() {
+		int i = 77;
+		Runnable r = () -> {
+			System.out.println("value of i: " + this.i);
+		};
+
+		Thread t = new Thread(r);
+		t.start();
+
+	}
+	
+	public static void main(String[] args) {
+		Foo foo=new Foo();
+		foo.method();
+	}
+}
+
+E) Code will not compile 
+F) value of i=77
+G) value of i=55
+H) none of these
+
+
+
+
+Q. Behavior parameterization is
+1. passing code to methods  arguments
+2. passing object to method arguments
+3. passing both code and objects to method arguments
+4. none of these
+
+
+
+Q. Consider code snippet, what would be the output?
+	//
+	List<String>list=Arrays.asList("java","is","fun");
+	Stream<String> s=list.stream();
+	s.forEach(e-> System.out.println(e));
+	s.forEach(e-> System.out.println(e));
+
+A. Code will not compile 
+B. java is fun statement is printed twice
+C. java is fun statement is printed once only
+D. Code fails at run time
+
+
+Q. Optimizations applied by java while evaluating stream in java 8?
+A. short-circuiting
+B. loop fusion
+C. lazy Evaluation
+D. All of these
+
+
+Q9. In java 8, R apply(T t) is a method of-
+a.Function
+b.Process
+c.Predicate
+d.None
+
+
+Q. What is Predicate in Java 8 -
+a.method
+b.class
+c.Interface
+d.Framework
+
+
+
+Q. Which method can be used to check null on an Optional variable in Java 8
+a.isPresent()
+b.isNullable()
+c.isPresentable()
+d.isNotNull()
+
+
+
+
+
+We need to override which Predicate method in Java 8 -
+a.predict(T t)
+b.predictable(T t)
+c.testable(T t)
+d.test(T t)
+
+
+
