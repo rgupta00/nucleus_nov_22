@@ -1,0 +1,517 @@
+Java 8 notes:
+main motivate : declrative data processing just like  SQl
+
+for that Stream processing <----- lambada<---- funcational inteface <-- inteface evaluation
+
+
+what is interface evaluation (juddad)
+
+interface Foo{
+	public void foo();
+	//1
+	public default void bar(){
+		System.out.println("default method bar of Foo inteface");
+	}
+	//2
+	public static void fooStatic(){
+		System.out.println("i am static fooStatic method inside foo");
+	}
+	//3
+	private void fooPrivate(){
+		//act as a helper method for default method
+		System.out.println("i am private method insise inteface java 9 ?");
+	}
+}
+
+
+now interface is not 100% abstraction
+now diamond problem is possible in java while using interface
+
+
+	
+
+
+What is the behaviour of default method:
+-------------------------------
+
+interface Foo{
+	public void foo();
+	//1
+	public default void bar(){
+		System.out.println("default method bar of Foo inteface");
+	}
+}
+class FooImpl implements Foo{
+	@Override
+	public void foo() {
+		System.out.println("foo overrend by FooImpl");
+	}
+}
+public class DemoFuncationalInterface {
+	public static void main(String[] args) {
+		//What is interface evoluation?
+		Foo foo=new FooImpl();
+		foo.bar();
+
+	}
+}
+
+* now bar() method is not mandatory to be overen by FooImpl
+ but still he req u can do it
+
+
+interface Foo{
+	public void foo();
+	//1
+	public default void bar(){
+		System.out.println("default method bar of Foo inteface");
+	}
+}
+class FooImpl implements Foo{
+	@Override
+	public void foo() {
+		System.out.println("foo overrend by FooImpl");
+	}
+       public void bar(){
+		System.out.println("default method bar of Foo inteface is overrien");
+	}
+}
+public class DemoFuncationalInterface {
+	public static void main(String[] args) {
+		//What is interface evoluation?
+		Foo foo=new FooImpl();
+		foo.bar();
+	}
+}
+
+
+
+why diamond problem come up with java 8:
+------------------------------------
+
+interface Foo1{
+	public default void bar(){
+		System.out.println("default method bar of Foo1 inteface");
+	}
+}
+
+
+interface Foo2{
+	public default void bar(){
+		System.out.println("default method bar of Foo2 inteface");
+	}
+}
+
+
+//this code will not compile as compiler get confussed
+class MyImpl implements Foo1, Foo2{
+     
+	
+}
+
+
+
+
+//the solution is to define bar() inside MyIMpl1 (dont forget to remove default KW)
+
+class MyImpl implements Foo1, Foo2{
+     public void bar(){
+		System.out.println("some new behaviour");
+	}
+	
+}
+
+
+
+
+how to call default method of parent interface Foo.super.methodName()
+-------------------------------------------------
+
+interface Foo1{
+	public default void bar(){
+		System.out.println("default method bar of Foo1 inteface");
+	}
+}
+interface Foo2{
+	public default void bar(){
+		System.out.println("default method bar of Foo2 inteface");
+	}
+}
+//this code will not compile as compiler get confussed
+class MyImpl implements Foo1, Foo2{
+	@Override
+	public  void bar(){
+		Foo1.super.bar();//how to call interface default method 
+		Foo2.super.bar();
+		System.out.println("overren method");
+	}
+}
+
+
+what about static method inside the interface:
+---------------------------------------
+
+interface Foo1{
+	public static void bar(){
+		System.out.println("static method bar");
+	}
+}
+
+
+interface FooImp implents Foo1{
+	
+}
+
+
+Foo1 f=new FooImp();
+f.bar(); //IT WILL NOT WROK
+
+//THEN WHAT WILL WORK?
+Foo1.bar()// it work
+
+
+
+what about ?
+---------
+
+interface Foo1{
+	public static void bar(){
+		System.out.println("static method bar");
+	}
+}
+interface Foo2 extends Foo1{
+	public static void bar2(){
+		System.out.println("static method bar 2");
+	}
+}
+
+public class DemoFuncationalInterface {
+	public static void main(String[] args) {
+	Foo2.bar2();
+ }
+}
+
+not since java 9 we can have private method inside the interface:
+-----------------------------------------------------------------
+
+why: DRY
+
+interface Foo1{
+	public void default function1(){
+		//code line no 1
+		// code line specific to function1
+		//code line no 3
+
+	}
+
+	public void default function2(){
+		//code line no 1
+		// code line specific to function2
+		//code line no 3
+
+	}
+	
+	
+}
+
+now how to avoide voilating DRY ?
+----------------------------------
+
+
+
+why: DRY
+
+interface Foo1{
+	public void default function1(){
+		commonCodeForLine1();
+		// code line specific to function1
+		commonCodeForLine2();
+
+	}
+
+	public void default function2(){
+		commonCodeForLine1();
+		// code line specific to function2
+		commonCodeForLine2();
+
+	}
+	private void commonCodeForLine1(){
+		//code line no 1
+	}
+
+	private void commonCodeForLine2(){
+		//code line no 2
+	}
+
+	//we can define a private method inside the interface that can act 
+	//as a assistent of default method 
+	
+}
+
+	private helper method can also help other static method of that interface
+
+//-----------------------
+
+interface Foo1{
+	public static void fooStatic(){
+		commonCodeForLine1();
+	}
+	public default void  function1(){
+		commonCodeForLine1();
+		// code line specific to function1
+		commonCodeForLine2();
+
+	}
+
+	public  default void function2(){
+		commonCodeForLine1();
+		// code line specific to function2
+		commonCodeForLine2();
+
+	}
+	private static void commonCodeForLine1(){
+		//code line no 1
+	}
+
+	private  void commonCodeForLine2(){
+		//code line no 2
+	}
+
+	//we can define a private method inside the interface that can act
+	//as a assistent of default method
+
+}
+class FooImp implements Foo1{
+
+}
+
+
+
+funcational inteface: java concept to supporot funcatinal programming
+
+--------------------
+imparitive lanaguage , OOPs
+
+	"funcational programming"= programming approach 
+	that support declative data processing
+ 	old concept since 1960
+
+		https://en.wikipedia.org/wiki/Functional_programming
+	it have some attribute
+
+		1. it keep data immutable (hence data is thread safe*)
+				so that its application more scable as (syn have limiation)
+					if we want to do || processing
+					then it is a best solution
+
+		2. higher order fun as in js
+			C funcation pointer
+
+		3. currying just like funcatin chaining
+
+		/...
+
+
+	only funcational inteface support a concept lambada expression
+
+	lambada expression support stream processing
+
+
+What is funcation interface:
+------------------------
+
+//A interface is stb FI iff it have only one abstract method  SAM
+
+@FunctionalInterface
+interface MyInnterface{
+    void foo();
+   default  void foo2(){
+       System.out.println("default foo2 method");
+   }
+    static  void fooStack(){
+        System.out.println("default foo2 method");
+    }
+    private   void foo2Methods(){
+        System.out.println("this is some private method inside the interface");
+    }
+    
+}
+
+
+
+
+
+interface A{
+	void foo();
+}
+
+
+A a=new A(){
+	public void foo(){
+
+	}
+
+};
+
+
+
+
+how java works under the hood?
+----------------------------
+
+https://www.infoq.com/articles/Java-8-Lambdas-A-Peek-Under-the-Hood/
+
+
+  //"Type inference": actaully what is means taht now ref is pointing to peice of code
+        //very similer to js
+//        let a=function(){
+//
+//        }
+        MyInnterface myInnterface=() ->{
+                System.out.println("hello");
+
+        };
+        MyInnterface myInnterface2=() ->{
+            System.out.println("hello");
+
+        };
+
+
+
+
+      //very imp diff bw ann inner classs and lamanbd
+        //lambada dont have its own this* while ann inner class have its own this
+        
+        MyInnterface myInnterface=() -> System.out.println("hello");
+
+        myInnterface.foo();
+
+
+
+how to refector the code from ann inner class to lambda step by step
+----------------------------------------------------------
+//        Comparator<Employee>  comparator=new Comparator<Employee>() {
+//            @Override
+//            public int compare(Employee o1, Employee o2) {
+//                return Double.compare(o2.getSalary(), o1.getSalary());
+//            }
+//        };
+
+//        Comparator<Employee>  comparator=(Employee o1, Employee o2) ->{
+//                return Double.compare(o2.getSalary(), o1.getSalary());
+//            
+//        };
+//        Comparator<Employee>  comparator=(Employee o1, Employee o2) ->
+//                Double.compare(o2.getSalary(), o1.getSalary());
+
+//        Comparator<Employee>  comparator=( o1,  o2) ->
+//                Double.compare(o2.getSalary(), o1.getSalary());
+
+        Comparator.comparing(Employee::getSalary).reversed();
+
+
+
+
+//lambda   -> vs method ref Employee::getSalary
+        //method ref is a syntex supger on lambda
+        
+
+
+
+Predicate:
+-----------
+
+
+
+        //either even or more then 100
+
+        Predicate<Integer> evenPredicate= no-> no%2==0;
+
+        Predicate<Integer> moreThe100Predicate= no->no>100;
+
+        Predicate<Integer> p3=evenPredicate.and(moreThe100Predicate).negate();
+
+        System.out.println(p3.test(121));
+
+        //predicate for rich emp salary > 50L
+
+        Predicate<Employee> employeePredicate= e -> e.getSalary()>=50_000_00;
+
+        //e1 , e2 if e1 have more salary then e2 then retrun e1 or else e2
+        BiPredicate<Employee, Employee> employeeEmployeeBiPredicate=
+               ( employee1,  employee2) -> employee1.getSalary()> employee2.getSalary();
+
+
+        Employee e1=new Employee(1,"raj",50_000_00);
+        Employee e2=new Employee(18,"sumit",34_000_00);
+
+
+        boolean flag =employeeEmployeeBiPredicate.test(e1, e2);
+        System.out.println(flag);
+
+        //how it can appled to list of emp *
+
+
+
+
+
+
+
+how to stay positive?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		Collection
+
+	List			Set			
+
+
+Collections.sort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
