@@ -462,6 +462,360 @@ how to stay positive?
 
 
 
+--------------------------
+Day 15:
+--------------------------
+
+=> revision : keep doing it :)
+
+
+public class B_WhatIsFI {
+    public static void main(String[] args) {
+
+
+        //FI: Predicate
+//        Predicate<Integer> p1= no-> no%2==0;
+//        Predicate<Integer> p2=no->no>100;
+//        Predicate<Integer> p3=p1.and(p2);
+//        System.out.println(p3.test(121));
+
+    //    BiPredicate<Integer, Integer> p4=( x,  y)-> x>y;
+
+//        Predicate<Employee> p5=e-> e.getSalary()>5_000_000;
+//
+//        Employee e= new Employee(1,"raj",8_000_00);
+//        System.out.println(p5.test(e));
+
+        //Employee -> salary
+        Function<Employee, Double> f1= e-> e.getSalary();
+        //Employee -> EmployeeData
+
+        Employee e2= new Employee(1,"raj",8_000_00);
+        Function<Employee, EmployeeData> f2= e-> new EmployeeData(e.getId(), e.getSalary());
+
+        //we want the net saalry of emp
+    /*
+     public Emp(int id, String name, double hra, double ta, double da, double commission,
+               double carAllowencce, double reallocation, double monthlySalary) {
+     */
+        Emp e=new Emp(1,"raj",12000,10000, 2000,
+                30000, 10000,23000,
+                23000 );
+        System.out.println(e);
+
+        //Emp -> EmpDto
+//        Function<Emp, EmpDto> f3= emp->
+//                new EmpDto(emp.getName(), emp.netSalaray());
+//
+//        EmpDto empDto=f3.apply(e);
+//        System.out.println(empDto);
+
+        Consumer<String> c= s ->System.out.println(s);
+        
+        Consumer<Emp> c2=e3-> System.out.println(e3);
+
+        //used for map
+        BiConsumer<String, Integer> c3=(x,y)-> System.out.println(x+" : "+y);
+        
+
+    }
+}
+
+
+
+
+
+
+Behavioural paramerrization:
+-----------------------------
+Apple example:
+
+
+public class Apple {
+	private String color;
+	private int weight;
+	//			boolean				T(this)
+	public static boolean isHeavyApple(Apple apple){
+		return apple.getWeight()>=350;
+	}
+	public static boolean isGeenApple(Apple apple){
+		return apple.getColor().equals("green");
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public Apple(String color, int weight) {
+		this.color = color;
+		this.weight = weight;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Apple{");
+		sb.append("color='").append(color).append('\'');
+		sb.append(", weight=").append(weight);
+		sb.append('}');
+		return sb.toString();
+	}
+
+	public Apple() {
+	}
+
+}
+
+public class AppleApp {
+    public static List<Apple> getAllApplesOnPredicate(List<Apple> apples,
+                                               Predicate<Apple> applePredicate){
+        return apples.stream().filter(applePredicate).collect(toList());
+    }
+
+
+//    public List<Apple> getAllGreenApples(List<Apple> apples){
+//        List<Apple> tempApples=new ArrayList<>();
+//        for (Apple temp: apples){
+//            if(temp.getColor().equals("green"))
+//                tempApples.add(temp);
+//        }
+//        return tempApples;
+//    }
+
+//    public List<Apple> getAllHeavyApples(List<Apple> apples){
+//        List<Apple> tempApples=new ArrayList<>();
+//        for (Apple temp: apples){
+//            if(temp.getWeight()>=300)
+//                tempApples.add(temp);
+//        }
+//        return tempApples;
+//    }
+}
+
+
+
+public class AppleTester {
+
+		
+		public static void main(String[] args) {
+
+		List<Apple> apples = Arrays.asList(
+				new Apple("red", 400),
+				new Apple("green", 450),
+				new Apple("green", 300),
+				new Apple("green", 200),
+				new Apple("red", 250));
+
+
+//		Predicate<Apple> greenApplePredicate=a-> a.getColor().equals("green");
+//
+	Predicate<Apple> greenApplePredicate=Apple::isGeenApple;
+
+		List<Apple> geenAppleList=
+				AppleApp.getAllApplesOnPredicate(apples, greenApplePredicate);
+			geenAppleList.forEach(a-> System.out.println(a));
+
+			//Predicate<Apple> heavyApplePredicate=a-> a.getWeight()>=350;
+
+			Predicate<Apple> heavyApplePredicate=Apple::isHeavyApple;
+
+
+			System.out.println("------all heavy apples-------");
+			List<Apple> heavyAppleList=
+					AppleApp.getAllApplesOnPredicate(apples, heavyApplePredicate);
+			heavyAppleList.forEach(a-> System.out.println(a));
+
+			//i want all heavy and green apples
+			System.out.println("i want all heavy and green apples");
+			Predicate<Apple> allHeavayAndGreenApplePredicate=
+					heavyApplePredicate.and(greenApplePredicate);
+
+			List<Apple>allHeavayAndGreenAppleList
+					=AppleApp.getAllApplesOnPredicate(apples,
+					allHeavayAndGreenApplePredicate);
+
+			allHeavayAndGreenAppleList.forEach(a-> System.out.println(a));
+
+}
+
+
+
+
+
+
+
+very imp question freq in java 8:
+----------------------------
+how to iterate through map:
+//https://javarevisited.blogspot.com/2017/09/java-8-sorting-hashmap-by-values-in.html#axzz7mC957T1M
+--------------------------------
+
+
+package com.day1.session2.ex3;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+import  static java.util.Comparator.*;
+class Product implements Comparable<Product>{
+    private int id;
+    private String name;
+    private double price;
+
+
+    public Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Product{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", price=").append(price);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return Integer.compare(this.getId(), o.getId());
+    }
+}
+
+public class IteratingMapWithUserDefineOb {
+    public static void main(String[] args) {
+
+        //biConsumer
+        Map<Product, Double> map=new HashMap<>();
+        map.put(new Product(77,"cool pad",900.00),2.6);
+        map.put(new Product(1,"laptop",78000.00),4.5);
+
+
+//      map.entrySet()
+//              .stream()
+//              .sorted(Map.Entry.comparingByKey(( o1,  o2)->
+//                      Double.compare(o2.getPrice(), o1.getPrice())))
+//              .forEach(e-> System.out.println(e.getKey()+" : "+ e.getValue()));
+
+
+        Comparator<Product> comparator=
+                Comparator.comparing(Product::getPrice).reversed();
+
+        //how to do it with method ref
+        map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey( comparing(Product::getPrice).reversed()))
+                .forEach(e-> System.out.println(e.getKey()+" : "+ e.getValue()));
+
+
+
+        //how to iterate map in java 8 syntex
+      //  map.forEach(( k,  v)-> System.out.println(k+" : "+ v));
+        //print the map sorted as per key
+//        map.entrySet().stream()
+//                .forEach(new Consumer<Map.Entry<String, Integer>>() {
+//                    @Override
+//                    public void accept(Map.Entry<String, Integer> e) {
+//                        System.out.println(e.getKey()+" : "+ e.getValue());
+//                    }
+//                });
+
+//        map.entrySet()
+//                .stream()
+//                .sorted(Map.Entry.comparingByKey())
+//                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
+
+        //print the map sorted as per value
+
+        //.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+        //reveres sort?
+//        map.entrySet()
+//                .stream()
+////                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+//                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+//                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
+
+
+
+
+    }
+}
+
+
+
+
+
+Optional in java 8:
+-----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,108 +1,62 @@
 package com.day1.session1.ex1;
 
+import com.day1.session1.common.Emp;
+import com.day1.session1.common.EmpDto;
 import com.day1.session1.common.Employee;
+import com.day1.session1.common.EmployeeData;
 
 import java.util.Comparator;
+import java.util.function.*;
 
 //A interface is stb FI iff it have only one abstract method  SAM
-@FunctionalInterface
-interface MyInnterface{
-    void foo();
-   default  void foo2(){
-       System.out.println("default foo2 method");
-   }
-    static  void fooStack(){
-        System.out.println("default foo2 method");
-    }
-    private   void foo2Methods(){
-        System.out.println("this is some private method inside the interface");
-    }
 
-}
 public class B_WhatIsFI {
     public static void main(String[] args) {
 
 
+        //FI: Predicate
+//        Predicate<Integer> p1= no-> no%2==0;
+//        Predicate<Integer> p2=no->no>100;
+//        Predicate<Integer> p3=p1.and(p2);
+//        System.out.println(p3.test(121));
 
-//        Comparator<Employee>  comparator=new Comparator<Employee>() {
-//            @Override
-//            public int compare(Employee o1, Employee o2) {
-//                return Double.compare(o2.getSalary(), o1.getSalary());
-//            }
-//        };
+    //    BiPredicate<Integer, Integer> p4=( x,  y)-> x>y;
 
-//        Comparator<Employee>  comparator=(Employee o1, Employee o2) ->{
-//                return Double.compare(o2.getSalary(), o1.getSalary());
+//        Predicate<Employee> p5=e-> e.getSalary()>5_000_000;
 //
-//        };
-//        Comparator<Employee>  comparator=(Employee o1, Employee o2) ->
-//                Double.compare(o2.getSalary(), o1.getSalary());
+//        Employee e= new Employee(1,"raj",8_000_00);
+//        System.out.println(p5.test(e));
 
-//        Comparator<Employee>  comparator=( o1,  o2) ->
-//                Double.compare(o2.getSalary(), o1.getSalary());
+        //Employee -> salary
+        Function<Employee, Double> f1= e-> e.getSalary();
+        //Employee -> EmployeeData
 
-        // one two three
-       // Comparator.comparing(Employee::getSalary).reversed();
+        Employee e2= new Employee(1,"raj",8_000_00);
+        Function<Employee, EmployeeData> f2= e-> new EmployeeData(e.getId(), e.getSalary());
 
-        //lambda   -> vs method ref Employee::getSalary
-        //method ref is a syntex supger on lambda
+        //we want the net saalry of emp
+    /*
+     public Emp(int id, String name, double hra, double ta, double da, double commission,
+               double carAllowencce, double reallocation, double monthlySalary) {
+     */
+        Emp e=new Emp(1,"raj",12000,10000, 2000,
+                30000, 10000,23000,
+                23000 );
+        System.out.println(e);
 
-//        Comparator<String> comparator2=new Comparator<String>() {
-//            @Override
-//            public int compare(String o1, String o2) {
-//                return o1.compareTo(o2);
-//            }
-//        };
+        //Emp -> EmpDto
+//        Function<Emp, EmpDto> f3= emp->
+//                new EmpDto(emp.getName(), emp.netSalaray());
 //
-//        Comparator<String> comparator=( o1,  o2)-> o1.compareTo(o2);
+//        EmpDto empDto=f3.apply(e);
+//        System.out.println(empDto);
 
+        Consumer<String> c= s ->System.out.println(s);
 
+        Consumer<Emp> c2=e3-> System.out.println(e3);
 
-       // Comparator<String> comparator=( o1,  o2)-> o1.compareTo(o2);
-
-
-
-
-
-
-        Runnable runnable=()-> System.out.println("run method");
-
-
-
-        //FunctionalInterface support lambda
-        //labda vs ann inner class
-
-        System.out.println("'hello");
-//        MyInnterface myInnterface=new MyInnterface() {
-//            @Override
-//            public void foo() {
-//
-//            }
-//        };
-//        MyInnterface myInnterface2=new MyInnterface() {
-//            @Override
-//            public void foo() {
-//
-//            }
-//        };
-//        MyInnterface myInnterface3=new MyInnterface() {
-//            @Override
-//            public void foo() {
-//
-//            }
-//        };
-
-        //"Type inference": actaully what is means taht now ref is pointing to peice of code
-        //very similer to js
-//        let a=function(){
-//
-//        }
-        //very imp diff bw ann inner classs and lamanbd
-        //lambada dont have its own this*
-
-        MyInnterface myInnterface=() -> System.out.println("hello");
-
-        myInnterface.foo();
+        //used for map
+        BiConsumer<String, Integer> c3=(x,y)-> System.out.println(x+" : "+y);
 
 
     }
