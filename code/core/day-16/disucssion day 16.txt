@@ -1,0 +1,237 @@
+
+Day 16:
+-------
+what we did?
+	some review about java 8 stream, how hashmap iterate 
+	how to sort as per key , value?
+
+Some basic about IO:
+
+char stream vs byte stream
+performance consideration: 
+https://www3.ntu.edu.sg/home/ehchua/programming/java/J5b_IO.html
+
+
+
+//What is serilization?
+//We have a account object how to serilized it?
+	
+1. seriliztion is not for staitc data
+
+2. we have to maintain the order of de-serilization ...
+
+3. object graph serilization
+
+4. serilization and compostion
+
+5. writeObject() and readObject() method ...jugaad
+
+6. serilization and inheritance.. instance control flow
+
+7. serilization and sigleton design pattern
+
+
+class A impl ser..{
+}
+
+if base class is ser then all class hierarchy become ser...
+
+
+//instance control flow*
+class A {
+}
+
+class B extends A imp.. .Ser..{
+}
+
+
+What happen in case of Composition:
+
+class Collor{
+}
+
+class Dog implement Ser...{
+	private Collor collor;
+
+
+}
+
+dog
+
+
+1. what is ser, and what is de-ser
+
+	storing the state of the object along with some meta data in a file so
+	that it can be recovered during de-ser
+
+	used during RMI process
+	RMI used by EJB (aka dist tech)
+
+	both party sould use same tech ie java :(
+
+
+		Web service *
+
+			REST		vs		SOAP
+
+	all special of Ser:
+
+//how to do serilization?
+class A imp ser...{
+}
+
+ser:
+	ObjectOutputStream oos=
+				new ObjectOutputStream(new FileOutputStream("foo.ser"));
+
+
+des:
+	ObjectInputStream ois=
+				new ObjectInputStream(new FileInputStream(new File("foo.ser")));
+		
+Note: if account class dont imp.. ser. then we get run time :NonSerEx...
+
+
+
+
+
+
+
+
+1. seriliztion is not for staitc data
+----------------------------------------
+class Account{
+
+	private static String bName="SBI"
+}
+even if i change bName to PNP even in that case during de-ser we still get SBI
+
+
+3. ser and compostion:
+------------------
+class Collar{
+}
+class Dog{
+	private Collar collar;
+}
+
+
+
+	=> all composite object must also be ser..
+	=> if collar is not ser then we can use a KB transient
+		no collar for the dog :(
+
+
+	=> we want to interfare during ser and de-ser 
+
+        private void writeObject(ObjectOutputStream oos) throws IOException{
+		oos.defaultWriteObject();
+		oos.writeInt(collar.size);
+		System.out.println("----called during ser----");
+	}
+	//de-ser
+	private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+		ois.defaultReadObject();
+		collar=new Collar();
+		collar.size=ois.readInt();
+		System.out.println("---called during deser----");
+	}
+
+
+
+
+3. ser and inheritance (if i am gupta becase of my father )
+class Account imp.. ser{
+
+}
+
+class SA extends Account {
+}
+
+:)
+
+
+case :if base class dont imp.. ser but drive class doing it:
+	"instance control flow"
+
+
+class Account{
+
+}
+
+class SA extends Account {
+}
+
+:)
+
+
+case: if base class dont hv default ctr then
+Exception in thread "main" java.io.InvalidClassException: com.day15.session1.io.ser.ex5.B; no valid constructor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. object graph serilization
+
+4. serilization and compostion
+
+5. writeObject() and readObject() method ...jugaad
+
+6. serilization and inheritance.. instance control flow
+
+7. serilization and sigleton design pattern
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

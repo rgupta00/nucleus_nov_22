@@ -1,0 +1,5 @@
+this example I chain the FileInputStream with BufferedInputStream
+FileOutputStream with BufferedOutputStream
+and read/write byte-by-byte. The JRE decides on the buffer size
+The program took 62 milliseconds, about 60 times speed-up compared with example 1
+The JDK 1.7 version of the above example is as follows:

@@ -14,8 +14,19 @@ public class CopyOfDemoBookCaseStudyProblem {
 		List<Book> allBooks = loadAllBooks();
 
 		System.out.println("------printing all books------");
-		//allBooks.forEach(b-> System.out.println(b));
+		allBooks.forEach(b-> System.out.println(b));
 
+		//given list of books-> authors -> name
+//		Stream<Author>authorsStream=   allBooks
+//				.stream()
+//				.flatMap(b-> b.getAuthors().stream());
+
+		List<String> authorsNames=   allBooks
+				.stream()
+				.flatMap(b-> b.getAuthors().stream())
+				.map(a-> a.getName())
+				.collect(Collectors.toList());
+		authorsNames.forEach(name-> System.out.println(name));
 
 		// 1. Find books with more then 400 pages
 		//Lazy evulation (calucation)*

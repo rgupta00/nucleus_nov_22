@@ -12,7 +12,10 @@ public class IteratingMap {
         map.put("amit",89);
         map.put("ekta",87);
         map.put("seema",97);
+      //  map.forEach(( k,  v) -> System.out.println(k+" : "+ v));
 
+//        map.entrySet().stream()
+//                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
         //how to iterate map in java 8 syntex
       //  map.forEach(( k,  v)-> System.out.println(k+" : "+ v));
         //print the map sorted as per key
@@ -26,19 +29,19 @@ public class IteratingMap {
 
 //        map.entrySet()
 //                .stream()
-//                .sorted(Map.Entry.comparingByKey())
+//                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
 //                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
 
         //print the map sorted as per value
 
         //.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
         //reveres sort?
-        map.entrySet()
-                .stream()
-//                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
-                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
-
+//        map.entrySet()
+//                .stream()
+////                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+//                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+//                .forEach( e -> System.out.println(e.getKey()+" : "+ e.getValue()));
+//
 
 
 
