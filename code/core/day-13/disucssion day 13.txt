@@ -1,0 +1,119 @@
+
+
+
+Day 13: java 8 streams processing
+
+-> interface evolution
+-> functional interface
+-> lambda expression vs annonymous inner class
+-> declerative data processing with java
+
+
+
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+core fundamentals:
+______________
+What is object orientation : intraction bw the objects
+
+Relationship bw objects:
+	IS A: inheritace 
+	
+			A 						Employee
+			|
+			B 		FullTimeEmployee	PartTimeEmployee
+		
+		
+		A			B
+		
+			  C
+			  (Diamond problem)			solve by using interface
+			    
+			  	
+	HAS A
+	
+	
+	USE A
+		A passanger is moving from LN to Noida "using" metro
+		
+		class Metro{
+		
+		}
+		
+		class Passanger{
+			private Metro metro;
+		
+		}
+
+
+Right way:
+		class Metro{
+		
+		}
+		
+		class Passanger{
+			public void travel(Metro metro){
+			
+			}
+		}
+		
+		
+loose coupling and high cohesion
+
+
+4 pillors of object orientation: abstraction, encapsulation, modularity, hierarchy
+
+abstraction: Design principle of seperating interface from implementation so that
+	client only concern with the interface
+
+	achive using interface and some time using abstract class
+
+
+encapsulation : proces of restricting access to inner implemtation details of 
+	a class so that it is not exposed to outside 
+
+	sealed mobile: dont break the seal or gurantee is voided
+
+	achive using data hiding + business constrants
+	
+	ability to refactor./change interanla code without breaking the client code
+
+
+
+interface: speficication of an behaviour
+	interface represent some feature of a class
+
+	kid is jumpable	: he can jump like monkey
+
+	what object can do"
+
+	beak the hierarchy
+
+abstract class : incomplte class that require further specification
+	
+	IS-A: FullTime employee is an Employee
+
+	When to use: when u want to generialized an behaviour
+
+

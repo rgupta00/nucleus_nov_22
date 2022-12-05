@@ -1,0 +1,147 @@
+Quick recap io serilization
+java threads
+junit mockito maven
+jdbc
+java data structure
+
+
+time taken: 35 ms
+time taken: 2 ms
+
+time taken: 3 ms
+done
+
+Fork and join framework 1.7
+
+java 8 streams
+	parllel stram
+
+
+
+
+Few Questions:
+-----------------
+
+give me some real life adv of threads
+
+how to use || processing with ease
+
+what is race condition
+p and c
+dead lock
+
+java advancement over the year?
+
+
+t1 t2
+
+class Printer{
+	public sy void foo1(){
+  t1
+	}
+
+       public sy void foo2(){
+  t2
+	}
+}
+
+
+class Printer{
+	public  void foo1(){
+	sy(this){}
+  t1
+	}
+
+       public  void foo2(){
+	 sy(this){}
+  t2
+	}
+}
+
+
+class Printer{
+	private Object lock=new Object();
+	public  void foo1(){
+	sy(lock){}
+  t1
+	}
+
+       public  void foo2(){
+	 sy(lock){}
+  t2
+	}
+}
+
+
+
+
+class Printer{
+	int counter=0;
+
+	private Object lock=new Object();
+         private Object lock=new Object();
+
+	public  void foo1(){
+	sy(lock1){}
+  t1		counter++;
+	}
+
+       public  void foo2(){
+	 sy(lock2){}
+  t2		counter--;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
