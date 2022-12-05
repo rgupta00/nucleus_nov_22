@@ -1,0 +1,2 @@
+http://opensourceforgeeks.blogspot.com/2014/01/serialization-in-java.html
+very useful question on ser and deser

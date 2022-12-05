@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="expjar:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/expjar_jar</output-path>
+    <root id="archive" name="expjar.jar">
+      <element id="module-output" name="expjar" />
+    </root>
+  </artifact>
+</component>
