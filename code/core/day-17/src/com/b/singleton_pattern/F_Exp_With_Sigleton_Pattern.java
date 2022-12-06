@@ -1,86 +1,84 @@
 package com.b.singleton_pattern;
 
-import java.io.Serializable;
+import java.io.*;
+import java.lang.reflect.Constructor;
 
-//only one object per ex: 
-class MySingleton implements Serializable, Cloneable {
-	private volatile static MySingleton mySingleton;// Eager vs Lazy
-
-	private MySingleton() {
-		if (mySingleton != null) {
-			throw new IllegalStateException();
-		}
+//
+class MySingleton implements Serializable , Cloneable {
+//	private static MySingleton mySingleton=new MySingleton();
+     private volatile static MySingleton mySingleton;
+	private MySingleton(){
+		if (mySingleton!=null)
+			throw new IllegalArgumentException("you already have a object of if");
 	}
 	//t1 t2
-	public  static MySingleton getMySingleton() {
-		if(mySingleton==null) {
-			synchronized (MySingleton.class) {
-				if(mySingleton==null) {
-					mySingleton=new MySingleton();
-				}
+	public  static MySingleton getMySingleton(){
+		if(mySingleton==null){
+			synchronized(MySingleton.class) {
+					if(mySingleton==null){
+						mySingleton = new MySingleton();
+					}
 			}
 		}
-		return mySingleton;
+		return  mySingleton;
 	}
-
-	private Object readResolve() {
+	//JVM will look for this method during de-ser, if this method is found jvm will not do de-ser and retrun the onject from this method
+	private  Object readResolve(){
+		System.out.println("---");
 		return mySingleton;
 	}
 
 	@Override
-	public Object clone() throws CloneNotSupportedException {
-		return mySingleton;
+	protected Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException("clone is not supped");
+		//return mySingleton;
 	}
-
 }
 
 public class F_Exp_With_Sigleton_Pattern {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws  Exception{
 
-		MySingleton mySingleton = MySingleton.getMySingleton();
-		System.out.println(mySingleton.hashCode());
+		MySingleton mySingleton1 = MySingleton.getMySingleton();
 
-		MySingleton mySingleton2 = MySingleton.getMySingleton();
-		System.out.println(mySingleton.hashCode());
 
-		
-		// throws ClassNotFoundException,
-//		InstantiationException, IllegalAccessException, IllegalArgumentException, 
-//		InvocationTargetException, FileNotFoundException, IOException, CloneNotSupportedException {
-//		//ser
-//		MySingleton mySingleton=MySingleton.getMySingleton();
-//		System.out.println(mySingleton.hashCode());
-//		
-//		//clonning
-//		
-//		MySingleton mySingleton2=(MySingleton) mySingleton.clone();
-//		
-//		System.out.println(mySingleton2.hashCode());
-//		ObjectOutputStream oos =new ObjectOutputStream(new FileOutputStream(new File("foo.ser")));
-//		oos.writeObject(mySingleton);
-//	
-//		ObjectInputStream ois=new ObjectInputStream(new FileInputStream(new File("foo.ser")));
-//		
-//		MySingleton mySingleton2=(MySingleton) ois.readObject();
-//		
-//
-//		System.out.println(mySingleton2.hashCode());
 
-//		//break it java ref
-//		Class<?> clazz= Class.forName("com.b.anno_ref.MySingleton");
+
+		//4.static holder pattern, how it is thread safe
+		//https://stackoverflow.com/questions/15019306/regarding-static-holder-singleton-pattern
+
+
+		//3. singleton is broken due to java refe
+//		Class<?> clazz=Class.forName("com.b.singleton_pattern.MySingleton");
 //		Constructor[]constructors=clazz.getDeclaredConstructors();
-//		constructors[0].setAccessible(true);// even if ctr is private dont care about it ...it can break oops encapusation concepts
-//		
-//		MySingleton mySingleton2=(MySingleton) constructors[0].newInstance();
-//		System.out.println(mySingleton2.hashCode());
-//	
+//		constructors[0].setAccessible(true);
+//
+//		MySingleton mySingleton2= (MySingleton) constructors[0].newInstance();
+//		System.out.println(mySingleton1==mySingleton2);
 
-		// clone can break it
+		//2. clonning
 
-		// multiple class loader can break it
+//		MySingleton mySingleton2= (MySingleton) mySingleton1.clone();
+//		System.out.println(mySingleton1==mySingleton2);
 
-//		MySingleton mySingleton2=MySingleton.getMySingleton();
-//		System.out.println(mySingleton2.hashCode());
 
+		//1. singleton is broken due ser
+//		ObjectOutputStream oos =new ObjectOutputStream(new FileOutputStream("demo.ser"));
+//		oos.writeObject(mySingleton);
+//
+//		ObjectInputStream ois=new ObjectInputStream(new FileInputStream("demo.ser"));
+//
+//		MySingleton mySingleton2 = (MySingleton) ois.readObject();
+//
+//		System.out.println(mySingleton==mySingleton2);
+
+		//singleton is broken due to clonning
+
+		//singleton is broken due to java refe
+
+		//singleton is broken due mutiple class loading
+
+		//to simp singlet best way is to enum
+
+		//singleton is broken due to multithreaing
 	}
 }

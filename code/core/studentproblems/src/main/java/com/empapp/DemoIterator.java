@@ -1,6 +1,7 @@
 package com.empapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 interface MyIterator{
@@ -48,6 +49,7 @@ public class DemoIterator {
         company.addEmployee( new Employee(199,"raj",7000));
         company.addEmployee( new Employee(199,"raj",7000));
 
+        Collections.sort(null, null);
         MyIterator myIterator=company.getMyIterator();
         while (myIterator.hasNext()){
             System.out.println(myIterator.next());

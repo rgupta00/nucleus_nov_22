@@ -5,6 +5,9 @@ class Employee{
     private String name;
     private double salary;
 
+    public String getData(){
+        return id+": "+ name;
+    }
     public Employee( int id, String name, double salary){
 	this.id=id;
         this.name = name;
