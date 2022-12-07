@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.cityapp.CityApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.205 s <<< FAILURE! - in com.cityapp.CityApiTest
+com.cityapp.CityApiTest.getCity  Time elapsed: 0.196 s  <<< ERROR!
+org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+	at app//com.cityapp.CityApiTest.getCity(CityApiTest.java:19)
+

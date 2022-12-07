@@ -1,0 +1,5 @@
+com/common/TestSuit.class
+com/paramtrizedest/ParameterizedTestUsingConstructor.class
+com/paramtrizedest/ParameterizedTestUsingConstructor$MyClass.class
+com/calapp/CalculatorTest.class
+com/cityapp/CityApiTest.class
