@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function change() {
+            var x1 = prompt("Enter your name", "");
+            var y1 = prompt("Enter your favourite food", "");
+
+            var es = document.getElementsByTagName('div')[0];
+
+            while (es.hasChildNodes()) {
+                es.removeChild(es.firstChild);
+            }
+            p1 = document.createElement('p');
+            node = document.createTextNode("Name: " + x1);
+            p1.appendChild(node);
+            es.appendChild(p1);
+            p2 = document.createElement('p');
+            node = document.createTextNode("Food: " + y1);
+            p2.appendChild(node);
+            es.appendChild(p2);
+        }
+
+    </script>
+
+    <body>
+        <div id="sec">
+            <p>Name: XXXX</p>
+            <p>Food: YYYY</p>
+        </div>
+        <script> change()</script>
+    </body>
+
+</html>

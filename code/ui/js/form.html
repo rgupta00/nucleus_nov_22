@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Login app</title>
+    <script src='valid.js'></script>
+</head>
+<body>
+  <form action="login" method="post">
+    <table>
+      <tr>
+        <td>Enter name </td>
+        <td><input type="text" name="name" id="myNameId"/> 
+        <td><label id="nameMsg"></label></td>
+      </tr>
+      <tr>
+          <td>Enter password </td>
+          <td><input type="password" name="password" id="myPassId"/> </td>
+          <td><label id="passMsg"></label></td>
+      </tr>
+      <tr>
+          <td>Enter phoneno </td>
+          <td><input type="text" name="phoneno" id="phoneno"/> </td>
+          <td><label id="phonenoMsg"></label></td>
+      </tr>
+
+      <tr>
+          <td>Enter email id </td>
+          <td><input type="text" name="emailid" id="emailId"/> </td>
+          <td><label id="emailidMsg"></label></td>
+      </tr>
+
+      <tr>
+          <td><input type="submit" onclick="return validate()"/></td>
+      </tr>
+    </table>
+  </form>
+         
+</body>
+</html>

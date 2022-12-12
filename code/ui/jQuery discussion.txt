@@ -1,0 +1,825 @@
+jQuery
+__________
+https://jquery.com/
+
+the prime purpose of jQuery 
+is simplification of DOM processing.
+
+jQuery is JS
+
+jQuery is a fast and concise JavaScript Library that 
+simplifies HTML document traversing, event handling, 
+animating, and Ajax interactions for rapid web development. 
+
+
+jQuery is designed to change the way that 
+you write JavaScript.
+
+
+ jQuery Syntax looks like this
+_______________________________
+ $('selector').action()
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-3.2.1.js"></script>
+</script>
+
+<script>
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+});
+</script>
+</head>
+<body>
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+</body>
+</html>
+
+
+
+
+
+
+ there are three main types of selectors in jQuery 
+     1. element selector
+     2. id selector
+     3. class selector
+
+     1. Element selector -  This is an example of element selector which clicks on all p
+     $('p').click();
+
+     2. Id selector - this is an example of id selector
+     $('#second').click();
+
+     3. Class selector - this is an example of id selector
+     $('.odd').click();
+
+     other selectors
+     $('*').click() // clicks on all the elements
+     $('p.odd').click() // clicks on all the elements
+     $('p:first').click() // clicks on all the elements
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jquery-3.2.1.js">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#second").click(function () {
+                $(this).hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p>If you click on me, I will disappear.</p>
+    <p>Click me away!</p>
+    <p>Click me too!</p>
+    <p class='odd'>this is my body1</p>
+    <p id='second'>this is my body2</p>
+    <p class='odd'>this is my body3</p>
+</body>
+
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+<div class="box" id="box1" style="background-color:green;width:100px;height:100px;"></div>
+<div class="box" id="box2" style="background-color:red;width:100px;height:100px;"></div>
+
+<input type="button" id="btn" value="Click"/>
+
+<script>
+
+           jQuery(document).ready(function(){
+            jQuery("#btn").click(function(){
+                jQuery(".box").slideUp(4000)
+            })
+           })
+</script>
+
+
+
+</body>
+</html>
+
+//jQuery('#box').slideUp(5000);
+//$('#box').slideUp(5000);
+
+//jQuery('div').slideUp(5000);
+//jQuery('#box1').slideUp(5000);
+//jQuery('ul li:first').slideUp(5000);
+
+
+
+JQuery effects:
+--------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jquery demo</title>
+    <script src="jquery-3.2.1.js"></script>
+
+    <style>
+        #box{
+            background-color:green;
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box"></div>
+    <br/>
+    <input type="button" id="hide" value="Hide"/>
+    <input type="button" id="show" value="Show"/>
+    <input type="button" id="toggle" value="Toggle"/>
+    
+    <input type="button" id="fadein" value="FadeIn"/>
+    <input type="button" id="fadeout" value="FadeOut"/>
+    <input type="button" id="fadetoggle" value="FadeToggle"/>
+    
+    <input type="button" id="slideup" value="SlideUp"/>
+    <input type="button" id="slidedown" value="SlideDown"/>
+    <input type="button" id="slidetoggle" value="SlideToggle"/>
+    
+    <input type="button" id="animate" value="Animate"/>
+
+   
+<script src="jquery-3.2.1.js"></script>
+
+<script>
+jQuery('#hide').click(function(){
+	jQuery('#box').hide(2000);
+});
+jQuery('#show').click(function(){
+	jQuery('#box').show(2000);
+});
+jQuery('#toggle').click(function(){
+	jQuery('#box').toggle(2000);
+});
+
+jQuery('#fadein').click(function(){
+	jQuery('#box').fadeIn(2000);
+});
+jQuery('#fadeout').click(function(){
+	jQuery('#box').fadeOut(2000);
+});
+jQuery('#fadetoggle').click(function(){
+	jQuery('#box').fadeToggle(2000);
+});
+
+jQuery('#slideup').click(function(){
+	jQuery('#box').slideUp(2000);
+});
+jQuery('#slidedown').click(function(){
+	jQuery('#box').slideDown(2000);
+});
+jQuery('#slidetoggle').click(function(){
+	jQuery('#box').slideToggle(2000);
+});
+
+jQuery('#animate').click(function(){
+	jQuery('#box').animate({
+		width:'200px',
+		height:'120px'
+	});
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+Dom manipulation with jQuery 
+------------------------------
+
+
+html() vs text()
+--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    
+<div id="box"> i <i>love </i> programing </div>
+<input type="button" id="btn" value="click"/>
+<script>
+    jQuery("#btn").click(function(){
+        alert(jQuery("#box").html())//text
+    })
+</script>
+</body>
+</html>
+
+
+changing data with html()
+---------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    
+
+<input type="text" id="name"/>
+<div id="msg"></div>
+<script>
+    jQuery('#name').keyup(function(){
+        name=jQuery('#name').val();
+        if(name==''){
+            jQuery('#msg').html("");
+        }else{
+            jQuery('#msg').html("Welcome "+name);
+        }
+    });
+    </script>
+</body>
+</html>
+
+
+
+
+form entry:
+--------------
+
+<form id="frm">
+	<input type="text" id="name">
+	<input type="button" id="btn" value="Submit">
+</form>
+<div id="msg"></div>
+
+ <script src="jquery-3.2.1.js"></script>
+<script>
+jQuery('#btn').click(function(){
+	name=jQuery('#name').val();
+	if(name==''){
+		jQuery('#msg').html("Please enter name");
+	}else{
+		jQuery('#frm').hide();
+		jQuery('#msg').html("Thank "+name);
+	}
+});
+</script>
+
+
+
+
+jQuery('#table').append(html); //after before prepend append
+----------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+    <table border="1" id="table">
+        <tr><td>Vishal</td></tr>
+    </table>
+    
+    <input type="text" id="name">
+    
+    <input type="button" id="btn" value="Click"/>
+
+<script>
+ jQuery('#btn').click(function(){
+	name=jQuery('#name').val();
+	html="<tr><td>"+name+"</td></tr>";
+	jQuery('#table').append(html); //after before prepend append
+});
+</script>
+</body>
+</html>
+
+
+
+add/ remove dynamically:
+------------------------
+
+
+<table id="table">
+	<tr id="tr1">
+		<td>Name</td>
+		<td><input type="text"></td>
+		<td><input type="button" id="btn" value="Add"/></td>
+	</tr>
+</table>
+
+
+ <script src="jquery-3.2.1.js"></script>
+
+<script>
+id=1;
+jQuery('#btn').click(function(){
+	id++;
+	name=jQuery('#name').val();
+	html="<tr id='tr"+id+"'><td>Name</td><td><input type='text'></td><td><input type='button' class='remove' value='Remove' data-id='"+id+"'/></td></tr>";
+	jQuery('#table').append(html);
+});
+jQuery('body').on('click','.remove',function(){
+	tid=jQuery(this).attr('data-id');
+	jQuery('#tr'+tid).remove();
+});
+</script>
+
+
+
+AJAX		Asynchronous JavaScript And XML
+______
+What is AJAX?
+________________
+	=> AJAX is the art of exchanging data with the server  and updating 
+		part of web pages-without reloading the whole page asynchronously 
+
+Key technologies involved?
+______________________
+
+	JavaScript	:that allows for interaction with the browser and responding to events.
+
+	DOM		:for accessing and manipulating the structure of the HTML of the page.
+	
+	XML		:which represents the data passed between the server and client. 
+	
+	An XMLHttpRequest :object for asynchronously exchanging the XML data between the client and the server
+		xhr
+	
+AJAX process?
+___________
+	
+Steps:
+	html: Gives ids to input elements that will be read by script
+
+	1. Define an object for sending HTTP requests
+	2. Initiate request
+	3. Get request object
+		Designate a request handler function
+
+		Supply as onreadystatechange attribute of request
+
+		Initiate a GET or POST request to a JSP page
+
+	4. Send data
+
+	5. Handle response
+
+	6. Wait for readyState of 4 and HTTP status of 200
+
+	7. Extract return text with responseText or responseXML, Do something with result
+
+
+
+
+
+AJAX hello World
+_______________
+https://jsonplaceholder.typicode.com/users
+
+Get method:
+________
+ const url='https://jsonplaceholder.typicode.com/users';
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET',url);
+        xhr.responseType='json';
+        xhr.onload=()=>{
+            console.log(xhr.response);
+        }
+        xhr.send();
+        xhr.onerror=(err)=>{
+            console.log(err);
+       }
+
+post method:
+___________
+  function callAjax(method, url, body){
+        const xhr = new XMLHttpRequest();
+        xhr.open(method,url);
+        xhr.responseType='json';
+        xhr.setRequestHeader('content-type','application/json');
+
+        xhr.onload=()=>{
+            console.log(xhr.response);
+        }
+        xhr.send(JSON.stringify(body));
+        xhr.onerror=(err)=>{
+            console.log(err);
+        }
+       }
+       let body={name:'raj',job:'trainer'};
+
+       const url='https://jsonplaceholder.typicode.com/users';
+      // callAjax('GET',url)
+       callAjax('POST',url,body);
+
+
+
+AJAX example with jQuery:
+--------------------
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jquery-3.2.1.js">
+    </script>
+
+
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#div1").load("demo_test.txt");
+            });
+        });
+    </script>
+    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+    <button>Get External Content</button>
+</body>
+
+Note:
+-----
+ jQuery load() method is a powerful AJAX method
+
+ What it does?
+ --------------
+	$(selector).load(URL,data,callback);
+
+	The load() method loads data from a server and puts the returned data into the selected element.
+
+	$("#div1").load("demo_test.txt");
+
+
+
+ Much better code:
+ ----------------
+$("button").click(function(){
+    $("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+        if(statusTxt == "success")
+            alert("External content loaded successfully!");
+        if(statusTxt == "error")
+            alert("Error: " + xhr.status + ": " + xhr.statusText);
+    });
+});
+
+
+
+fetching json and printing
+-----------------------------
+<body>
+
+	<ul></ul>
+
+	<button>Users</button>
+
+	<script src="jquery-3.1.1.js" type="text/javascript"></script>
+	<script src="my_script.js" type="text/javascript"></script>
+</body>
+
+
+json_data.json
+---------------
+{
+   "p1": { 
+           "name": "Satish",
+		          "age":   25,
+		          "company": "hcl"
+         },
+ 
+ 
+   "p2": {
+           "name": "Kiran",
+		          "age":   28,
+		          "company": "blackrock"   
+         }			 		 		 
+}
+
+my_script.js
+---------------
+$("button").click( function() {
+ $.getJSON( "json_data.json", function(obj) { 
+  $.each(obj, function(key, value) { 
+         $("ul").append("<li>"+value.name+"</li>");
+  });
+ });
+});
+
+
+
+http://www.w3schools.com/jquery/jquery_ajax_intro.asp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ajax spring boot with jQuery hello world:
+____________________________________________
+ display all employee records:
+---------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div id="load"></div>
+    <script>
+
+        $(document).ready(function(){
+            $.ajax({
+                url:"http://localhost:8080/employees",
+                type: "GET",
+                success: function(data){
+                    $.each(data, function(key, value){
+                        $("#load").append(value.id+" "+ value.name+" "+ value.salary+"<br>")
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(event){
+            $("#name").keyup(function(e){
+                var enteredName=$("#name").val();
+                $.ajax({
+                    type:'GET',
+                    url: 'hello',
+                    data: "name="+enteredName,
+                    success: function(result){
+                        $("#respDiv").html(result);
+                    },
+                    error: function(){
+                        alert('error occured');
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        Enter name: <input type="text" name="name" id="name"/><br>
+    </form>
+    
+    Response <br>
+    <div id="respDiv"></div>
+    
+    
+</body>
+</html>
+
+
+
+controller:
+___________
+@Controller
+public class Hello {
+
+	@GetMapping(path = "/")
+	public String index() {
+		return "index";
+	}
+	
+	@GetMapping(path = "/hello")
+	public @ResponseBody  String hello(@RequestParam(name = "name")String name) {
+		System.out.println("hello ..."+name);
+		return "hello"+ name;
+	}
+}
+
+
+
+
+
+
+@Repository("registerUserRepository")
+public interface UserRepository extendsJpaRepository<User,Long> {
+
+     @Query("Select u from User u where u.name like %:name%")
+     List<User> findUser(@Param("name")String name);
+}
+
+
+
+
+
+Using fetch api:get
+____________________
+
+ function callAjax(method, url, body=null){
+            return fetch(url).then((res)=>{
+                return res.json();
+            })
+       }
+      
+       const url='https://jsonplaceholder.typicode.com/users';
+      // callAjax('GET',url)
+       callAjax('GET',url).then((res)=>{
+           console.log(res)
+       }).catch(err=> console.log(err))
+
+
+Using fetch api:post
+____________________
+
+ <script>
+      function callAjax(method, url, body){
+       return fetch(url,{
+           method: method,
+           headers: {'content-type':'application/json'},
+           body: JSON.stringify(body)
+       }).then((res)=>{
+           return res.json();
+       })
+       }
+       let body={name:'raj',job:'trainer'};
+
+       const url='https://jsonplaceholder.typicode.com/users';
+
+      // callAjax('GET',url)
+       callAjax('POST',url,body)
+       .then((res)=> {
+           console.log(res)
+       }).catch(err=> console.log(err))
+    </script>
+
+Calling covid api:
+___________________
+
+
+
+
+
+fetch() funcation is readymade function that provide an promise:
+_______________________________________________________________
+let data = fetch('http://localhost:9000/bookapp/book')
+
+data.then((item) => {
+    return item.json();
+}).then((result) => {
+    console.log(result);
+})
+
+
+
+
+https://api.covid19api.com/summary
+
+
+  fetch('https://api.covid19api.com/summary')
+       .then(apiData=>{return apiData.json();})
+       .then(actualData=> console.log(actualData))
+       .catch(err=> console.log(err))
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	index.html
+	------------
+
+	<button onclick="load('loadhere','foo.jsp')">load ajax contents</button>
+	<div id="loadhere"></div>
+
+	<script type="text/javascript" src="demo.js"></script>
+
+
+	foo.jsp
+	---------
+		<%= new java.util.Date() %>
+
+	demo.js
+	--------
+	function load(id, url){
+	
+	var ajaxObject=new XMLHttpRequest(); 
+	 
+	 if(ajaxObject!=null){ 
+		 ajaxObject.open("GET",url,true);
+		 ajaxObject.send(null);
+	 }
+	 else{
+		 alert("Not having suitable browser ...");
+	 }
+	 
+	ajaxObject.onreadystatechange=function(){
+		if(ajaxObject.readyState==4 && ajaxObject.status==200){
+			document.getElementById(id).innerHTML=ajaxObject.responseText;
+		}
+	};
+
+      }
+
+
+
+
+
+AJAX hello World with servlet:
+_____________________________
+Servlet
+
+public class ShowTime extends HttpServlet {
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		PrintWriter out = response.getWriter();
+		Date currentTime = new Date();
+		String message = String.format("It is now %tr on %tD.", currentTime,
+				currentTime);
+		out.print(message);
+	}
+}
+
+
+index.html
+---------------
+
+	<input type="button" value="Show Server Time"
+		onclick='ajaxResult("show-time", "timeResult1")' />
+	<div id="timeResult1" class="ajaxResult"></div>
+
+
+
+Ajax: hello world example:
+
+
+
