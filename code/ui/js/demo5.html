@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FP in js</title>
+</head>
+<body>
+    <script>
+           const companies = [
+	{name: "Company One", category: "Finance", start: 1981, end: 2003},
+	{name: "Company Two", category: "Retail", start: 1992, end: 2008},
+	{name: "Company Three", category: "Auto", start: 1999, end: 2007},
+	{name: "Company Four", category: "Retail", start: 1989, end: 2010},
+	{name: "Company Five", category: "Technology", start: 2009, end: 2014},
+	{name: "Company Six", category: "Finance", start: 1987, end: 2010},
+	{name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+	{name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+	{name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+  ];
+  //companies.forEach(c=> console.log(c))
+
+  ////fiter retail companies
+ // companies.filter(c=>c.category=='Retail').forEach(c=> console.log(c))
+  
+ // const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+ //filter all 80's companies
+// companies.filter(company=>company.start>=1980 && company.start<=1990)
+// .forEach(c=>console.log(c))
+
+//Companies operated more then 10 yr
+
+// const companiesMore10= companies
+// .filter(company=>company.end-company.start>=10)
+// .forEach(c=> console.log(c))
+
+
+
+//const companyNameArr2=companies.map(company=>`${company.name} [${company.start}--${company.end}]`)
+
+//companyNameArr2.forEach(cd=>console.log(cd))
+ 
+//   ages.filter(age=> age>=23).forEach(age=> console.log(age))
+
+// ages.filter(age=> age>=23)
+// .sort((age1, age2)=>(age1> age2)?1:-1)
+// .forEach(age=> console.log(age))
+
+let name="raj";
+let add="delhi";
+
+let data=name+"love programming and my address is "+ add;
+let data2=`${name} love programming and my address is ${add}`;
+console.log(data2);
+    </script>
+</body>
+</html>
