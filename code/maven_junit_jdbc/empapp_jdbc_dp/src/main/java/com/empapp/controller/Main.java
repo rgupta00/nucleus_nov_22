@@ -10,7 +10,7 @@ public class Main {
         EmployeeService employeeService=new EmployeeServiceImpl();
 
         System.out.println("---all the records----");
-        List<Employee> employees=employeeService.getAll();
+        List<Employee> employees=employeeService.getAllWithProjets();
         employees.forEach(e-> System.out.println(e));
 
 //        Employee employee=new Employee("raja",8000);
@@ -23,9 +23,9 @@ public class Main {
 //        System.out.println("-----update ----");
 //         employeeService.updateEmployee(3, 10000);
 
-        employeeService.deleteEmployee(3);
-        employees=employeeService.getAll();
-        employees.forEach(e-> System.out.println(e));
+//        employeeService.deleteEmployee(3);
+//        employees=employeeService.getAll();
+//        employees.forEach(e-> System.out.println(e));
 
     }
 }

@@ -20,10 +20,35 @@ public class EmployeeDaoImpl implements EmployeeDao{
         List<Employee> employees=new ArrayList<>();
         try{
             Statement stmt=connection.createStatement();
-            ResultSet rs=stmt.executeQuery("select * from emp3");
+            ResultSet rs=stmt.executeQuery("select * from emp");
             while (rs.next()){
-                Employee employee=new Employee(rs.getInt("id"),rs.getString("name"),
+                Employee employee=new Employee(rs.getInt("eid"),rs.getString("name"),
                         rs.getDouble("salary"));
+                employees.add(employee);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return employees;
+    }
+
+    @Override
+    public List<Project> getAllProjectByEmployeeId(int eid) {
+        return null;
+    }
+
+    @Override
+    public List<Employee> getAllWithProjets() {
+        List<Employee> employees=new ArrayList<>();
+        try{
+            Statement stmt=connection.createStatement();
+            String sql="select e.eid,e.name, e.salary, p.pid, p.pname, p.pcost\n" +
+                    "from emp e, project p\n" +
+                    "where e.eid=p.eid_fk;\n";
+            ResultSet rs=stmt.executeQuery(sql);
+            while (rs.next()){
+                Employee employee=new Employee(rs.getInt("e.eid"),rs.getString("e.name"),
+                        rs.getDouble("e.salary"));
                 employees.add(employee);
             }
         }catch (SQLException ex){
@@ -36,7 +61,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
     public void addEmployee(Employee employee) {
         try {
             PreparedStatement pstmt=connection.prepareStatement
-                    ("insert into emp3(name,salary) values(?,?)");
+                    ("insert into emp(name,salary) values(?,?)");
             pstmt.setString(1,employee.getName());
             pstmt.setDouble(2,employee.getSalary());
 
@@ -51,7 +76,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 //                .orElseThrow(()-> new EmpoyeeNotFoundException("emp not found"));
         try{
             PreparedStatement pstmt=connection.
-                    prepareStatement("delete from emp3 where id=?");
+                    prepareStatement("delete from emp where eid=?");
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         }catch (SQLException ex){}
@@ -64,7 +89,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 //                .orElseThrow(()-> new EmpoyeeNotFoundException("emp not found"));
        try{
            PreparedStatement pstmt=connection.
-                   prepareStatement("update emp3 set salary =? where id=?");
+                   prepareStatement("update emp set salary =? where eid=?");
 
            pstmt.setDouble(1, salary);
            pstmt.setInt(2, id);

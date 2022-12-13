@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(event){
+            $("#name").keyup(function(e){
+                var enteredName=$("#name").val();
+                $.ajax({
+                    type:'GET',
+                    url: 'http://localhost:8080/hello',
+                    data: "name="+enteredName,
+                    success: function(result){
+                        $("#respDiv").html(result);
+                    },
+                    error: function(){
+                        alert('error occured');
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        Enter name: <input type="text" name="name" id="name"/><br>
+    </form>
+    
+    Response <br>
+    <div id="respDiv"></div>
+    
+</body>
+</html>

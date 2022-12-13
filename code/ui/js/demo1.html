@@ -7,7 +7,7 @@
 <body>
     <script>
        /*
-       1. number
+    1. number
 	2. string
 	3. boolean
 	4. null
@@ -24,16 +24,19 @@
     //   console.log(data)
     //   typeof data;
 
-    // let a=true;
-    // console.log(a);
+    // let a={name:"raj"};
+
+
+    // let b=JSON.stringify(a);
+
 
     // let m=null;
     // console.log(m)
 
     //Array
     // let arr=[4,5,6,7];
-    // for(i in arr){
-    //     console.log(arr[i])
+    // for(i of arr){
+    //     console.log(i)
     // }
 
    // let arr=Array(4,6,7,88);
@@ -45,13 +48,21 @@
     // }
 
     // let colours=["red","blue","black"];
-    // for(color of colours){
+    // for(color of colours){ // let ob1={
+    //     "name":"raj",
+    //     "address":"delhi"
+    // }
+    // let ob2={"name":"raj"}
+
+    // console.log(typeof ob1)
+    // console.log(ob1==ob2)// ref are not same
+    // console.log(ob1.name==ob2.name)//content may be same
     //     console.log(color)
     // }
 
     //array comparation and object comparaition
-    let a=67;
-    let b='67';
+    // let a=67;
+    // let b='67';
     // console.log(a==b);//true
     // console.log(a===b);//false
 
@@ -73,11 +84,11 @@
         "name":"raj",
         "address":"delhi"
     }
-    let ob2={"name":"raj"}
+     let ob2={"name":"raj"}
 
-    console.log(typeof ob1)
-    console.log(ob1==ob2)// ref are not same
-    console.log(ob1.name==ob2.name)//content may be same
+    // console.log(typeof ob1)
+     console.log(ob1==ob2)// ref are not same
+     console.log(ob1.name==ob2.name)//content may be same
     </script>
 
 </body>

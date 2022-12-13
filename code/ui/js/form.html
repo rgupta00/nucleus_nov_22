@@ -3,14 +3,14 @@
 <head>
     <meta charset='utf-8'>
     <title>Login app</title>
-    <script src='valid.js'></script>
+    
 </head>
 <body>
-  <form action="login" method="post">
+  <form action="#" method="get">
     <table>
       <tr>
         <td>Enter name </td>
-        <td><input type="text" name="name" id="myNameId"/> 
+        <td><input type="text" name="name" id="myNameId" onchange="cleanMessage()"/> 
         <td><label id="nameMsg"></label></td>
       </tr>
       <tr>
@@ -35,6 +35,6 @@
       </tr>
     </table>
   </form>
-         
+  <script src='valid.js'></script>
 </body>
 </html>

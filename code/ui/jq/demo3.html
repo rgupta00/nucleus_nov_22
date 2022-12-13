@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<style>
+    #box {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $('#box').hide(2000);
+            })
+        })
+
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $('#box').show(1000)
+            })
+        })
+        $(document).ready(function () {
+            $("#toggle").click(function () {
+                $('#box').toggle(1000)
+            })
+        })
+
+        jQuery(document).ready(function(){
+            jQuery('#fadein').click(function () {
+            jQuery('#box').fadeIn(5000);
+        })
+        })
+        
+       
+
+    </script>
+
+    <div id="box"></div>
+    <br />
+    <input type="button" id="hide" value="Hide" />
+    <input type="button" id="show" value="Show" />
+    <input type="button" id="toggle" value="Toggle" />
+
+    <input type="button" id="fadein" value="FadeIn" />
+    <input type="button" id="fadeout" value="FadeOut" />
+    <input type="button" id="fadetoggle" value="FadeToggle" />
+
+    <input type="button" id="slideup" value="SlideUp" />
+    <input type="button" id="slidedown" value="SlideDown" />
+    <input type="button" id="slidetoggle" value="SlideToggle" />
+
+    <input type="button" id="animate" value="Animate" />
+
+
+   
+</body>
+
+</html>

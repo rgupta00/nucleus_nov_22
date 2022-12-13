@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jq hello world</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+
+
+    <table id="table">
+        <tr id="tr1">
+            <td>Name</td>
+            <td><input type="text"></td>
+            <td><input type="button" id="btn" value="Add" /></td>
+        </tr>
+    </table>
+
+    <script>
+        id = 1;
+        jQuery('#btn').click(function () {
+            id++;
+            name = jQuery('#name').val();
+            html = "<tr id='tr" + id + "'><td>Name</td><td><input type='text'></td><td><input type='button'   class='remove' value='Remove' data-id='" + id + "'/></td></tr>";
+            jQuery('#table').append(html);
+        });
+        jQuery('body').on('click', '.remove', function () {
+            tid = jQuery(this).attr('data-id');
+            jQuery('#tr' + tid).remove();
+        });
+    </script>
+</body>
+
+</html>

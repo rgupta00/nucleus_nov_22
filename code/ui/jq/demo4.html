@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jq hello world</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+
+    <div id="box"> i <i>love </i> programing </div>
+    <input type="button" id="btn" value="click" />
+    <script>
+        jQuery(document).ready(jQuery("#btn").click(function () {
+            alert(jQuery("#box").text())//text
+        }))
+    </script>
+</body>
+
+</html>

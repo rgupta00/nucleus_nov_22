@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Document</title>
 </head>
+
 <body>
     <script>
         //what is fundtion in js
+        // function add(a, b, c){
+        //     console.log("function add(a, b, c)")
+        //     return a+b+c;
+        // }
+
+
         // function add(a, b){
         //     console.log("function add(a, b)")
         //     return a+b;
-        // }
-        // function add(a, b, c=0){
-        //     console.log("function add(a, b, c)")
-        //     return a+b+c;
         // }
 
         // console.log(add(4,6))
@@ -20,12 +24,49 @@
 
         //how we can write funcation
         //hoisting 
-        function add(a, b){
-            console.log("function add(a, b)")
-            return a+b;
-        }
+        // function add(a, b){
+        //     console.log("function add(a, b)")
+        //     return a+b;
+        // }
+
+        //Js dont need to support function overloading
+
+        // function addMany(){
+        //     var i=1;
+        // 	var sum=1;
+        // 	console.log("argument length"+arguments.length+"<br/>");
+        // 	while(i<arguments.length)
+        // 	{
+        // 		sum=sum+arguments[i];
+        // 		i++;
+        // 	}
+        // 	console.log("sum of arguments"+sum);
+        // }
+
+        // addMany(3,5,6);
+
+
+
+        //Local and Global variables
+        //All the variables that are not explicitly declared are global
+        //variable declared with "var" are local
+        // total = 0;
+        // function sum() {
+        //     y = 20;
+        //     var x = 10;
+        //     total = x + y;
+        // }
+
+        // function display() {
+        //     sum();
+        //     alert(total);
+        //     alert(y);
+        //     alert(x);
+        // }
+        // display();
 
 
     </script>
 </body>
+
 </html>

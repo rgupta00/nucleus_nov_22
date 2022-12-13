@@ -5,21 +5,42 @@
     <title>DOM</title>
 </head>
 <body>
+
+    <div class="name">raj</div>
+    <di class="name">ekta</div>
+
+    <script>
+       let names= document.getElementsByClassName("name");
+       console.log(names)
+       console.log(names[0])
+    </script>
+
+
+
+
+
     <!-- <p id="demo"></p>
     <script>
         document.getElementById("demo").innerHTML="i love js"
     </script> -->
 
-    <script>
-        function sum(){
-            
-        }
+    <!-- <script>
+      function sum(){
+        let a=parseInt(document.getElementById("x").value);
+        let b=parseInt(document.getElementById("y").value);
+
+        let sum=a+b;
+        document.getElementById("sumDiv").innerHTML=sum
+
+      }
     </script>
-    Enter first no <input type="text" name="x" id="x"/> <br>
-    Enter sec no <input type="text" name="x" id="x"/> <br>
+    Enter first no <input type="text" class="dataentry"  id="x"/> <br>
+    Enter sec no <input type="text"   class="dataentry" id="y"/> <br>
+
     <input type="button" onclick="sum()" value="clicke me"/>
 
-    <div id="result"></div>
+    <br>
+   Sum: <div id="sumDiv"></div> -->
 
 
 </body>

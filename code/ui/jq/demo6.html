@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jq hello world</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+
+
+    <table border="1" id="table">
+        <tr>
+            <td>Rajiv</td>
+        </tr>
+    </table>
+
+    <input type="text" id="name">
+
+    <input type="button" id="btn" value="Click" />
+    <script>
+        jQuery(document).ready(jQuery('#btn').click(function () {
+            name = jQuery('#name').val();
+            html = "<tr><td>" + name + "</td></tr>";
+            jQuery('#table').append(html); //after before prepend append
+        }))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>ajax with xhr object</title>
+</head>
+<body>
+    <script>
+        const url='https://jsonplaceholder.typicode.com/users';
+
+        const xhr = new XMLHttpRequest();
+
+        console.log("start")
+
+        xhr.open('GET',url);
+
+        xhr.responseType='json';
+
+        xhr.onreadystatechange=()=>{
+            console.log(xhr.readyState)
+            console.log(xhr.status)
+        }
+        xhr.onload=()=>{
+            console.log(xhr.response);
+        }
+
+        xhr.onerror=(err)=>{
+            console.log(err);
+       }
+
+        xhr.send();
+
+       
+       console.log("start")
+    </script>
+    
+</body>
+</html>

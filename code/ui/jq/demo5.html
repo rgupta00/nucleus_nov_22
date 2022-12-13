@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jq hello world</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+
+    <input type="text" id="name"/>
+    <div id="msg"></div>
+    <script>
+        jQuery(document).ready(jQuery('#name').keyup(function(){
+            name=jQuery('#name').val();
+            if(name==''){
+                jQuery('#msg').html("");
+            }else{
+                jQuery('#msg').html("Welcome "+name);
+            }
+        }))
+        </script>
+</body>
+
+</html>
