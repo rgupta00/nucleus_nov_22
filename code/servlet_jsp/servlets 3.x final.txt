@@ -212,6 +212,21 @@ Accepting i/p form checkboxes /multiple select boxes
 	</form>
 
 
+
+	result.jsp
+
+	<%
+		Integer result= (Integer)session.getAttribute("result");
+
+		out.print(result+"<br>");
+	%>
+	<br>
+	<a href="cal.html">want to add more nos?</a>
+
+
+
+
+
 	Application 2: Book Advice Application
 
 

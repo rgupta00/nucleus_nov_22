@@ -1,0 +1,45 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <!--servlet ko map karan hoga -->
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>com.calapp.Hello</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>rajiv gupta</param-value>
+        </init-param>
+        <init-param>
+            <param-name>address</param-name>
+            <param-value>delhi</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/myhello</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>by</servlet-name>
+        <servlet-class>com.calapp.By</servlet-class>
+    </servlet>
+    <!-- init params vs context-parse-->
+
+    <!-- some key point
+     1. k/v both are string
+     2. immutable can not be chagnge while server is runnnigi
+     -->
+
+    <servlet-mapping>
+        <servlet-name>by</servlet-name>
+        <url-pattern>/byurl</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>emailid</param-name>
+        <param-value>rgupta.mtech@gmail.com</param-value>
+    </context-param>
+</web-app>
