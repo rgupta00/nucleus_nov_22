@@ -1,0 +1,899 @@
+servlet 3.x discussion
+--------------------------
+
+Agenda:
+___________
+
+	
+0. Hello World, port problem
+
+1. Print client information
+
+2. Demostration of servlet life cycle
+
+3. configure username / password for tomcat
+
+4. Simple form
+
+5. ServletContext vs. ServletConfig
+
+6. Servlet 3.0 annotations
+
+7. Asynch processing
+
+8. Simple login application: Dispatching VS redirecting
+
+9. Demo attributes: application, request and session
+
+10. MVC
+
+11.CRUD application Storing book info in database
+
+12.Session management
+
+13. Listners: ServletContextListner, HttpSessionListner
+
+14. Servlet Filter
+
+15. Case Study CRUD application
+
+16. Servlet security
+
+
+
+
+0. hello world 
+---------------
+	With xml 
+	With annotation
+
+ port problem
+-----------------
+
+netstat -a -o -n
+taskkill /F /PID 4036
+
+
+1. Print client information
+------------------------------
+
+	 // Get client's IP address
+        String ipAddress = request.getRemoteAddr(); // ip
+    
+        // Get client's hostname
+        String hostname = request.getRemoteHost(); // hostname
+
+
+
+
+
+2. Demostration of servlet life cycle
+	override init() and destroy()
+	------------------------------
+
+
+
+
+
+3. configure username / password for tomcat
+-----------------------------------------
+
+create an customer record processing application:
+	1. accept name, address, mobile,email and favourite programming language
+	2. add record to db
+	3. use all discussed design pattern and follow coding practice
+
+		=>MVC
+
+		=> putting jsp in webcontent X, should make them sec
+
+		=> connection object should be put in lister(servletcontext lister)
+		
+		=> factory, singleton for connection factory
+		
+		=> dao and dto
+
+		=> exception wrapping and rethowing
+
+	4. take it as a exam... 
+		marker will be offered and will tell u why ur marks are deduced
+
+4. Simple form
+-----------------
+	creating customer form and Printing customer information
+
+	step 1:
+
+	create form:
+	--------------
+
+	<form action="addCustomer.do" method="POST">
+	Customer ID : <input name="id" /> <br>
+	Name: <input name="name" /> <br>
+	Address: <textarea name="addr" rows="4" cols="20"></textarea> <br>
+	Mobile: <input name="mobile" size="9" /> <br>
+	Fax: <input name="fax" size="9" /> <br>
+	E-mail: <input name="email" size="25" /> <br><br>
+	<input type="submit" value="Add" />
+	</form>
+
+
+	create servlet to process form:
+	-------------------------------
+
+	.....
+	......
+
+	//retrive info
+
+	String id = request.getParameter("id");
+	String name = request.getParameter("name");
+	String addr = request.getParameter("addr");
+	String mobile = request.getParameter("mobile");
+	String fax = request.getParameter("fax");
+	String email = request.getParameter("email");
+
+	//Display customer informations
+
+	out.println("<h1> Customer Information </h1>");
+	out.println("<b>ID: </b>" + id + "<BR>");
+	out.println("<b>Name: </b>" + name + "<BR>");
+	out.println("<b>Address: </b>" + addr + "<BR>");
+	out.println("<b>Mobile: </b>" + mobile + "<BR>");
+	out.println("<b>Fax: </b>" + fax + "<BR>");
+	out.println("<b>E-mail: </b>" + email + "<BR>");
+
+
+
+
+Form processing: Careful!
+-----------------
+
+Accepting i/p form checkboxes /multiple select boxes
+--------------------------------------------------
+
+	==> Use HttpServletRequest.getParameterValues() method 
+
+
+	Ex;
+
+	<td><input name="options" type="checkbox" value="option1" />
+	<td><input name="options" type="checkbox" value="option2" />
+	<td><input name="options" type="checkbox" value="option3" />
+
+
+
+	In servlet:
+
+	String[] selectedOptions = request.getParameterValues("options");
+	
+	if (selectedOptions != null)
+	{
+		for (String option : selectedOptions)
+			{
+			  printWriter.print(option+"<br/>");
+			}
+	}
+
+5. ServletContext vs. ServletConfig
+----------------------------------------
+	
+	ServletContext:
+		per applications
+
+	ServletConfig:
+		per servlet
+
+
+
+
+
+
+8. Simple login application: Dispatching VS redirecting
+-------------------------------------------------------
+
+
+9. Demo attributes: application, request and session
+----------------------------------------------------
+
+
+10. MVC
+-------
+
+
+	Application 1: Calculator application
+
+	form:
+
+	<form action="Cal.do" method="post">
+		Enter first No : <input type="text" name="numberA"/><br/>
+		Enter second No:<input type="text" name="numberB"/><br/><br/>
+		<input type="submit"/>	
+	</form>
+
+
+	Application 2: Book Advice Application
+
+
+	Step 1: 
+
+	create view:
+	---------------
+
+	create form:
+
+		<html><body>
+		<h1 align="center">Book Selection Page</h1>
+		<form action="SelectBook" method="post"> 
+		Select book <p>
+ 
+		Book: 
+		<select name="topic" size="1"> 
+		<option value="Java">Java</option> 
+		<option value="Servlet">Servlet</option> 
+		<option value="Struts">Struts</option> 
+
+		</select> 
+		<br><br> 
+		<center> 
+		<input type="submit"> 
+		</center>
+		</form>
+		</body>
+		</html>
+
+
+	
+	Create controller
+	---------------------
+			
+		String topic=request.getParameter("topic");
+		List<String>choices=BookAdviser.bookAdviser(topic);
+		request.setAttribute("booklist", choices);
+		RequestDispatcher rd=request.getRequestDispatcher("show2.jsp");
+		rd.forward(request, response);
+
+
+	create model 
+	-----------------
+
+
+
+	public class BookAdviser {
+
+	public static List<String> bookAdviser(String topic){
+		List<String>list=new ArrayList<String>();
+		
+		if(topic.equalsIgnoreCase("Java")){
+			list.add("head first");
+			list.add("thinking in java");
+		}else if(topic.equalsIgnoreCase("Servlet")){
+			list.add("head first servlet jsp");
+			list.add("core servlet.com");
+		}else if(topic.equalsIgnoreCase("Struts")){
+			list.add("struts2 in action");
+			list.add("black book");
+		}else
+			list.add("no book");
+		
+		return list;
+	}
+	}
+
+
+	create display.jsp
+	---------------------
+
+	<%
+	List<String>list=(List<String>)request.getAttribute("key");
+	Iterator it=list.iterator();
+	while(it.hasNext()){
+		out.print(it.next()+"</br>");
+	}
+
+	%>
+
+
+
+
+	better view
+	------------
+
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+	<c:forEach var="book" items="${booklist}">
+   		 <b> ${book} </b><br/>
+	</c:forEach>
+
+
+
+
+11. CRUD application Storing book info in database
+------------------------------------------------
+	
+
+  Step 1: Add jdbc driver jar to project
+
+  Step 2: create mysql table book
+
+	CREATE TABLE BOOKS (ISBN VARCHAR(20) NOT NULL ,TITLE VARCHAR(70) NULL ,AUTHOR VARCHAR(50) NULL,PRICE FLOAT NULL ,PRIMARY KEY (ISBN) );
+
+
+	populate some records
+
+	INSERT INTO BOOKS VALUES ('123', 'JAVA', 'Rajeev', 250.00);
+	INSERT INTO BOOKS VALUES ('456', 'Servlet JSP', 'Rajeev ', 300.00) ;
+
+
+ Step 3:
+	Add jar to tomcat lib folder
+
+
+ Step 4:
+	create an form
+
+	<form action="addBook.do" method="POST">
+	ISBN : <input type="text" name="isbn" value="" size="15"/> <BR>
+	Title : <input type="text" name="title" value="" size="50"/> <BR>
+	Author : <input type="text" name="author" value="" size="50"/> <BR>
+	Price : <input type="text" name="price" value="" size="10"/> <BR>
+	<input type="submit" value="Add" />
+	</form>
+
+
+ Step 5:
+
+	create processing servlet:
+
+	
+  
+
+	i) load the driver in init() method and create an con object
+
+
+	con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/raj","root","root");
+
+
+
+
+	ii) put insertion code inside doPost()
+	
+	String isbn = request.getParameter("isbn");
+	String author = request.getParameter("author");
+	String title = request.getParameter("title");
+	String priceStr = request.getParameter("price");
+
+	pstmt=con.prepareStatement("insert into books(isbn, author, title, price)values	(?,?,?,?)");
+
+	pstmt.setString(1, isbn);
+	pstmt.setString(2, author);
+	pstmt.setString(3, title);
+	pstmt.setFloat(4, price);
+			pstmt.executeUpdate();
+
+
+
+
+
+
+9.1: DB best practices:
+-----------------------
+
+	=> reading through property file
+	=> Connection factory
+
+db.properties
+-----------------
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/springexp
+jdbc.username=root
+jdbc.password=root
+
+
+reading property file:
+---------------------
+ 	Properties prop = new Properties();
+        InputStream inputStream = DbUtil.class.getClassLoader().
+        getResourceAsStream("/db.properties");
+        prop.load(inputStream);
+        String driver = prop.getProperty("driver");
+        String url = prop.getProperty("url");
+        String user = prop.getProperty("user");
+        String password = prop.getProperty("password");
+        Class.forName(driver);
+        connection = DriverManager.getConnection(url, user, password);
+
+
+
+what we did today?
+=================
+	life cycle again
+	context vs config ( delhi => ITO)
+	ReqeustDis vs Redirect
+	mvc design pattern: bookadv app
+	servlet chaining
+
+	Job of controller
+	Dao dto with jdbc property file
+	
+	MVC, Singleton, factory, DAO,DTO, GPP to keep jsp secure
+
+	bookapp
+
+	
+
+
+
+9.2: DB best practices:tomcat connection pooling
+-------------------------------------------------
+
+	Step 1;
+
+	mapping in context.xml
+
+	<Resource
+	name="jdbc/test"
+	auth="Container"
+	driverClassName="com.mysql.jdbc.Driver"
+	type="javax.sql.DataSource"
+	url="jdbc:mysql://localhost:3306/exp121"
+	username="root"
+	password="root" >
+	</Resource>
+
+
+
+	Step 2:
+
+
+	mapping in web.xml
+	----------------------
+	<resource-ref>
+  	  <description>Test Database</description>
+   	 <res-ref-name>jdbc/test</res-ref-name>
+   	 <res-type>javax.sql.DataSource</res-type>
+   	 <res-auth>Container</res-auth>
+	  </resource-ref>
+
+	Step 3: pull vs push
+	------
+	@Resource(name="jdbc/test")
+	private DataSource ds;
+	private Connection conn;
+
+
+	conn = ds.getConnection();
+
+	then use connection object as usual;
+
+Optional : if u want to have a try :)
+-------------------------------------------------------
+Context initContext = new InitialContext();
+Context envContext  = (Context)initContext.lookup("java:/comp/env");
+DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+Connection conn = ds.getConnection();
+
+
+
+
+
+12.Session management
+--------------------
+	cookies, HttpSession, Url-rewriting
+
+
+	HttpSession object
+	--------------------
+	simple program to check session...
+
+
+	HttpSession session=request.getSession();
+		String heading="hello";
+		
+		synchronized (session) {
+			Integer count=(Integer)session.getAttribute("sessioncount");
+			if (count==null)
+			{
+				count=0;
+				session.setAttribute("sessioncount", count);
+				heading="welcome back first time user";
+				
+			}
+			else
+			{
+				count=count+1;
+				session.setAttribute("sessioncount", count);
+				heading="welcome back "+count;
+			}
+		}
+		PrintWriter out=response.getWriter();
+		out.print(heading);
+		
+
+
+
+	login/ logout
+	------------
+	using httpsession
+<form action="login.do" method="post">
+	Enter name : <input type="text" name="name"/><br/>
+	Enter password : <input type="password" name="password"/><br/>
+	<input type="submit"/>
+</form>
+
+
+
+	Session Mgt using Cookies object
+	---------------------------------
+
+	set the cookies
+	--------------
+
+	
+		Cookie cookie= new Cookie("key", name);
+		cookie.setMaxAge(30*60);
+		response.addCookie(cookie);
+
+
+	get the cookie
+	---------------
+
+		Cookie[]cookies=request.getCookies();
+		
+		if(cookies!=null){
+			for(int i=0;i<cookies.length;i++){
+				Cookie cookie=cookies[i];
+				if(cookie.getName().equals("key"))
+				{
+					String uname=cookie.getValue();
+					out.print(uname);
+					break;
+				}
+			}
+
+
+	Url rewriting
+	----------------
+
+
+	// Encodes the specified URL by including the session ID in it,
+      // or, if encoding is not needed, returns the URL unchanged
+      
+      String newURL = response.encodeURL("GetSession");
+     
+      // Return a <a> tag with the new url
+     
+      writer.println("Click <a href=\"" + newURL + "\">here</a> for another servlet");
+
+
+
+
+
+
+
+ 13. Listners: ServletContextListner, HttpSessionListner
+ -------------------------------------------------------
+
+
+
+ 14. Servlet Filter
+ -----------------
+	public class LoginFilter implements Filter {
+
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+	public void doFilter(ServletRequest request, ServletResponse response, 
+			FilterChain chain) throws IOException, ServletException 
+	{
+		
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		
+		Boolean flag = (Boolean) session.getAttribute("loginFlag");
+		
+		boolean loginFlag;
+		if (flag == null)
+		{
+			loginFlag = false;
+		}
+		else 
+		{
+			loginFlag = flag;
+		}
+		
+		if (!loginFlag)
+		{
+			HttpServletResponse res = (HttpServletResponse) response;
+			res.sendError(HttpServletResponse.SC_UNAUTHORIZED,"login failed!!!");
+			return;
+		}
+		
+		chain.doFilter(request, response);
+	}
+
+	
+
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	}
+
+
+	Extracting part of uri
+	----------------------
+		String uri = request.getRequestURI();
+		int lastIndex = uri.lastIndexOf("/"); 
+		String action = uri.substring(lastIndex + 1);
+
+
+
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+
+ 15. Case Study CRUD application
+ -------------------------------
+
+
+
+
+
+-----------------------------------
+	tomcat basic security
+-------------------------------------
+
+
+mentions users in tomcat-users.xml
+
+<role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <role rolename="employee"/>
+  <user username="concretepage" password="concretepage" roles="employee"/>
+  <user username="tomcat" password="tomcat" roles="tomcat"/>
+  <user username="both" password="tomcat" roles="tomcat,role1"/>
+  <user username="role1" password="tomcat" roles="role1"/> 
+
+
+
+
+
+Define in web.xml of project:
+-------------------------------
+
+<!--Defines Security Constraint -->
+    <security-constraint>
+        <display-name>JSP Demo Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>cp</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>employee</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+
+
+<!--Defines Login Config -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+
+
+<!--Defines Security Role -->
+    <security-role>
+        <description/>
+        <role-name>employee</role-name>
+    </security-role>
+
+
+
+login.jsp
+
+<form name="loginForm" method="POST" action="j_security_check">
+            <p>User name: <input type="text" name="j_username" size="20"/></p>
+            <p>Password: <input type="password" size="20" name="j_password"/></p>
+            <p>  <input type="submit" value="Submit"/></p>
+        </form>    
+
+
+
+
+logout.jsp
+
+<%
+session.invalidate();
+response.sendRedirect("index.jsp");
+%>
+
+
+
+error.jsp
+
+ <h3>Login Error</h3>   
+       <a href="index.jsp">Click to Login Again</a>  
+
+
+index.jsp
+
+<h1>You have successfully logged-in</h1>
+<a href="logout.jsp" >Click to Logout </a>
+
+
+
+
+ maven dependencies:
+---------------------
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+
+
+
+
+
+
+
+
+
+6. New features introduced in Servlet 3.0
+-------------------------------------
+
+	==> Optional web.xml
+
+	==> Annotations supports
+	
+	==> Configuring web applications programmatically
+
+	==> Asynchronous processing
+
+
+
+
+	@WebServlet annotation
+	==============================
+
+
+	Ex:
+		@WebServlet(urlPatterns = {"/simpleservlet"})
+		public class SimpleServlet extends HttpServlet
+		{
+			........
+			.......
+		}
+
+
+
+		@WebServlet(urlPatterns = {"/simpleservlet", "*.foo"})
+
+
+		Passing initialization parameters to a servlet via annotations
+
+		@WebServlet(name = "InitParamsServlet", urlPatterns = {
+			"/InitParamsServlet"}, initParams = {
+			@WebInitParam(name = "param1", value = "value1"),
+			@WebInitParam(name = "param2", value = "value2")})
+
+
+
+
+	@WebFilter annotation
+	======================
+
+	@WebFilter(filterName = "SimpleFilter", initParams = {
+	@WebInitParam(name = "filterparam1", value = "filtervalue1")},
+	urlPatterns = {"/InitParamsServlet"})
+
+
+	public class SimpleFilter implements Filter
+	{
+		........
+		........
+	}
+
+
+
+	@WebListener annotation
+	==========================
+
+	@WebListener()
+	public class HttpRequestListener implements ServletRequestListener
+	{
+		........
+		.........
+	}
+
+
+
+
+
+
+	Asynchronous processing
+	========================
+
+	Why it required?
+	------------------
+
+		==> Ajax has the side effect of generating a lot more HTTP
+			requests than traditional web applications.
+
+		==> If some of these threads block for a long
+			time waiting for a resource to be ready or are doing anything 
+			that takes a long time to process, it is possible our application 
+			may suffer from thread starvation.
+
+		==> Servlet 3.0 introduced asynchronous processing
+
+		==> Using this new capability, we are no longer limited to a single 
+			thread per request. We can now spawn a separate thread and return the 
+			original thread back to the pool to be reused by other clients
+
+
+	@WebServlet(name = "AsynchronousServlet", urlPatterns = {"/AsynchronousServlet"}, asyncSupported = true)
+
+	public class AsynchronousServlet extends HttpServlet
+	{
+		@Override
+		protected void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException
+		{
+
+			final AsyncContext ac = request.startAsync();
+
+
+			ac.start(new Runnable(){
+					@Override
+					public void run(){
+						Sysout("inside thread");
+			
+						try
+							{
+								//simulate a long running process.
+								Thread.sleep(10000);
+							}
+							catch (InterruptedException ex)
+							{
+								Sysout("erroer!");
+							}
+
+						try
+						 {
+							ac.getResponse().getWriter().println("You should see this after a 							brief wait");
+				
+							ac.complete();
+						}
+							catch (IOException ex)
+							{
+
+							}
+						}
+					});
+		}
+
+	}
+
+
+how i can persist session to db?
+---------------------------------
+https://www.youtube.com/watch?v=kN_DVkwBxyY
+
+get vs post in details
+https://www.diffen.com/difference/GET-vs-POST-HTTP-Requests
+http://www.pearsonitcertification.com/articles/article.aspx?p=30082&seqNum=3
+
+
