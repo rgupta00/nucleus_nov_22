@@ -18,16 +18,11 @@ public class ConnectionFactory {
 
         //read the prop file and polate the data into a Properties
         Properties properties=new Properties();
-//        InputStream is=ConnectionFactory.class.getClassLoader().getResourceAsStream("db.properties");
+        InputStream is=ConnectionFactory.class.getClassLoader().getResourceAsStream("db.properties");
 
-        BufferedReader br=null;
-      try{
-           br=new BufferedReader(new FileReader("db.properties"));
-      }catch (IOException e){
-          e.printStackTrace();
-      }
+
         try {
-             properties.load(br);
+             properties.load(is);
         }catch (IOException ex){ex.printStackTrace();}
 
         String driver=properties.getProperty("jdbc.driver");

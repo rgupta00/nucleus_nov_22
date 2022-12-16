@@ -1,0 +1,29 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!--mapping karna hoga -->
+    <servlet>
+        <servlet-name>foo</servlet-name>
+        <servlet-class>com.demo.Hello</servlet-class>
+        <init-param>
+            <param-name>mydata</param-name>
+            <param-value>this is data for servlet Hello</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>foo</servlet-name>
+        <url-pattern>/hellourl</url-pattern>
+    </servlet-mapping>
+    <!-- context param for whole app-->
+
+
+    <context-param>
+        <param-name>emailid</param-name>
+        <param-value>rgupta@gmail.com</param-value>
+    </context-param>
+</web-app>
