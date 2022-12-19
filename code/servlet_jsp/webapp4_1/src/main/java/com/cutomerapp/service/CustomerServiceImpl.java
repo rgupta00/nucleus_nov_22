@@ -9,6 +9,7 @@ public class CustomerServiceImpl implements CustomerService{
     private CustomerDao customerDao;
 
     public CustomerServiceImpl(){
+
         customerDao=new CustomerDaoImpl();
     }
     @Override

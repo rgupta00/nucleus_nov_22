@@ -11,6 +11,7 @@ public class ConnectionFactory {
     //the purpose of it is to provide a connection , Factory dp
     private static Connection connection=null;
 
+    private ConnectionFactory(){}
     public  static Connection getConnection(){
 
         InputStream is=ConnectionFactory.
@@ -18,7 +19,7 @@ public class ConnectionFactory {
 
         Properties properties=new Properties();
         try{
-            properties.load(is);
+            properties.load(is);//
         }catch (IOException e){
             e.printStackTrace();
         }

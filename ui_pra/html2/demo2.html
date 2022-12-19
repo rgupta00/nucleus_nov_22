@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            border: 2px ;
+        }
+        form{
+            border: 2px;
+        }
+        *{
+            margin: 10px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <table align="center" cellpadding="8px" cellspacing="8px">
+            <tr>
+                <td>
+                    <label for="id1">
+                        Enter name:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="name" id="id1"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="id2">
+                        Mobile no:
+                    </label>
+                </td>
+                <td>
+                    <input type="number" name="phone" id="id2" value="546545454" readonly> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="id3">
+                        Password:
+                    </label>
+                </td>
+                <td>
+                    <input type="password" name="password" id="id3"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="id4">
+                        Email:
+                    </label>
+                </td>
+                <td>
+                    <input type="email" name="email" id="id4"> <br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="id5">
+                        Dob:
+                    </label>
+                </td>
+                <td>
+                    <input type="date" name="date" id="id5"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="id6">
+                        Gender:
+                    </label>
+                </td>
+                <td>
+                    <input type="radio" name="Gender" id="id6" value="male"> Male
+                    <input type="radio" name="Gender" id="id6" value="female"> Female
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="id7">
+                        Language knows:
+                    </label>
+                </td>
+                <td>
+                    <input type="checkbox" name="Language" id="id7" value="english"> english
+                    <input type="checkbox" name="Language" id="id7" value="hindi"> hindi
+                    <input type="checkbox" name="Language" id="id7" value="tamil"> tamil
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="id8">
+                        Upload resume:
+                    </label>
+                </td>
+                <td>
+                    <input type="file" name="file" id="id8" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="id9">
+                       Qualification:
+                    </label>
+                </td>
+                <td>
+                    <select id="id9" name="n9">
+                       <option value="" disabled selected>Select your option</option>	
+                        <option value="UG">UG</option>
+                        <option value="PG">PG</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="id10">
+                       Address:
+                    </label>
+                </td>
+                <td>
+                    <textarea id="id10" name="n10" rows="5" cols="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- <input type="submit" value="add"> -->
+                    <input type="image" src="logo.png" height="50px" width="50px">
+                </td>
+                <td>
+                    <input type="reset" value="clear">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

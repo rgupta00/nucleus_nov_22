@@ -1,0 +1,7 @@
+create table customer(
+id int not null auto_increment primary key,
+name varchar(100) not null,
+address varchar(100) not null,
+mobile varchar(100) not null,
+email varchar(100) not null
+);

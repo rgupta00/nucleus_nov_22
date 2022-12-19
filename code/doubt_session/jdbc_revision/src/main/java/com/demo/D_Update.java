@@ -13,10 +13,10 @@ public class D_Update {
             PreparedStatement pstmt=connection.prepareStatement
                     ("update emp3 set salary =? where id=?");
 
-            pstmt.setDouble(1,8500);
-            pstmt.setInt(2,4);
-            int no= pstmt.executeUpdate();
-            System.out.println("----updated----"+no);
+            pstmt.setDouble(1,8900);
+            pstmt.setInt(2,5);
+            pstmt.executeUpdate();
+            //System.out.println("----updated----"+no);
 
             int n=pstmt.executeUpdate();
             System.out.println(n);

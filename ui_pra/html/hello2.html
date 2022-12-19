@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function Emp(name, address, city, salary){
+            
+            this.name=name;
+            this.address=address;
+            this.city=city;
+            this.salary=salary;
+        }
+
+        Emp.prototype.display=function(){
+        console.log(this.name);
+
+        }
+
+        var ob=new Emp('raj','delhi','delih',40000)
+        console.log(ob)
+
+        var ob2=new Emp('raj','delhi','delih',40000)
+        console.log(ob2)
+
+
+
+    </script>
+
+</body>
+</html>

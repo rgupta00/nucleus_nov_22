@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div id="load"></div>
+    <script>
+
+        $(document).ready(function(){
+            $.ajax({
+                url:"http://localhost:8080/employees",
+                type: "GET",
+                success: function(data){
+                    $.each(data, function(key, value){
+                        $("#load").append(value.id+" "+ value.name+" "+ value.salary+"<br>")
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

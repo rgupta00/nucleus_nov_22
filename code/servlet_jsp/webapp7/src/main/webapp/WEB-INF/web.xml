@@ -1,0 +1,37 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!--mapping karna hoga -->
+
+    <servlet>
+        <servlet-name>jar</servlet-name>
+        <servlet-class>com.demo.Third</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jar</servlet-name>
+        <url-pattern>/third</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>bar</servlet-name>
+        <servlet-class>com.demo.Second</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bar</servlet-name>
+        <url-pattern>/second</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>foo</servlet-name>
+        <servlet-class>com.demo.First</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>foo</servlet-name>
+        <url-pattern>/first</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jquery demo</title>
+    <script src="jquery-3.2.1.js"></script>
+
+    <style>
+        #box{
+            background-color:green;
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box"></div>
+    <br/>
+    <input type="button" id="hide" value="Hide"/>
+    <input type="button" id="show" value="Show"/>
+    <input type="button" id="toggle" value="Toggle"/>
+    
+    <input type="button" id="fadein" value="FadeIn"/>
+    <input type="button" id="fadeout" value="FadeOut"/>
+    <input type="button" id="fadetoggle" value="FadeToggle"/>
+    
+    <input type="button" id="slideup" value="SlideUp"/>
+    <input type="button" id="slidedown" value="SlideDown"/>
+    <input type="button" id="slidetoggle" value="SlideToggle"/>
+    
+    <input type="button" id="animate" value="Animate"/>
+
+   
+<script src="jquery-3.2.1.js"></script>
+
+<script>
+jQuery('#hide').click(function(){
+	jQuery('#box').hide(2000);
+});
+jQuery('#show').click(function(){
+	jQuery('#box').show(2000);
+});
+jQuery('#toggle').click(function(){
+	jQuery('#box').toggle(2000);
+});
+
+jQuery('#fadein').click(function(){
+	jQuery('#box').fadeIn(2000);
+});
+jQuery('#fadeout').click(function(){
+	jQuery('#box').fadeOut(2000);
+});
+jQuery('#fadetoggle').click(function(){
+	jQuery('#box').fadeToggle(2000);
+});
+
+jQuery('#slideup').click(function(){
+	jQuery('#box').slideUp(2000);
+});
+jQuery('#slidedown').click(function(){
+	jQuery('#box').slideDown(2000);
+});
+jQuery('#slidetoggle').click(function(){
+	jQuery('#box').slideToggle(2000);
+});
+
+jQuery('#animate').click(function(){
+	jQuery('#box').animate({
+		width:'200px',
+		height:'120px'
+	});
+});
+
+</script>
+
+</body>
+</html>

@@ -30,14 +30,15 @@ public class CustomerController extends HttpServlet {
         Customer customer=new Customer(name, addr, mobile, email);
         customerService.addCustomer(customer);
 
-        //PRG pattern : used to solve doubel form submission problem
-      //request.setAttribute("customer", customer);
+        //PRG pattern : used to solve double form submission problem
+     // request.setAttribute("customer", customer);
+
         HttpSession httpSession=request.getSession();
         httpSession.setAttribute("customer", customer);
-      response.sendRedirect("show.jsp");
+     response.sendRedirect("show.jsp");
       //RequestDispaher vs redirect
         //server side       client side
 //        RequestDispatcher rd=request.getRequestDispatcher("show.jsp");
-//        rd.forward(request,response);
+//       rd.forward(request,response);
     }
 }

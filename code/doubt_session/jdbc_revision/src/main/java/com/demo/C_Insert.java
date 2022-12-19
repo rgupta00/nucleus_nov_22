@@ -12,11 +12,11 @@ public class C_Insert {
 
            PreparedStatement pstmt=connection.prepareStatement
                    ("insert into emp3(name, salary) values(?,?)");
-           pstmt.setString(1,"hari");
+           pstmt.setString(1,"ravi kumar");
            pstmt.setDouble(2,7000);
 
-           int n=pstmt.executeUpdate();
-           System.out.println(n);
+           pstmt.executeUpdate();
+          // System.out.println(n);
 
        }catch (SQLException ex){
            ex.printStackTrace();
