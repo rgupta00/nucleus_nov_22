@@ -1,0 +1,28 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!--mapping karna hoga -->
+    <welcome-file-list>
+        <welcome-file>showAll</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>addCustomerController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.AddCustomerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCustomerController</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showAllCustomerController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.ShowAllCustomerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showAllCustomerController</servlet-name>
+        <url-pattern>/showAll</url-pattern>
+    </servlet-mapping>
+</web-app>
