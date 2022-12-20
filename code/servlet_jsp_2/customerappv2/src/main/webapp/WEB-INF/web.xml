@@ -9,6 +9,15 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
+    <filter>
+        <filter-name>secFilter</filter-name>
+        <filter-class>com.customerapp.web.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>secFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>com.customerapp.web.controller.LoginController</servlet-class>
@@ -25,7 +34,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
-        <url-pattern>/logoutController</url-pattern>
+        <url-pattern>/logoutController.do</url-pattern>
     </servlet-mapping>
 
 
@@ -37,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>addCustomerController</servlet-name>
-        <url-pattern>/addCustomer</url-pattern>
+        <url-pattern>/addCustomer.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -46,6 +55,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>showAllCustomerController</servlet-name>
-        <url-pattern>/showAll</url-pattern>
+        <url-pattern>/showAll.do</url-pattern>
     </servlet-mapping>
 </web-app>

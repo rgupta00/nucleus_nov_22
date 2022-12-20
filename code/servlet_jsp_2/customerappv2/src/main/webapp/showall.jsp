@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 <br>
 logoutController
 
-<a href="logoutController">logout</a> <br>
+<a href="logoutController.do">logout</a> <br>
 <a href="addcustomer.jsp">add new Customer</a> <br>
 
 

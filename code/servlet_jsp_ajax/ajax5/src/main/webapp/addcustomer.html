@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Dependent Select Option</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style type="text/css">
+            body{
+                background: url(image/roenkae.jpg);
+                background-size: cover;
+            }
+            .drop-down-list{
+                margin: 150px auto;
+                width: 50%;
+                padding: 30px;
+            }
+        </style>
+</head>
+<body class="cyan">
+<div class="container">
+    <div class="drop-down-list card">
+        <div class="center">
+            <h5>Dependent Select Item</h5>
+        </div>
+        <div class="divider"></div>
+        <form>
+            <div class="input-field">
+                <select id="country">
+                    <option>Select Country</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <select id="state">
+                    <option>Select State</option>
+                </select>
+            </div>
+
+            <div class="center">
+                <button class="btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: "ajax",
+                    method: "GET",
+                    data: {operation: 'country'},
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        let obj = $.parseJSON(data);
+                        $.each(obj, function (key, value) {
+                            $('#country').append('<option value="' + value.cid + '">' + value.cname + '</option>')
+                        });
+                        $('select').formSelect();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('#country').append('<option>Country Unavailable</option>');
+                    },
+                    cache: false
+                });
+
+
+                $('#country').change(function () {
+                    $('#state').find('option').remove();
+                    $('#state').append('<option>Select State</option>');
+
+                    let cid = $('#country').val();
+                    let data = {
+                        operation: "state",
+                        id: cid
+                    };
+
+                    $.ajax({
+                        url: "ajax",
+                        method: "GET",
+                        data: data,
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data);
+                            let obj = $.parseJSON(data);
+                            $.each(obj, function (key, value) {
+                                $('#state').append('<option value="' + value.sid + '">' + value.sname + '</option>')
+                            });
+                            $('select').formSelect();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $('#state').append('<option>State Unavailable</option>');
+                        },
+                        cache: false
+                    });
+                });
+
+
+
+            });
+        </script>
+</body>
+</html>
+

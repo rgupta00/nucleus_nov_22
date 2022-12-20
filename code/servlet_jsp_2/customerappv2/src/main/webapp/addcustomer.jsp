@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
     <title>customer app</title>
 </head>
 <body>
-<form action="addCustomer" method="POST">
+<form action="addCustomer.do" method="POST">
     <table>
         <tr>
             <td>Name: </td>

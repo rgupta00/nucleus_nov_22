@@ -30,7 +30,7 @@ public class AddCustomerController extends HttpServlet {
 
         customerService.addCustomer(customer);
 
-        response.sendRedirect("showAll");
+        response.sendRedirect("showAll.do");
 
     }
 }

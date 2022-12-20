@@ -17,6 +17,7 @@ public class LoginController extends HttpServlet {
     private UserService userService;
 
     public LoginController(){
+
         userService=new UserServiceImpl();
     }
 
@@ -30,7 +31,7 @@ public class LoginController extends HttpServlet {
           User user=userService.getUser(name, password);
           HttpSession httpSession=request.getSession();
           httpSession.setAttribute("user", user);
-          response.sendRedirect("showAll");
+          response.sendRedirect("showAll.do");
       }catch (UserNotFoundException ex){
           response.sendRedirect("login.jsp?error=login failed");
       }
