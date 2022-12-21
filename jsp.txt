@@ -1,0 +1,1967 @@
+
+
+
+What next :some basic idea of CORS and how to solve it
+-----------------------------------------------------
+
+
+JSP basics, jsp life cycle
+jsp nuts and bolts
+EL
+JSTL
+
+
+
+Java server pages 2.3
+xxxxxxxxxxxxxxxxxx
+
+JSP (Its all about how to 
+display data in best way!!!)
+============================
+
+	=>Nut and bolts of JSP
+		-> Directive,Scriptlet,Expression
+	=>JSP Life Cycle
+	=>Understanding JSP via servlet
+	=>Implicit Objects
+	=>Actions
+	=>Database Interaction
+	=>Calling a JavaBean from a JSP page
+	=>Expression Langauage
+	=>JSP Standard Tag Library
+
+	
+
+jsp template :
+-----------------
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+JSP first look:
+--------------------------
+	directive	
+	--------
+		<%@ page import="java.util.*" %> 
+
+	declaration
+	---------
+			<%! int y = 3; %> 
+	EL Expression
+	-------------
+		 	email: ${applicationScope.mail} 
+
+	scriptlet
+	---------
+			<% Float one = new Float(42.5); %> 
+
+	expression
+	---------
+			<%= pageContext.getAttribute(foo") %> 
+
+	action
+	---------
+			<jsp:include page="foo.html" /> 
+
+
+=>Nut and bolts of JSP
+-> Directive,Scriptlet,Expression
+________________________________
+
+
+	diective
+	-----------
+		decide behaviour of whole page
+
+		<%@ ............ %>
+
+
+	3 kind of directive: page, include, taglib direction
+	___________________
+
+	<%@ page import="java.util.*, java.sql.*" %>
+
+	for page directive 13 kind 
+
+
+
+	Scriptlet :its pure java code! u can write html code inside it
+	-----------
+	whatever i want to write in doGet/doPost of a servlet
+
+	<%
+		
+			sop("hi");
+
+			i++;
+			// out predefine object
+			out.println(i);
+
+	%>
+
+
+
+	expresssion
+	------------
+
+		<%= i  %>
+
+
+		out.prinln(i);
+
+
+		expression is an replacement 
+		(Shortcut of out.println() )
+
+
+
+	decleration 
+	------------
+	
+		<%!	%>
+
+
+	JSP Comments
+	-----------------
+
+		HTML Comment 	<!-- HTML Comment --> 
+
+		JSP Comment 	<%-- JSP Comment --%> 
+
+
+
+
+	
+
+
+	decleration tag!
+	-----------------
+
+	<%!
+
+		int i=0;// instance 
+		static int counter =0;
+
+		public void foo(){
+
+		}
+	%>
+
+=> Understanding JSP via servlet
+_______________________________
+
+how to learn jsp easily ?
+
+u should think jsp form sevlet prospective!
+
+
+	import java.sql.*;
+	import java.util.*;
+
+	class MySevlet extends HttpServlet
+	{
+		int i=0;// instance 
+		static int counter =0;
+
+		public void foo(){
+
+		}
+		
+		public void doGet(.........,...........)
+		{
+			sop("hi");
+
+			i++;
+			PrintWriter out=res.get...();
+			out.println(i);
+		}
+
+
+	}
+
+
+
+
+
+
+
+
+	
+	<%!int counter=0;%>
+	<%=counter++%>	
+
+
+
+
+=> JSP directive in details
+__________________________
+
+	<%@ .... %>
+	page directive 
+	----------------
+
+		defines page-specific properties such as character encoding, 
+		the content type for this pages response and whether this 			
+		page should have the implicit session object. 
+
+
+		<%@ page import="foo.*" session="false" %> 
+
+		<%@ page language="java" import="java.util.Date(),java.util.Dateformate()" iserrorpage="false"%>
+
+
+		A page directive can use up to thirteen different attributes *(At the end)
+					
+
+	•include directive 
+	----------------
+
+		 Defines text and code that gets added 
+		into the current page at translation time 
+
+
+		<%@ include file="hi.html" %> 
+
+	web page
+
+	header
+
+	footer
+
+	include action vs include directive?
+	----------------------------------
+
+
+	taglib directive * how to define customer tag?
+	-------------------------
+
+		Defines tag libraries available to the JSP 
+
+
+		<%@ taglib tagdir="/WEB-INF/tags/cool" prefix="cool" %> 
+
+
+
+	what is the syntax of include directive
+	--------------------------------
+
+	a.jsp
+	--------------------
+
+	<h1>file 1</h2>
+	<%@ include file="b.jsp" %> 
+
+
+	b.jsp
+	-----------
+
+	<h1>file 2</h2>
+	<h1>india  is shining?</h1>
+	<%=new Date()%>
+
+
+	in theory
+	---------
+	we should not use include directive if content of b.jsp
+	is changing with time
+
+
+
+
+
+	<%@ page %>
+
+
+
+	demo isError page and error page in JSP
+	---------------------------
+
+
+	a.jsp
+	------
+
+	<%@ page errorPage="b.jsp" isErrorPage="false"%>
+	<%  
+
+	Dog d=null;
+
+	d.toString(); 
+
+	%>
+
+
+	b.jsp
+	-------
+
+	<%@ page isErrorPage="true" %>
+
+	This is the Error page.The following error occurs:- <br>
+	<%= exception.toString() %>
+
+
+
+
+
+
+
+
+=> Implicit Object 
+-------------------------------
+	JspWriter		out
+
+	HttpServletRequest	request
+
+				request.setAttribute("key","foo");
+				String temp=request.getAttribute("key");
+
+
+	HttpServletResponse	response
+
+	HttpSession		session
+
+				session.setAttribute("key","foo");
+				String temp=session.getAttribute("key");
+
+
+	ServletContext		application
+
+
+
+				application.setAttribute("key","foo");
+				String temp=application.getAttribute("key");
+		
+
+	ServletConfig		config
+
+	Throwable		exception 
+
+	PageContext		pageContext (not in servlet)
+				is an handly way to access any type of scoped variable
+
+	Object			page  (not in servlet)
+
+
+=> Scope in JSP
+___________________
+	application
+	session
+	request
+	page
+	
+
+=> Standard Actions
+___________________
+
+
+	The purpose of usebean tag is to hide the BL inside a class
+	so that BL is not exposed inside scirptlet
+
+
+
+
+
+	Tags that affect runtime behavior of JSP and 
+	response send back to client
+
+
+	Std action types:
+	-----------------
+	<jsp:useBean>
+	<jsp:setProperty>
+	<jsp:getProperty>
+
+
+	<jsp:forward/>
+	<<jsp:include/>
+	....
+	.....
+
+
+	RequestDispacher rd=request.getRequestDispacher("show.jsp");
+			rd.forward(req,res);
+
+			rd.include(req,res);
+
+	Equ code in JSP:
+
+	<jsp:include>
+	<jsp:forward>
+	(How to pass parameters in include and forward)
+
+
+
+Simple login app with jsp only (bad code)
+----------------------------------
+
+
+
+<form action ="myLogin.jsp".
+	<input type="text" name="name"/>
+	<input type="password" name="pass"/>
+	<input type="submit"/>
+</form>
+
+
+
+
+<%
+	 if((request.getParameter("un").equals("raj")) &&(request.getParameter("pw").equals("java")))
+	{
+%>
+	<jsp:forward page="forward2.jsp"/>
+<%
+}
+	else
+{
+%>
+	<%@include file="index.jsp"%>
+<%
+
+	}
+%>
+
+
+passing parameter with dispaching
+-----------------------------
+    <jsp:include page="/foo2.jsp" >
+		<jsp:param name="sessionID" value="<%= session.getId() 	%>" />
+    </jsp:include>
+
+
+
+
+Sepration of concern
+-------------------
+no business logic should be done in jsp at any cost
+
+	<jsp:useBean>
+	<jsp:setProperty>
+	<jsp:getProperty>
+
+
+
+Example:
+-------------------
+
+<form action ="LoginServlet" method="get">
+	ID:<input type="text" name="id"/></br>
+	Name:<input type="text" name="name"/></br>
+	Pass:<input type="password" name="pass"/></br>
+	<input type="submit"/>
+</form>
+
+
+
+automatic type conversion
+
+processing of bean
+
+
+
+
+
+
+
+
+API for the Generated Servlet 
+==============================
+	jspInit()	
+	--------
+			This method is called from the
+			 init() method and it can be overridden
+ 
+	jspDestroy()
+	----------	
+			This method is called from the servlets destroy() 
+			method and it too can be overridden 
+
+
+	_jspService()	
+
+			This method is called from the servlets service() 
+			method which means its runs 
+			in a separate thread for each request,
+			 the container passes the request and response 			
+			object to this method. 
+
+			You cannot override this method. 
+
+
+
+
+Initializing your JSP
+-------------------------
+can we have init parameters for jsp: YES!
+
+
+put this in web.xml
+---------------------
+
+<web-app ...>
+
+   <servlet>
+  	<servlet-name>foo</servlet-name>
+  	<jsp-file>/index.jsp</jsp-file>
+  	
+  <init-param>
+      <param-name>email</param-name>
+      <param-value>rgupta.mtech@gmail.com</param-value>
+    </init-param>
+    
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>foo</servlet-name>
+  	<url-pattern>/index.jsp</url-pattern>
+  </servlet-mapping>
+
+</web-app>
+
+
+
+now getting them in init method
+===============================
+
+<%!
+  public void jspInit() 
+  {
+  
+    ServletConfig sConfig = getServletConfig();
+    String emailAddr = sConfig.getInitParameter("email");
+    ServletContext ctx = getServletContext();
+    ctx.setAttribute("mail", emailAddr);
+  }
+
+%>
+
+
+
+now get attributes in service method
+===============================
+
+<%= "Mail Attribute is: " + application.getAttribute("mail") %>
+
+
+<%= "Mail Attribute is: " + pageContext.findAttribute("mail") %>
+
+
+<%
+   ServletConfig sConfig = getServletConfig();
+   String emailAddr = sConfig.getInitParameter("email");
+   out.println("<br><br>Another way to get web.xml attributes: " + emailAddr );
+%>
+
+
+
+
+<%
+   out.println("<br><br>Yet another way to get web.xml attributes: " + getServletConfig().getInitParameter("email") );
+%>
+
+
+
+Setting scoped attributes in JSP
+================================
+
+Application	
+-----------
+	
+	in servlet
+	----------
+		getServletContext().setAttribute("foo",barObj);	
+
+	in jsp
+	--------
+		application.setAttribute("foo",barObj);
+
+
+
+Request
+--------
+
+	in servlet
+	----------
+		request.setAttribute("foo",barObj);	
+
+	in jsp
+	--------
+		request.setAttribute("foo",barObj);
+
+
+	
+Session
+--------
+
+	in servlet
+	----------
+		request.getSession().setAttribute("foo",barObj);	
+
+	in jsp
+	--------
+		session.setAttribute("foo",barObj);
+
+
+
+Page
+-------
+
+	in servlet
+	----------
+		do not apply	
+
+	in jsp
+	--------
+		pageContext.setAttribute("foo",barObj);
+
+
+
+Note
+============
+
+
+	Using the pageContext to get a session-scoped attribute
+	------------------------------------------------------------
+ 
+	<%= pageContext.getAttribute("foo", PageContext.SESSION_SCOPE ) %> 
+
+	Using the pageContext to get an application-scoped attribute 
+       ------------------------------------------------------------
+	<%= pageContext.getAttribut("mail",PageContext.APPLICATION_SCOPE) %> 
+
+	
+	Using the pageContext to find an attribute
+	 when you don't know the scope 
+	-----------------------------
+	<%= pageContext.findAttribute("mail") %>
+
+
+
+
+
+
+=> Java bean in jsp
+_____________________
+GPP: dont use scriplet!
+	if i am using scriplet ie i am adding my logic jsp X
+EL
+JSTL
+
+
+
+=> EL: Expression language
+__________________________
+
+	Putting java code in jsp is bad habbit
+
+	Scriplet in ur project u may be gone!
+
+
+	then what to do?
+	---------------
+
+	Use EL
+		JSP 2.0 spec. EL offers a simpler way to 
+		invoke Java code but code itself belongs somewhere else
+
+
+
+	Although EL looks like Java it behaves differently, 
+	so do not try and map the same Java with EL.
+
+
+	EL are always within curly braces 
+	and prefixed with the dollar sign. 
+
+
+	The first named variable in the expression is either an 	
+		implicit object or an attribute
+
+
+	how EL make my life easy....
+	-------------------------------
+
+	EL example 
+	------------
+	old way don't do now 
+	--------------------
+
+	Please contact: <%= application.getAttribute("mail") %> 
+
+
+	EL way
+	------
+
+	please contact: ${applicationScope.mail}
+
+
+
+
+
+
+	stop JSP from using scripting elements 
+	--------------------------------------
+
+		<web-app ...>
+		...
+		  <jsp-config>
+		    <jsp-property-group>
+		    <url-pattern>*.jsp</url-pattern>
+		    <scripting-invalid>true</scripting-invalid>
+		    </jsp-property-group>
+		  </jsp-config>
+		...
+		</web-app> 
+
+
+
+
+	stop using EL 
+	-------------
+	<%@ page isELIgnored="true" %>
+
+	Note: this takes priority over the DD tag above 
+
+
+
+	JSTL
+	JSTL :jsp std tag lib
+
+	As PL/SQL is to SQL 
+	JSTL is to EL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Scriptless JSP
+	=============
+	why we should not use scriplet?
+
+	EL provide better way to accept DTO send from controller to view
+
+	Some Ex:
+	======
+
+	Consiser Servlet (controller) code 
+	-----------------------------------
+
+		Person p = new Person();
+
+		p.setName("Paul");
+
+		request.setAttribute("person", p); 
+
+		RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+
+		view.forward(request, response); 
+
+
+
+	JSP (view) code 
+	-----------------
+		Person is: <%= request.getAttribute("person") %> 
+
+		Does it work?
+
+
+
+
+	Correct way?
+	--------------
+	<% Person p = (Person) request.getAttribute("person");
+
+	Person is: <%= p.getName() %> 
+
+
+
+	or
+	
+	Person is: <%= ((Person) request.getAttribute("person")).getName() %> 
+
+
+
+
+	Correct Way
+	----------
+	
+	<jsp:useBean id="person" class="foo.Person" scope="request" />
+
+	Person is: <jsp:getProperty name="person" property="name" /> 
+
+
+	class Person
+	{
+		private String name;
+		....
+		...
+		...
+	}
+
+
+
+	public class Dog 
+	{
+		private String dogName;
+		.....
+		.....
+	}
+
+
+
+
+	public class Person 
+	{
+		private String personName;
+		private Dog dog;
+
+		.....
+		.....
+	}
+
+	Person has A dog
+	----
+
+
+		Dog dog=new Dog();
+
+		dog.setDogName("myDog");
+
+		Person p=new Person();
+
+		p.setPersonName("foo");
+
+		p.setDog(dog);
+
+		request.setAttribute("person", p); 
+
+
+
+
+	Expression Language More examples
+	----------------------------------
+
+
+	consider controller code
+	----------------------
+
+
+	adding persons dog in request attributes in an servlet
+	-----------------------------------------------------------
+
+	foo.Person p = new foo.Person();
+
+	p.setName("Paul");
+
+	foo.Dog dog = new foo.Dog();
+
+	dog.setName("Spike");
+
+	p.setDog(dog);
+
+	request.setAttribute("person", p); 
+
+
+
+	getting same in jsp
+	------------------------
+
+	using tags 	
+
+	<%= ((Person) request.getAttribute("person")).getDog().getName() %> 
+
+
+	Dog name: ${person.dog.dogName}
+
+
+
+
+
+	Some more examples
+	--------------------
+
+
+	in servlet
+	---------
+
+	String[] footballTeams = { "Liverpool", "Manchester Utd", "Arsenal", "Chelsea" }
+
+	request.setAttribute("footballList", footballTeams); 
+
+
+
+	in jsp
+	---------
+
+
+	Favorite Team: ${footballList[0]}
+
+	Worst Team: ${footballList["1"]} 		
+
+
+			Note ["one"] would not work but ["10"] would
+
+
+	<%-- using the arraylist toString() 
+	---------------------------------
+	
+	All the teams: ${footballList} 
+
+
+
+	Another Example:EL
+	------------------
+
+	
+
+	java.util.Map foodMap = new java.util.HashMap();
+
+	foodMap.put("Fruit", "Banana");
+	foodMap.put("TakeAway", "Indian"); 
+	foodMap.put("Drink", "Larger");
+	foodMap.put("Dessert", "IceCream"); 
+	foodMap.put("HotDrink", "Coffee");
+
+	String[] foodTypes = {"Fruit", "TakeAway", "Drink", "Dessert", "HotDrink"}
+
+	request.setAttribute("foodMap", foodMap); 
+	request.setAttribute("foodTypes",foodTypes);
+
+
+
+	JSP code
+	---------
+
+	Favorite Hot Drink is: ${foodMap.HotDrink}
+
+	Favorite Take-Away is: ${foodMap["TakeAway"]}
+
+	Favorite Dessert is: ${foodMap[foodTypes[3]]}
+
+SQL => PL/SQL
+
+EL => JSTL
+
+
+
+ => JSTL (JSP std tag library)
+ _____________________________
+	
+	The JSTL is hugh, version 1.2 has five libraries,
+ 	four with custom tags and one with a bunch of functions for String manipulation
+
+ 
+	JSTL Core - core  c
+	
+	JSTL fmt - formatting  fmt
+
+	JSTL xml- xml   xmt
+
+	JSTL sql - sql 
+
+	JSTL function - string manipulation
+
+
+
+	standard.jar, jstl.jar
+
+
+	Hello world jstl
+	------------------
+
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<html><body>
+  	... 
+ 	 <c:forEach var="i" begin="1" end="10" >
+    		<c:out value="${i}" /> 
+  	 </c:forEach>
+ 	 ...
+	</body></html>
+
+
+
+
+Example with map
+----------------
+
+		Map<Integer,String>map=new HashMap<Integer, String>();
+		map.put(22, "foo");
+		map.put(44, "bar");
+		map.put(55, "jar");
+		map.put(88, "war");
+		request.setAttribute("map", map);
+		RequestDispatcher rd=request.getRequestDispatcher("show2.jsp");
+		rd.forward(request,response);
+
+
+
+
+Now in JSP
+-------------------
+
+
+<c:forEach var="i" items="${map}">
+	key: ${i.key }-value: ${i.value}<br>
+</c:forEach>
+
+
+
+	Step 1: 
+
+	create view:
+	---------------
+
+	create form:
+
+		<html><body>
+		<h1 align="center">Book Selection Page</h1>
+		<form action="SelectBook" method="post"> 
+		Select book <p>
+ 
+		Book: 
+		<select name="topic" size="1"> 
+		<option value="Java">Java</option> 
+		<option value="Servlet">Servlet</option> 
+		<option value="Struts">Struts</option> 
+
+		</select> 
+		<br><br> 
+		<center> 
+		<input type="submit"> 
+		</center>
+		</form>
+		</body>
+		</html>
+
+
+	
+	Create controller
+	---------------------
+			
+		String topic=request.getParameter("topic");
+		List<String>choices=BookAdviser.bookAdviser(topic);
+		request.setAttribute("booklist", choices);
+		RequestDispatcher rd=request.getRequestDispatcher("show2.jsp");
+		rd.forward(request, response);
+
+
+	create model 
+	-----------------
+
+
+
+	public class BookAdviser {
+
+	public static List<String> bookAdviser(String topic){
+		List<String>list=new ArrayList<String>();
+		
+		if(topic.equalsIgnoreCase("Java")){
+			list.add("head first");
+			list.add("thinking in java");
+		}else if(topic.equalsIgnoreCase("Servlet")){
+			list.add("head first servlet jsp");
+			list.add("core servlet.com");
+		}else if(topic.equalsIgnoreCase("Struts")){
+			list.add("struts2 in action");
+			list.add("black book");
+		}else
+			list.add("no book");
+		
+		return list;
+	}
+	
+
+
+
+	 view
+	------------
+
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+	<c:forEach var="book" items="${booklist}">
+   		 <b> ${book} </b><br/>
+	</c:forEach>
+
+
+more jstl tags:
+----------------
+<c:set var="i" value="22" scope="application"></c:set>
+
+<c:out value="${i }">this is default value</c:out>
+<c:remove var="i"/>
+
+<c:out value="${i }">this is default value</c:out>
+
+
+<c:if test="${i=22 }">
+	yes i is 23 and condition is true
+</c:if>
+
+<!-- choose when otherwise -->
+<c:choose>
+	<c:when test="${i>0 }">
+		<h1>this is first case</h1>
+	</c:when>
+		<c:when test="${i<0 }">
+		<h1>this is second case</h1>
+	</c:when>
+	<c:otherwise>
+		<H1>this is default case</H1>
+	</c:otherwise>
+</c:choose>
+
+<!-- -looping  -->
+
+<!-- redirect -->
+<c:redirect url="https://www.google.co.in/"></c:redirect>
+
+<!-- creating url and adding parameters before calling -->
+<c:url var="myurl" value="https://www.google.co.in/">
+	<c:param name="q" value="java basics "></c:param>
+</c:url>
+
+	<c:out value="${myurl }"></c:out>
+
+<c:redirect url="${myurl }"></c:redirect>
+
+
+
+
+
+Now consider book:
+------------------
+id;
+name
+address
+mobile
+email
+
+
+<body>
+    <table border=1>
+        <thead>
+            	<tr>Customer Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+		    <td></td>
+                    <td></td>
+		    <td></td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+
+
+
+
+
+
+
+
+
+
+id
+title
+categery
+author
+price
+
+
+
+<body>
+    <table border=1>
+        <thead>
+            	<tr>Book Id</th>
+                <th>title</th>
+                <th>Last Name</th>
+                <th>categery</th>
+                <th>author</th>
+		 <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+		    <td></td>
+                    <td></td>
+		     <td></td>
+
+                </tr>
+        </tbody>
+    </table>
+</body>
+
+
+
+
+<body>
+    <table border=1>
+        <thead>
+            	<tr>Book Id</th>
+                <th>title</th>
+                <th>Last Name</th>
+                <th>categery</th>
+                <th>author</th>
+		 <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${books}" var="book">
+                <tr>
+                    <td><c:out value="${book.id}" /></td>
+                    <td><c:out value="${book.title}" /></td>
+		    <td><c:out value="${book.categery}" /></td>
+                    <td><c:out value="${book.author}" /></td>
+		     <td><c:out value="${book.price}" /></td>
+
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
+
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HCL bookstore application</title>
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<body>
+welcome ${user.username }! <br>
+<br>
+<a href="LogoutController">logout</a>
+
+<br>
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>isbn</th>
+			<th>title</th>
+			<th>author</th>
+			<th>pub date</th>
+			<th>price</th>
+			<c:if test="${user.profile=='admin' ||user.profile=='mgr' }">
+			<th>update</th>
+			</c:if>
+			<c:if test="${user.profile=='admin'}">
+			<th>delete</th>
+			</c:if>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${books}" var="book">
+			<tr>
+				<td>${book.id}</td>
+				<td>${book.isbn}</td>
+				<td>${book.title}</td>
+				<td>${book.author}</td>
+				<td><fmt:formatDate  pattern="dd/MM/yyyy" value="${book.pubDate}"/></td>
+				<td>${book.price}</td>
+				
+				<c:if test="${user.profile=='admin' ||user.profile=='mgr' }">
+					<td><a href="BookController.do?action=updateBook&id=<c:out value="${book.id}"/>">update</a></td>
+				</c:if>
+				<c:if test="${user.profile=='admin'}">
+					<td><a href="BookController.do?action=delBook&id=<c:out value="${book.id}"/>">delete</a></td>
+				</c:if>
+				
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
+<c:if test="${user.profile=='admin' ||user.profile=='mgr'  }">
+	<a href="BookController.do?action=addbook">add new book</a>
+</c:if>
+<br>
+<c:if test="${user.profile=='admin'}">
+	<a href="UserMgtController.do">register new user</a>
+</c:if>
+</body>
+</html>
+
+---------------------------------------------------------------------
+import
+
+		Defines the Java import statements that'll 
+		be added to the generated servlet class 
+isThreadSafe
+
+		Defines whether the generated servlet needs to 
+		implement the Single ThreadModel which as you know 
+		know is a bad thing
+
+contentType
+		Defines the MIME type for the JSP response (default is "text/html") 
+
+isELIgnored*
+		Defines whether EL expressions are ignored when this page is translated
+
+
+	EL*
+	--
+		Expression language
+
+isErrorPage
+		Defines whether the current page 
+		represents another JSPs error page 
+
+errorPage
+		Defines a URL to the resource to which 
+		uncaught Throwables should be sent 
+
+
+language
+		Defines the scripting language used in the scriptlets, 
+		expressions and declarations, 
+		only java is available at the moment 
+
+extends
+		Defines the superclass of the class this JSP will become 
+
+
+session
+		Defines whether the page will have an implicit session object 
+
+
+buffer
+		Defines how buffering is handled by the implicit out object (reference to the jspWriter) 
+
+autoFlush
+		Defines whether the buffered output is flushed automatically 
+
+info
+	Defines a String that gets put into the translated page, 
+	just so that you can get it using the generated servlets inherited getServletInfo() method 
+
+pageEncoding
+	Defines the character encoding for the JSP
+
+-----------------------------
+custom tag library
+----------------------------
+
+
+custom tag that simply print "hi"
+
+user defind tag!
+
+<nu:hello/>
+
+hello world
+---------------
+step 1:
+ create an simple tag handler SimpleHelloTag in com.tags package
+
+
+public class SimpleHelloTag extends SimpleTagSupport {
+  
+  @Override
+  public void doTag() throws JspException, IOException {
+    JspWriter out = getJspContext().getOut();
+    
+    out.print("hi");
+  }
+}
+
+
+
+step 2:
+create hello taglib tld file
+--------------------------------
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+  http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+  <tlib-version>1.0</tlib-version>
+  <short-name>hello-taglib</short-name>
+  
+  <tag>
+    <description>hello world exmple</description>
+    <name>hello</name>
+    <tag-class>coreservlets.tags.SimpleHelloTag</tag-class>
+    <body-content>empty</body-content>
+  </tag>
+  
+</taglib>
+
+
+
+step 3:
+----------
+
+invoke from jsp;
+
+<%@ taglib uri="/WEB-INF/tlds/hello-taglib.tld" prefix="hello" %>
+
+tag 
+
+<hello:hello/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+custom tag library
+---------------------
+
+hello world with attributes
+----------------------------
+
+
+step 1:
+add following to tag definations
+
+<attribute>
+    	<name>length</name>
+    	<required>false</required>
+ </attribute>
+
+
+
+
+step 2:
+
+provide getter setter in corrosponding tag handler class
+
+public class SimpleHelloTag extends SimpleTagSupport {
+	private String length;
+
+	public String getLength() {
+		return length;
+	}
+
+	public void setLength(String length) {
+		this.length = length;
+	}
+}
+
+
+
+step 3:
+
+then use it:
+
+<hello:hello name="raj"/>
+
+
+
+
+
+
+
+
+
+
+Ex 3:
+including the tag body
+----------------------
+
+rather then
+<hello:hello length="raj"/>
+
+Now want to have:
+
+<hello:hello length="raj">
+	this is an body example! (Scriptless jsp contents)
+</hello:hello>
+
+
+
+
+Step 1;
+
+call getJsbBody().invoke(null) method from doTag()
+
+
+	public void doTag() throws JspException, IOException {
+		JspWriter out = getJspContext().getOut();
+
+		out.print(length);
+		
+		getJspBody().invoke(null);
+		
+		out.print("hi");
+	}
+
+
+Step 2;
+
+change body contents form TLD from empty to scriptless
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example:
+-----------------
+custom tag with body:
+
+step 1:
+
+create an tag class
+
+com.jsp.customtags packages
+
+
+public class SubstrTagHandler extends TagSupport {
+    private String input;
+    private int start;
+    private int end;
+ 
+    @Override
+    public int doStartTag() throws JspException {
+ 
+        try {
+            //Get the writer object for output.
+            JspWriter out = pageContext.getOut();
+ 
+            //Perform substr operation on string.
+            out.println(input.substring(start, end));
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return SKIP_BODY;
+    }
+    public String getInput() {
+        return input;
+    }
+    public void setInput(String input) {
+        this.input = input;
+    }
+    public int getStart() {
+        return start;
+    }
+    public void setStart(int start) {
+        this.start = start;
+    }
+    public int getEnd() {
+        return end;
+    }
+    public void setEnd(int end) {
+        this.end = end;
+    }
+}
+
+
+
+
+
+
+
+step 2:
+create an tld file:
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>substr</shortname>
+	<info>Sample taglib for Substr operation</info>
+	<uri>http://rajsupport.net/blogs/jsp/taglib/substr</uri>
+<tag>
+    <name>substring</name>
+    <tagclass>com.jsp.customtags.SubstrTagHandler</tagclass>
+    <info>Substring function.</info>
+    
+    <attribute>
+      <name>input</name>
+      <required>true</required>
+  </attribute>
+  
+    <attribute>
+      <name>start</name>
+      <required>true</required>
+  </attribute>
+  
+    <attribute>
+      <name>end</name>
+      <required>true</required>
+  </attribute>
+</tag>
+</taglib>
+
+
+
+step 3:
+use it in jsp
+
+
+<%@taglib prefix="test" uri="/WEB-INF/SubstrDescriptor.tld"%>
+
+
+    <test:substring input="GOODMORNING" start="1" end="6"/>
+
+
+
+
+
+
+
+
+Dynamic attribute and Looping tags
+----------------------------------------
+
+tag example that support dynamic Attribute values:
+
+<rtexprvalue>true</rtexprvalue>
+
+
+
+
+public class ForTag extends SimpleTagSupport {
+  private int count;
+
+  public void setCount(int count) {
+    this.count = count;
+  }
+
+  @Override
+  public void doTag() throws JspException, IOException {
+    for(int i=0; i<count; i++) {
+      getJspBody().invoke(null);
+    }
+  }
+}
+
+
+
+
+tld
+----
+
+  <tag>
+    <description>
+      Loops specified number of times.
+    </description>
+    <name>for</name>
+    <tag-class>com.tags.ForTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description>
+        Number of times to repeat body.
+      </description>
+      <name>count</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+
+
+Coin bean
+-----------
+public class CoinBean {
+  public String getFlip() {
+    if (Math.random() < 0.5) {
+      return("Heads");
+    } else {
+      return("Tails");
+    }
+  }
+}
+
+
+
+Servlet
+------------
+
+
+....
+ CoinBean coin = new CoinBean();
+    request.setAttribute("coin", coin);
+
+    RequestDispatcher dispatcher =
+      request.getRequestDispatcher(test-loop.jsp);
+    dispatcher.forward(request, response);
+
+
+
+
+testing
+------------
+  <c:for count="<%=(int)(Math.random()*10)%>">
+    <LI>Blah
+  </c:for>
+</UL>
+<H2>Some Coin Flips</H2>
+<UL>
+  <c:for count="<%=(int)(Math.random()*10)%>">
+    <LI>${coin.flip}
+  </c:for>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Complex Dynamic attribute and Looping tags
+----------------------------------------
+
+
+What if u want type other then String or primitive type for an tag
+attribute value?
+
+
+Attribute should accept an collection.
+
+
+
+tag
+--------
+
+
+public class ForEachTag extends SimpleTagSupport {
+  private Object[] items;
+  private String attributeName;
+
+  public void setItems(Object[] items) {
+    this.items = items;
+  }
+
+  public void setVar(String attributeName) {
+    this.attributeName = attributeName;
+  }
+
+  @Override
+  public void doTag() throws JspException, IOException {
+    for(Object item: items) {
+      getJspContext().setAttribute(attributeName, item);
+      getJspBody().invoke(null);
+    }
+  }
+}
+
+
+
+
+<tag>
+    <description>
+      Loops down each element in an array
+    </description>
+    <name>forEach</name>
+    <tag-class>com.tags.ForEachTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description>
+        The array of elements.
+      </description>
+      <name>items</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description>
+        The name of the local variable that 
+        each entry will be assigned to.
+      </description>
+      <name>var</name>
+      <required>true</required>
+    </attribute>
+  </tag>
+
+
+
+
+
+Servlet
+----------------
+
+ String[] servers =
+      {"Tomcat", "Resin", "Jetty", "WebLogic",
+       "WebSphere", "JBoss", "Glassfish" };
+    request.setAttribute("servers", servers);
+    
+
+    RequestDispatcher dispatcher =
+      request.getRequestDispatcher(loop-test.jsp);
+    dispatcher.forward(request, response);
+
+
+
+
+using it
+------------
+
+  <c:forEach items="${servers}" var="server">
+    <LI>${server}
+  </c:forEach>
+
+
+
+
+
+
+
+
+maven dependencies:
+------------------
+
+    <dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<verbose>true</verbose>
+						<source>1.7</source>
+						<target>1.7</target>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<path>/</path>
+						<contextReloadable>true</contextReloadable>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+
+
+
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+
+
+
+
+http://www.sitepoint.com/jsp-2-simple-tags/
+
+http://www.coderanch.com/t/174748/java-Web-Component-SCWCD/certification/Difference-EVAL-BODY-INCLUDE-EVAL
+
+https://www.mail-archive.com/jsp-interest@java.sun.com/msg15923.html
+
+
+
+
+
+
+
+
+
