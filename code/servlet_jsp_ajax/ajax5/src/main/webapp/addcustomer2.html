@@ -28,7 +28,7 @@
                         $.each(obj, function (key, value) {
                             $('#country').append('<option value="' + value.cid + '">' + value.cname + '</option>')
                         });
-                 
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         $('#country').append('<option>Country Unavailable</option>');

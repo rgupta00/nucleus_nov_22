@@ -1,0 +1,60 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!--mapping karna hoga -->
+    <welcome-file-list>
+        <welcome-file>showAll.do</welcome-file>
+    </welcome-file-list>
+
+   <!-- <filter>
+        <filter-name>secFilter</filter-name>
+        <filter-class>com.customerapp.web.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>secFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>-->
+
+ <!--   <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/loginController</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logoutController.do</url-pattern>
+    </servlet-mapping>-->
+
+
+
+
+    <servlet>
+        <servlet-name>addCustomerController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.AddCustomerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCustomerController</servlet-name>
+        <url-pattern>/addCustomer.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showAllCustomerController</servlet-name>
+        <servlet-class>com.customerapp.web.controller.ShowAllCustomerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showAllCustomerController</servlet-name>
+        <url-pattern>/showAll.do</url-pattern>
+    </servlet-mapping>
+</web-app>

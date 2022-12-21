@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ajax demo</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+    <div id="load"></div>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:8080/webapp1/ajax.do",
+                type: "GET",
+                success: function (data) {
+                    $.each(JSON.parse(data), function (key, value) {
+                        $("#load").append(+value.cid + " " + value.cname + "<br>")
+                    })
+                },
+                error: function (jqXhr, textStatus, errorMessage) { 
+                    console.log("some error : "+ jqXhr)
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

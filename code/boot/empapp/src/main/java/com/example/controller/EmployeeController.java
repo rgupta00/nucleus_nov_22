@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.EmployeeDao;
 import com.example.dto.Employee;
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class EmployeeController {
 	

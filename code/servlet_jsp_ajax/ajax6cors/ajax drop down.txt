@@ -1,0 +1,32 @@
+create database ajax;
+use ajax;
+
+create table country (
+  cid int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  cname varchar(150) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE state (
+  sid int NOT NULL AUTO_INCREMENT,
+  cid_fk int(11) DEFAULT NULL,
+  sname varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`sid`),
+  foreign key(cid_fk) references country(cid) on delete cascade on update cascade
+)engine=InnoDB;
+
+
+insert into country(cname) value('india');
+
+insert into country(cname) value('australia');
+
+insert into state(cid_fk,sname) values(1,'Delhi');
+insert into state(cid_fk,sname) values(1,'Banglore');
+insert into state(cid_fk,sname) values(1,'Chennai');
+
+
+
+
+insert into state(cid_fk,sname) values(2,'Sydney');
+insert into state(cid_fk,sname) values(2,'Perth');
+insert into state(cid_fk,sname) values(2,'Melbourne');
+
