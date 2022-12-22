@@ -13,9 +13,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 public class CustomerController extends HttpServlet {
+
     private CustomerService customerService;
+
     public CustomerController(){
-         customerService=new CustomerServiceImpl();
+        customerService=new CustomerServiceImpl();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

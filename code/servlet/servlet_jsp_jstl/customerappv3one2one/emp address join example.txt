@@ -1,0 +1,97 @@
+
+<select name="profile"> 
+		<option value="admin">Admin</option> 
+		<option value="mgr">Mgr</option> 
+		<option value="emp">Employee</option> 
+</select> 
+
+
+
+
+create table cust
+(
+id int not null auto_increment,
+name varchar(100) not null,
+mobile varchar(12)  not null,
+email varchar(100)  not null,
+primary key(id)
+)engine=InnoDB;
+
+
+
+create table address
+(
+aid int not null auto_increment,
+state varchar(100) not null,
+country varchar(100) not null,
+id_fk int not null,
+primary key(aid),
+foreign key(id_fk) references cust(id) on delete cascade on update cascade
+)engine=InnoDB;
+
+
+
+
+
+
+
+insert into cust(name,mobile, email) values('ravi','55444455','ravi@gmail.com');
+insert into cust(name,mobile, email) values('sunita','55400455','sunita@gmail.com');
+insert into cust(name,mobile, email) values('umesh','59444455','umesh@gmail.com');
+
+
+
+insert into address(state, country, id_fk) values('delhi','india',1);
+insert into address(state, country, id_fk) values('banglore','india',2);
+
+insert into address(state, country, id_fk) values('new york','usa',3);
+
+
+select c.id, c.name, c.mobile, c.email, a.aid, a.state, a.country from cust c, address a where c.id=a.id_fk;
+
+
+select c.id, c.name, c.mobile, c.email, a.aid, a.state, a.country from cust c, address a where c.id=a.id_fk and c.id=1
+
+
+
+
+update customer set state=?,country=?,mobile=?, email=? where id=?
+
+public class Address {
+    private  int aid;
+    private String state;
+    private String country;
+}
+
+public class Customer {
+   private int id;
+    private  String name;
+   private String mobile;
+    private  String email;
+    private Address address ;
+}
+
+
+
+select c.id,c.name,c.mobile, c.email,a.state, a.country
+from customer c, address a
+where c.id=a.id_fk;
+
+
+
+
+
+
+UPDATE secondTable
+JOIN firsTable ON secondTable.SERIAL_ID = firsTable.SUBST_ID
+SET BRANCH_ID = CREATED_ID
+
+
+UPDATE address
+JOIN cust ON address.id_fk = cust.id
+SET  = CREATED_ID
+
+https://dba.stackexchange.com/questions/151904/mapping-many-to-many-relationship
+
+
+

@@ -11,6 +11,7 @@ public class CustomerServiceImpl implements CustomerService{
     private CustomerDao customerDao;
 
     public CustomerServiceImpl(){
+
         customerDao=new CustomerDaoJdbcImpl();
     }
     @Override
