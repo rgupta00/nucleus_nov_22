@@ -1,0 +1,13 @@
+
+
+create table users(
+id int not null primary key auto_increment,
+name varchar(100) not null,
+password varchar(100) not null,
+profile varchar(100) not null
+);
+
+
+insert into users(name, password, profile) values('raj','raj123','admin');
+insert into users(name, password, profile) values('ekta','ekta123','mgr');
+insert into users(name, password, profile) values('gun','gun123','emp');

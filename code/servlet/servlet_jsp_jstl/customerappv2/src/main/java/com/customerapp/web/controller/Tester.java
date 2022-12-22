@@ -10,7 +10,8 @@ import com.customerapp.service.UserServiceImpl;
 public class Tester {
     public static void main(String[] args) {
         UserService userService=new UserServiceImpl();
-        User user=userService.getUser("raj","raj123ljlkj");
+        User user=userService.getUser("ekta","ekta123",
+                "admin");
         System.out.println(user);
 //        CustomerService customerService=new CustomerServiceImpl();
 //        Customer customer=customerService.getById(14);
