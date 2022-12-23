@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!--scope
+    scope="singleton"
+    -->
+   <bean id="p" class="com.demo.Passanger" autowire="byType" scope="prototype">
+       <property name="name" value="raj"/>
+   </bean>
+    <!--autowire-candidate="false" vs primary =true-->
+    <!--
+      <bean id="v1" class="com.demo.Car" autowire-candidate="true"/>
+            or
+        <bean id="v1" class="com.demo.Car" />
+    -->
+    <bean id="v1" class="com.demo.Car"/>
+  <bean id="v2" class="com.demo.Metro" primary="true"/>
+
+</beans>
