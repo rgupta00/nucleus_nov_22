@@ -1,0 +1,21 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <welcome-file-list>
+        <welcome-file>cal.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>hc</servlet-name>
+        <servlet-class>com.demo.CalController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hc</servlet-name>
+        <url-pattern>/calcontroller</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
