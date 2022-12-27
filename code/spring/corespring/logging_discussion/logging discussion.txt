@@ -1,0 +1,139 @@
+
+
+
+
+What is the ageada:
+---------------
+recap of spring framework
+spring configuration xml , java annotation etc
+spring bean life cycle
+aware interface
+configureation with jdbc connnetion and jdbc
+spring profile
+
+
+
+
+
+
+
+
+public class Account {
+    private int id;
+    private String name;
+    private double balance;
+}
+
+
+
+
+import  java.util.*;
+public interface AccountDao {
+    public List<Account> getAll();
+    public Account getById(int id);
+    public void updateAccount(Account account);
+    public void addAccount(Account account);
+    public void deleteAccount(int id);
+}
+
+
+
+
+public class AccountDaoImplUsingJdbc implements AccountDao{
+
+    private Map<Integer, Account> accounts=new HashMap<>();
+    private int counter=2;
+    public AccountDaoImplUsingJdbc(){
+        accounts.put(1, new Account(1, "sumit", 1000.00));
+        accounts.put(2, new Account(2, "amit", 1000.00));
+    }
+    @Override
+    public List<Account> getAll() {
+        System.out.println("getting all accoutns by using jdbc");
+        return new ArrayList<>(accounts.values());
+    }
+
+    @Override
+    public Account getById(int id) {
+
+        Account account= accounts.get(id);
+        if(account==null)
+            throw  new BankAccountNotFoundExeption("account with id : "+ id+" is not found");
+        return account;
+    }
+    @Override
+    public void updateAccount(Account account) {
+        accounts.put(account.getId(), account);
+    }
+
+    @Override
+    public void addAccount(Account account) {
+        account.setId(++counter);
+        accounts.put(counter, account);
+    }
+
+    @Override
+    public void deleteAccount(int id) {
+       Account accountToDelete=getById(id);
+       accounts.remove(accountToDelete);
+    }
+}
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+ 
+</beans>
+
+
+
+
+
+
+What is logging ?
+
+log4j2, slf4j, logback etc
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
+logging :
+
+    <!--<dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.7</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		<version>1.2.3</version>
+	</dependency>
+
+
+
+

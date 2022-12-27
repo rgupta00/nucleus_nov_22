@@ -1,0 +1,2 @@
+INFO  | 2022-02-16 15:31:47 | [main] demo.DemoMain (DemoMain.java:12) - hello to log4j
+ERROR | 2022-02-16 15:31:47 | [main] demo.DemoMain (DemoMain.java:18) - hello to log4j

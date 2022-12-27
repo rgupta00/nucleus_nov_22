@@ -1,0 +1,4 @@
+2022-02-16 15:09:46 INFO  DemoMain:12 - hello to log4j
+2022-02-16 15:09:46 ERROR DemoMain:18 - hello to log4j
+2022-02-16 15:24:31 INFO  DemoMain:12 - hello to log4j
+2022-02-16 15:24:31 ERROR DemoMain:18 - hello to log4j
