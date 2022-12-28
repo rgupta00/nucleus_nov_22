@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <context:annotation-config/>
+
+   <!-- <bean id="foo" class="com.demo.Foo">
+        <property name="name" value="foo value"/>
+    </bean>
+    <bean class="com.demo.MyBPP2"/>
+    <bean class="com.demo.MyBPP1"/>
+    <bean class="com.demo.MyBeanFactoyPP"/>-->
+
+<!--    <bean id="acc" class="com.demo.Account">-->
+<!--        <property name="id" value="122"/>-->
+<!--        <property name="name" value="rajiv"/>-->
+<!--        <property name="balance" value="4000"/>-->
+<!--    </bean>-->
+    <bean id="acc" class="com.demo.Account">
+        <property name="id" value="${account.id}"/>
+        <property name="name" value="${account.name}"/>
+        <property name="balance" value="${account.balance}"/>
+    </bean>
+
+    <context:property-placeholder location="classpath:acc.properties"/>
+
+    <!--<bean  class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:acc.properties</value>
+              &lt;!&ndash;  <value>classpath:db.properties</value>&ndash;&gt;
+            </list>
+        </property>
+    </bean>-->
+</beans>
+
+
+
+

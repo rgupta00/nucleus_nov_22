@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <context:annotation-config/>
+
+   <!-- private String countryName;
+    private Map<String, City> cityMap;  //cityName,
+    private Map<String, String> capital;//UP-> Luk  TN->Chennai-->
+
+    <bean id="country" class="com.demo2.Country">
+        <property name="countryName" value="India"/>
+        <property name="cityMap">
+            <map>
+                <entry key="Delhi" value-ref="city1"/>
+                <entry key="Hyd" value-ref="city3"/>
+            </map>
+        </property>
+        <property name="capital">
+            <props>
+                <prop key="UP">LUk</prop>
+                <prop key="TN">Chennai</prop>
+            </props>
+        </property>
+    </bean>
+
+       <bean id="city1" class="com.demo2.City">
+           <constructor-arg index="0" value="Delhi"/>
+           <constructor-arg index="1" value="10"/>
+           <constructor-arg index="2" value="20"/>
+       </bean>
+
+    <bean id="city2" class="com.demo2.City">
+        <constructor-arg index="0" value="Ny"/>
+        <constructor-arg index="1" value="5"/>
+        <constructor-arg index="2" value="30"/>
+    </bean>
+
+
+    <bean id="city3" class="com.demo2.City">
+        <constructor-arg index="0" value="Hyd"/>
+        <constructor-arg index="1" value="10"/>
+        <constructor-arg index="2" value="20"/>
+    </bean>
+
+
+</beans>
+
+
+
+

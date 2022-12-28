@@ -1,0 +1,2 @@
+-Dspring.profiles.active=test
+-Dspring.profiles.active=dev
