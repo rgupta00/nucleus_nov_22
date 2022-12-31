@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="corespring05" />
+        <module name="corespring13_aop_bank" />
+        <module name="corespring10_spring_profile" />
+        <module name="corespring05bankappanno" />
+        <module name="corespring13_aop_bank_applied" />
+        <module name="corespring14_spring_again" />
+        <module name="corespring16_jdbc_tx" />
+        <module name="corespring13_aop_bank_applied_withanno" />
+        <module name="corespring15_core_java" />
+        <module name="corespring01" />
+        <module name="corespring15_srp" />
+        <module name="corespring06bankappxml" />
+        <module name="corespring17_jdbc_tx_jdbctemplate" />
+        <module name="corespring11_log4j" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
