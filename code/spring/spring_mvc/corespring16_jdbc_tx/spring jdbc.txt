@@ -1,0 +1,24 @@
+
+
+What we did ?
+SOLID
+spring app, di, aop
+how to use database
+
+What is the adv of Spring jdbc:
+
+1. way to getting connection pool
+	DM.getConnection() vs datasource.getConnection()
+
+2. spring jdbc provide u delartive way of transaction mgt
+	ACID
+
+	is is a right decision to handle tx urself :NO
+
+	SL=BL+CCC(logging, tx)
+
+
+3. Spring jdbc provide u : jdbcTemplate (X)
+	is a impl of template dp in spring framework
+
+	Boilerplate code
