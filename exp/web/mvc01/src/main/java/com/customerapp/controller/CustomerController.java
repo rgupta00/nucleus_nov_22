@@ -1,13 +1,12 @@
 package com.customerapp.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.customerapp.dao.Customer;
@@ -29,10 +28,15 @@ public class CustomerController {
         return  mv;
     }
     
+    @GetMapping(path ="showall")
+    public String showAllCustomer(ModelMap model){
+        model.addAttribute("customersList", customerService.getAll());
+	    return "show";
+    }
+    
     //--------------delete ------------------
     @GetMapping(path ="delete")
-    public String deleteCustomer(HttpServletRequest request){
-       Integer id=Integer.parseInt(request.getParameter("id"));
+    public String deleteCustomer(@RequestParam(name="id") int id){
        customerService.deleteCustomer(id);
         return  "redirect:showall";
     }
@@ -60,8 +64,7 @@ public class CustomerController {
     
   //--------------update customer ------------------
     @GetMapping(path ="update")
-    public String updateCustomer(HttpServletRequest request,  ModelMap map){
-       Integer id=Integer.parseInt(request.getParameter("id"));
+    public String updateCustomer(@RequestParam(name="id") int id,  ModelMap map){
        Customer customer=customerService.getById(id);
        map.addAttribute("customer", customer);
         return  "updatecustomer";

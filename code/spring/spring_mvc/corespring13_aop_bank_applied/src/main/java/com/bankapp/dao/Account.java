@@ -10,6 +10,8 @@ public class Account {
     public Account() {
     }
 
+
+
     public int getId() {
         return id;
     }
@@ -59,6 +61,11 @@ public class Account {
 
     public Account(int id, String name, double balance) {
         this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
+    public Account( String name, double balance) {
         this.name = name;
         this.balance = balance;
     }

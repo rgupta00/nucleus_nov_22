@@ -1,0 +1,8 @@
+INFO  | 2022-02-17 09:43:03 | [main] service.AccountServiceImpl (AccountServiceImpl.java:44) - time taken to execute getAll(): 233
+INFO  | 2022-02-17 09:53:49 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  getAll263
+INFO  | 2022-02-17 09:55:36 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  addAccount: 270
+INFO  | 2022-02-17 10:32:23 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  getAll: 282
+INFO  | 2022-02-17 10:38:30 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  getAll: 302
+INFO  | 2022-02-17 10:39:13 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  addAccount: 293
+INFO  | 2023-01-02 14:46:15 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  getAll: 12
+INFO  | 2023-01-02 16:01:43 | [main] aspect.LggingAspect (LggingAspect.java:25) - time taken to execute  getAll: 29

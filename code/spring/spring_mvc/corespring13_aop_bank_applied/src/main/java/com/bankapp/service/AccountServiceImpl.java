@@ -2,16 +2,13 @@ package com.bankapp.service;
 //SL=BL+CCC
 import com.bankapp.dao.Account;
 import com.bankapp.dao.AccountDao;
-import com.bankapp.dao.AccountDaoImplUsingJdbc;
-import com.bankapp.dao.AccountDaoImplUsingMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service(value = "accountService")
+@Transactional
 public class AccountServiceImpl implements AccountService{
 
     private AccountDao accountDao;
@@ -42,6 +39,9 @@ public class AccountServiceImpl implements AccountService{
         toAcc.setBalance(toAcc.getBalance()+amount);
 
         accountDao.updateAccount(fromAcc);
+
+        if(1==1)
+            throw new NullPointerException("npe");
         accountDao.updateAccount(toAcc);
 
     }

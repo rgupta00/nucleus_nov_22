@@ -78,7 +78,7 @@ TRACE | 2022-12-28 12:31:57 | [main] support.AbstractBeanFactory (AbstractBeanFa
 DEBUG | 2022-12-28 12:31:57 | [main] support.ConstructorResolver (ConstructorResolver.java:806) - Autowiring by type from bean name 'accountService' via constructor to bean named 'accDao2'
 TRACE | 2022-12-28 12:31:57 | [main] support.AbstractAutowireCapableBeanFactory (AbstractAutowireCapableBeanFactory.java:585) - Eagerly caching bean 'accountService' to allow for resolving potential circular references
 TRACE | 2022-12-28 12:31:57 | [main] support.AbstractAutowireCapableBeanFactory (AbstractAutowireCapableBeanFactory.java:519) - Finished creating instance of bean 'accountService'
-TRACE | 2022-12-28 12:31:57 | [main] event.EventListenerMethodProcessor (EventListenerMethodProcessor.java:166) - No @EventListener annotations found on bean class: com.bankapp.dao.AccountDaoImplUsingJdbc
+TRACE | 2022-12-28 12:31:57 | [main] event.EventListenerMethodProcessor (EventListenerMethodProcessor.java:166) - No @EventListener annotations found on bean class: com.bankapp.dao.AccountDaoImplJdbc
 TRACE | 2022-12-28 12:31:57 | [main] event.EventListenerMethodProcessor (EventListenerMethodProcessor.java:166) - No @EventListener annotations found on bean class: com.bankapp.dao.AccountDaoImplUsingMap
 TRACE | 2022-12-28 12:31:57 | [main] event.EventListenerMethodProcessor (EventListenerMethodProcessor.java:166) - No @EventListener annotations found on bean class: com.bankapp.service.AccountServiceImpl
 TRACE | 2022-12-28 12:31:57 | [main] support.AbstractApplicationContext (AbstractApplicationContext.java:802) - No 'lifecycleProcessor' bean, using [DefaultLifecycleProcessor]
@@ -94,3 +94,46 @@ INFO  | 2022-12-29 12:26:36 | [main] aspect.LoggingAspect (LoggingAspect.java:22
 INFO  | 2022-12-29 12:26:36 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : transfer:6
 INFO  | 2022-12-29 12:29:39 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
 INFO  | 2022-12-29 12:29:39 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:10
+INFO  | 2023-01-02 14:21:38 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:21:38 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:859
+INFO  | 2023-01-02 14:21:50 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:21:50 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:673
+INFO  | 2023-01-02 14:21:50 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:21:50 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : transfer:19
+INFO  | 2023-01-02 14:22:28 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:22:28 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:563
+INFO  | 2023-01-02 14:22:28 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:22:28 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : transfer:16
+INFO  | 2023-01-02 14:23:36 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:23:36 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:702
+INFO  | 2023-01-02 14:24:05 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:24:05 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:27
+INFO  | 2023-01-02 14:25:43 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:25:43 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:39
+INFO  | 2023-01-02 14:34:55 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:34:55 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:687
+INFO  | 2023-01-02 14:35:44 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:35:44 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:653
+INFO  | 2023-01-02 14:37:33 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:37:33 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:583
+INFO  | 2023-01-02 14:39:19 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:39:19 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:523
+INFO  | 2023-01-02 14:39:19 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:39:19 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : transfer:16
+INFO  | 2023-01-02 14:39:51 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 14:39:51 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:586
+WARN  | 2023-01-02 16:56:05 | [main] support.AbstractApplicationContext (AbstractApplicationContext.java:558) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accDao1' defined in file [/home/raj/Desktop/nu_nov_2022/code/spring/spring_mvc/corespring13_aop_bank_applied/target/classes/com/bankapp/dao/AccountDaoImplJdbc.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdbcTemplate' defined in class path resource [demo.xml]: Cannot resolve reference to bean 'dataSource' while setting bean property 'dataSource'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'dataSource' available
+WARN  | 2023-01-02 16:56:27 | [main] support.AbstractApplicationContext (AbstractApplicationContext.java:558) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'txMgr' defined in class path resource [demo.xml]: Cannot resolve reference to bean 'datasource' while setting bean property 'dataSource'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'datasource' available
+WARN  | 2023-01-02 16:56:47 | [main] support.AbstractApplicationContext (AbstractApplicationContext.java:558) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'txMgr' defined in class path resource [demo.xml]: Cannot resolve reference to bean 'datasource' while setting bean property 'dataSource'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'datasource' available
+INFO  | 2023-01-02 16:57:11 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:57:11 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:1592
+INFO  | 2023-01-02 16:57:29 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:57:29 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:549
+INFO  | 2023-01-02 16:58:47 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:58:47 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:563
+INFO  | 2023-01-02 16:58:47 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:58:47 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : transfer:50
+INFO  | 2023-01-02 16:59:29 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:59:29 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:640
+INFO  | 2023-01-02 16:59:50 | [main] aspect.LoggingAspect (LoggingAspect.java:22) - fund is transfred from acc to another
+INFO  | 2023-01-02 16:59:50 | [main] aspect.LoggingAspect (LoggingAspect.java:24) - time taken to method is : getAll:23
