@@ -99,7 +99,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- bean validation jsr 303? -->
+		<!-- bean validation jsr 303 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>

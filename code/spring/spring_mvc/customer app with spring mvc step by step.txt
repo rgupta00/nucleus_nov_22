@@ -1,0 +1,1326 @@
+
+Spring mvc basics:
+---------------------
+
+Spring 4 hello world
+---------------------
+
+Step:
+
+1. create maven project add to pom file (attached pom)
+
+2. map controller in web.xml
+
+	<servlet>
+	    <servlet-name>fc</servlet-name>
+	    <servlet-class>
+	        org.springframework.web.servlet.DispatcherServlet
+	    </servlet-class>
+	    
+	    <load-on-startup>1</load-on-startup>
+	 </servlet>
+	 
+	 <servlet-mapping>
+	    <servlet-name>fc</servlet-name>
+	    <url-pattern>/</url-pattern>
+	 </servlet-mapping>
+
+
+
+
+3. create fc-servlet.xml file 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+ 
+    <context:component-scan base-package="com.controller" />
+ 
+    <mvc:annotation-driven />
+     
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+ 
+</beans>
+
+
+
+
+com.controller
+
+4. create hello world controller
+
+	@Controller
+	@RequestMapping("/")
+	public class HelloWorldController {
+	 
+	    @RequestMapping(method = RequestMethod.GET)
+	    public String sayHello(ModelMap model) {
+	        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
+	        return "welcome";
+	    }
+	    @RequestMapping(value="/helloagain", method = RequestMethod.GET)
+	    public String sayHelloAgain(ModelMap model) {
+	        model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
+	        return "welcome";
+	    }
+	 
+	}
+
+
+5. create hello world view welcome.jsp
+
+  Greeting : ${greeting}
+
+
+Play with the code !
+
+
+Discussion on Map<String, Object> vs ModelMap vs Model ModelAndView
+-------------------------------------------------------------------
+
+
+ModelMap 
+===========
+
+ModelMap subclasses LinkedHashMap, and provides  some additional conveniences to 
+
+make it a bit easier to use by controllers 
+
+    1. addAttribute can be called with just a value, 
+	and the map key is then inferred from the type.
+
+	List<Book>blist=new ArrayList<Book>();
+
+	Book c=new Book();
+
+	ModelMap m=new ModelMap();
+	m.addAttribute(blist);
+
+	bookList
+
+    2.  The addAttribute methods all return the ModelMap, 
+	so you can chain method called together, 
+	e.g. modelMap.addAttribute('x', x).addAttribute('y',y)
+
+
+    3.  The addAttribute methods checks that the values aren't
+	 null
+    The generic type of ModelMap is fixed at Map<String, Object>,
+	which is the only one that makes sense for a view model.
+
+
+	<<Model>>
+	==========
+	which provides nothing other than the addAttribute methods, 
+	and is implemented by the ExtendedModelMap class
+
+
+
+Spring MVC annotations
+=======================
+@Controller
+@RequestMapping
+
+@PathVariable
+@RequestParam
+
+@RequestHeader
+@ModelAttribute
+
+// 22 is a variable part of the path => hence called pathvariable:
+//for grabing the path variable : @PathVariable
+
+http://localhost:8080/mvcdemo/bookapp/delete/22
+
+
+
+
+@PathVariable
+-----------------
+http://localhost:8080/app-01-spring/api/book/25/author/2
+
+
+
+http://localhost:8080/app-01-spring/hello/delete/5 
+---------------------
+
+@Controller
+@RequestMapping(value="/hello/*")
+public class Hello2Controller {
+
+	@RequestMapping(value="/delete/{sid}", method=RequestMethod.GET)
+	public String sayHello(@PathVariable ("sid")int s){
+		Foo foo=new Foo();
+		System.out.println(s);
+		return "hello";
+	}
+
+}
+
+
+
+
+
+@RequestParam
+-----------------
+foo?un=raj&pw=raj
+
+@Controller
+@RequestMapping("/foo")
+public class AnotherController {
+
+	public void foo(@RequestParam("un")String un, @RequestParam("pw")String pw){
+		System.out.println("un"+un);
+		System.out.println("pw"+pw);
+	}
+}
+
+
+What is @PathVariable? 
+is used to take/accept variable part of url
+
+localhost:8080/myapp/stock/delhi
+
+
+
+
+
+What if the name of configuation file name should not be FC-servlet.xml
+----------------------------------------------------------------------------
+
+Use init parameter for filterdispacher servlet
+------------------------------------------
+<servlet>
+	....
+	....
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/servletContext.xml</param-value>
+	</init-param>
+
+	...
+	...
+</servlet>
+
+
+What happens?
+-----------------
+	=> This creates a single Spring application context within the 		
+	setting  of the DispatcherServlet and instructs the Servlet container 	
+	to initialize the DispatcherServlet at startup. 
+
+
+	=> When initialized, the DispatcherServlet loads the context 
+		configuration from the /WEB-INF/servletContext.xml file and starts 
+		the application context
+
+	=> Of course, this creates only one application context for
+	your application, which, as previously explained, 
+	is not very flexible. 
+
+
+Best practices
+--------------
+	=> Seperate context for controller and other 
+	beans related to model and service layer
+
+
+As per mvc 3 layer
+
+2				3
+
+web 			service 		persistance
+			------------------------------------
+				model
+
+mvc-config.xml			model-config.xml
+
+
+How to do it?
+-------------
+service-configuration.xml
+
+	=> Use ContextLoaderListener (aka ServletContextListner ) that can 
+		load some extra configuration files for you!
+
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/otherContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+
+
+	=> NOW WE CAN DEFINE OUR MODEL AND SERVICE LAYER RELATED BEANS IN otherContext.xml
+	(Refer extra notes)
+
+
+
+
+A big problem!
+================
+
+	=> beans are created twice!
+	How to stop!
+
+
+First, the otherContext.xml configuration adds an exclusion to the scanning: (blacklist approach)
+------------------------------------------------------------------------------------------------
+
+   
+    <context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="com.demo">
+    	<context:exclude-filter type="annotation" 	
+	expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+
+
+
+
+
+
+
+The servletContext.xml configuration uses a whitelist instead of a blacklist to tell Spring which components
+to scan for?
+----------------------------------------------------------------------------------------------
+
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.demo" use-default-filters="false">
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+
+
+
+
+
+Spring mvc curd application step by step:
+---------------------------------------
+public class Customer {
+    private int id;
+    private String name;
+    private String address;
+    private String mobile;
+    private String email;
+}
+
+import java.util.*;
+public interface CustomerDao {
+    public void deleteCustomer(int id);
+    public void updateCustomer(int id, Customer customer);
+    public Customer getById(int id);
+    public List<Customer> getAll();
+    public void addCustomer(Customer customer);
+
+}
+
+@Repository
+@Primary
+public class CustomerDaoImpl implements CustomerDao {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public CustomerDaoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Override
+    public void deleteCustomer(int id) {
+        Connection connection=null;
+      try{
+          connection=dataSource.getConnection();
+          connection.setAutoCommit(false);
+          PreparedStatement pstmt=connection.prepareStatement("delete from customer where id=?");
+          pstmt.setInt(1, id);
+          pstmt.executeUpdate();
+          connection.commit();
+      }catch (SQLException e){
+          e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+      }
+    }
+
+    @Override
+    public void updateCustomer(int id, Customer customer) {
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            connection.setAutoCommit(false);
+            // address | mobile    | email
+            PreparedStatement pstmt=
+                    connection.prepareStatement("update customer set address=?, mobile=?, email=? where  id=?");
+            pstmt.setString(1, customer.getAddress());
+            pstmt.setString(2, customer.getMobile());
+            pstmt.setString(3, customer.getEmail());
+            pstmt.setInt(4, id);
+            pstmt.executeUpdate();
+            connection.commit();
+        }catch (SQLException e){
+            e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public Customer getById(int id) {
+        Customer customer=null;
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement("select * from customer where id=?");
+            pstmt.setInt(1, id);
+            ResultSet rs=pstmt.executeQuery();
+            if (rs.next()){
+                //int id, String name, String address, String mobile, String email
+                customer=new Customer(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        if (customer==null)
+            throw  new CustomerNotFoundException("customer with id "+ id +" is not found");
+
+        return customer;
+    }
+
+    @Override
+    public List<Customer> getAll() {
+        Connection connection=null;
+        List<Customer> customers=new ArrayList<>();
+        Customer customer=null;
+       try{
+           connection=dataSource.getConnection();
+           PreparedStatement pstmt=connection.prepareStatement("select * from customer");
+           ResultSet rs=pstmt.executeQuery();
+           while (rs.next()){
+               //int id, String name, String address, String mobile, String email
+               customer=new Customer(
+                       rs.getInt(1),
+                       rs.getString(2),
+                       rs.getString(3),
+                       rs.getString(4),
+                       rs.getString(5));
+               customers.add(customer);
+           }
+       }catch (SQLException ex){
+           ex.printStackTrace();
+       }
+        return customers;
+    }
+
+    @Override
+    public void addCustomer(Customer customer) {
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            connection.setAutoCommit(false);
+            // id | name  | address | mobile    | email
+            PreparedStatement pstmt=
+                    connection
+                            .prepareStatement("insert into customer(name, address, mobile,email) values(?,?,?,?)");
+
+            pstmt.setString(1, customer.getName());
+            pstmt.setString(2, customer.getAddress());
+            pstmt.setString(3, customer.getMobile());
+            pstmt.setString(4, customer.getEmail());
+            pstmt.executeUpdate();
+            connection.commit();
+        }catch (SQLException e){
+            e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+
+
+public class CustomerNotFoundException extends RuntimeException{
+
+    public CustomerNotFoundException(String message) {
+        super(message);
+    }
+}
+
+
+
+
+//BL?
+public interface CustomerService {
+    public void deleteCustomer(int id);
+    public void updateCustomer(int id, Customer customer);
+    public Customer getById(int id);
+    public List<Customer> getAll();
+    public void addCustomer(Customer customer);
+
+}
+
+
+
+import java.util.List;
+@Service(value = "cs")
+public class CustomerServiceImpl implements CustomerService{
+
+    private CustomerDao customerDao;
+
+    @Autowired
+    public CustomerServiceImpl(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
+
+    @Override
+    public void deleteCustomer(int id) {
+        customerDao.deleteCustomer(id);
+    }
+
+    @Override
+    public void updateCustomer(int id, Customer customer) {
+        customerDao.updateCustomer(id, customer);
+    }
+
+    @Override
+    public Customer getById(int id) {
+        return customerDao.getById(id);
+    }
+
+    @Override
+    public List<Customer> getAll() {
+        return customerDao.getAll();
+    }
+
+    @Override
+    public void addCustomer(Customer customer) {
+        customerDao.addCustomer(customer);
+    }
+}
+
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+       // InternalResourceViewResolver
+        //DispatcherServlet
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("servlet-context.xml");
+        CustomerService customerService=ctx.getBean("cs",CustomerService.class);
+       // DriverManagerDataSource
+        //DataSourceTransactionManager
+        //CustomerService customerService=new CustomerServiceImpl();
+        List<Customer> customers=customerService.getAll();
+        customers.forEach(c-> System.out.println(c));
+
+        //String name, String address, String mobile, String email
+//        Customer customer=new Customer("leena","delhi","6465666","leena@gmail.com");
+//        customerService.addCustomer(customer);
+
+        //Customer customer=customerService.getById(10);
+//        customer.setAddress("Banglore");
+//        customer.setEmail("leena.gupta@gmail.com");
+//        customerService.updateCustomer(10, customer);
+
+       // customerService.deleteCustomer(10);
+
+    }
+}
+
+
+
+
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/custapp
+jdbc.username=root
+jdbc.password=root
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="driverClassName" value="${jdbc.driver}"/>
+	</bean>
+	<context:annotation-config/>
+	<context:component-scan base-package="com.customerapp.*"/>
+	<context:property-placeholder location="classpath:db.properties"/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>
+
+
+
+
+Configuration front controller:
+-------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/web-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+<!-- 	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> -->
+</web-app>
+
+
+
+
+Spring mvc configuration:
+-------------------------
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+<mvc:annotation-driven/>
+
+
+
+
+
+
+
+
+controller configuration:
+--------------------------
+
+@Controller
+public class CustomerController {
+    private CustomerService customerService;
+
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+   
+    @GetMapping(path ="showall")
+    public ModelAndView showAllCustomer(ModelAndView mv){
+        mv.addObject("customersList", customerService.getAll());
+        mv.setViewName("show");
+        return  mv;
+    }
+    
+    //--------------delete ------------------
+    @GetMapping(path ="delete")
+    public String deleteCustomer(HttpServletRequest request){
+       Integer id=Integer.parseInt(request.getParameter("id"));
+       customerService.deleteCustomer(id);
+        return  "redirect:showall";
+    }
+    
+    //--------------add customer ------------------
+    @GetMapping(path ="addcustomer")
+    public String addCustomerGet(ModelMap map){
+       Customer customer=new Customer();
+       map.addAttribute("customer", customer);
+        return  "addcustomer";
+    }
+    
+    @PostMapping(path ="addcustomer")
+    public String addCustomerPost( @ModelAttribute(name="customer") Customer customer){
+    	int id=customer.getId();
+    	if(id==0) {
+    		customerService.addCustomer(customer);
+    	}else {
+    		customerService.updateCustomer(id, customer);
+    	}
+    	
+    	 return  "redirect:showall";
+    }
+    
+    
+  //--------------update customer ------------------
+    @GetMapping(path ="update")
+    public String updateCustomer(HttpServletRequest request,  ModelMap map){
+       Integer id=Integer.parseInt(request.getParameter("id"));
+       Customer customer=customerService.getById(id);
+       map.addAttribute("customer", customer);
+        return  "updatecustomer";
+    }
+    
+}
+
+
+jsp:
+------
+
+show.jsp
+---------
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.customerapp.dao.Customer"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>customer app</title>
+</head>
+<body>
+<a href="addcustomer">add customer</a>
+<table border=1>
+    <thead>
+    <tr>
+        <th>Customer id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>mobile</th>
+        <th>email</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${customersList}" var="customer">
+        <tr>
+            <td>${customer.id } </td>
+            <td>${customer.name} </td>
+            <td>${customer.address}</td>
+            <td>${customer.mobile}</td>
+            <td>${customer.email}</td>
+            <td><a href="update?id=${customer.id }">update</a></td>
+            <td><a href="delete?id=${customer.id}">delete</a></td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</body>
+</html>
+
+
+
+addcustomer.jsp
+------------------
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add Customer</title>
+</head>
+<body>
+<form:form action="addcustomer" method="post" modelAttribute="customer">
+	<form:hidden path="id"/>
+	Enter Name : <form:input path="name"/> <br>
+	Enter Address : <form:input path="address"/> <br>
+	Enter Mobile : <form:input path="mobile"/> <br>
+	Enter Email : <form:input path="email"/> <br>
+	<input type="submit">
+</form:form>
+</body>
+</html>
+
+
+
+
+
+updatecustomer.jsp
+--------------------
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Update Customer</title>
+</head>
+<body>
+<form:form action="addcustomer" method="post" modelAttribute="customer">
+	<form:hidden path="id"/>
+	Enter Name : <form:input path="name" readonly="true"/> <br>
+	Enter Address : <form:input path="address"/> <br>
+	Enter Mobile : <form:input path="mobile"/> <br>
+	Enter Email : <form:input path="email"/> <br>
+	<input type="submit">
+</form:form>
+</body>
+</html>
+
+
+
+db.properties
+-------------------
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/foo
+jdbc.username=root
+jdbc.password=root
+
+
+
+
+
+What next?
+------------
+@ModelAttribute: annotation used in spring mvc: 
+---------------------
+ @ModelAttribute annation
+	- can be applied inside method arg
+	- it can be applied over method
+
+ => servier side validation using jsr 303
+	very challenging with struts 1/2, jsf : lots of xml we have to write
+	:(
+
+ spring mvc : spport annoation based validation : eays :)
+
+ => how to do exception handling in spring mvc project?
+	how to handle 404, 403
+	how to handle 500 error
+
+
+
+
+
+2 new requirments:
+----------------------
+1. We want pre populated values for customer type
+2. add want to add dob date for the customer
+
+
+public class Customer {
+    //id | name  | address | mobile    | email
+    private int id;
+    private String name;
+    private String address;
+    private String mobile;
+    private String email;
+    private String customertype;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dob;
+ }
+ 
+
+
+@Repository
+@Primary
+public class CustomerDaoImpl implements CustomerDao {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public CustomerDaoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Override
+    public void deleteCustomer(int id) {
+        Connection connection=null;
+      try{
+          connection=dataSource.getConnection();
+          connection.setAutoCommit(false);
+          PreparedStatement pstmt=connection.prepareStatement("delete from customer2 where id=?");
+          pstmt.setInt(1, id);
+          pstmt.executeUpdate();
+          connection.commit();
+      }catch (SQLException e){
+          e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+      }
+    }
+
+    @Override
+    public void updateCustomer(int id, Customer customer) {
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            connection.setAutoCommit(false);
+            // address | mobile    | email
+            PreparedStatement pstmt=
+                    connection.prepareStatement("update customer2 set address=?, mobile=?, email=? where  id=?");
+            pstmt.setString(1, customer.getAddress());
+            pstmt.setString(2, customer.getMobile());
+            pstmt.setString(3, customer.getEmail());
+            pstmt.setInt(4, id);
+            pstmt.executeUpdate();
+            connection.commit();
+        }catch (SQLException e){
+            e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public Customer getById(int id) {
+        Customer customer=null;
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement("select * from customer2 where id=?");
+            pstmt.setInt(1, id);
+            ResultSet rs=pstmt.executeQuery();
+            if (rs.next()){
+                //int id, String name, String address, String mobile, String email
+                customer=new Customer(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        if (customer==null)
+            throw  new CustomerNotFoundException("customer with id "+ id +" is not found");
+
+        return customer;
+    }
+
+    @Override
+    public List<Customer> getAll() {
+        Connection connection=null;
+        List<Customer> customers=new ArrayList<>();
+        Customer customer=null;
+       try{
+    	   //id name address mobile email customertype dob
+           connection=dataSource.getConnection();
+           PreparedStatement pstmt=connection.prepareStatement("select * from customer2");
+           ResultSet rs=pstmt.executeQuery();
+           while (rs.next()){
+               //int id, String name, String address, String mobile, String email
+               customer=new Customer(
+                       rs.getInt(1),
+                       rs.getString(2),
+                       rs.getString(3),
+                       rs.getString(4),
+                       rs.getString(5),rs.getString(6),rs.getDate(7));
+               customers.add(customer);
+           }
+       }catch (SQLException ex){
+           ex.printStackTrace();
+       }
+        return customers;
+    }
+
+    @Override
+    public void addCustomer(Customer customer) {
+        Connection connection=null;
+        try{
+            connection=dataSource.getConnection();
+            connection.setAutoCommit(false);
+            // id | name  | address | mobile    | email
+            //id name address mobile email customertype dob
+            PreparedStatement pstmt=
+                    connection
+                            .prepareStatement("insert into customer2(name, address, mobile,email,customertype,dob) values(?,?,?,?,?,?)");
+
+            pstmt.setString(1, customer.getName());
+            pstmt.setString(2, customer.getAddress());
+            pstmt.setString(3, customer.getMobile());
+            pstmt.setString(4, customer.getEmail());
+            pstmt.setString(5, customer.getCustomertype());
+            pstmt.setDate(6, new Date(customer.getDob().getTime()));
+            
+            pstmt.executeUpdate();
+            connection.commit();
+        }catch (SQLException e){
+            e.printStackTrace();
+            try{
+                connection.rollback();
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+
+add into customer controller:
+--------------------------------
+@Controller
+public class CustomerController {
+    private CustomerService customerService;
+
+	//
+
+	@ModelAttribute(value="customertypes")
+	public List<String> getGender(){
+		return List.of("GOLD","SILVER");
+	}
+    
+}
+
+
+show.jsp
+--------
+<td>${customer.customertype}</td>
+ <td>${customer.dob}</td>
+
+
+addcustomer.jsp
+-----------------
+<form:form action="addcustomer" method="post" modelAttribute="customer">
+	<form:hidden path="id"/>
+	Enter Name : <form:input path="name"/> <br>
+	Enter Address : <form:input path="address"/> <br>
+	Enter Mobile : <form:input path="mobile"/> <br>
+	Enter Email : <form:input path="email"/> <br>
+	Enter customertype : <form:select path="customertype" items="${customertypes}"/><br/>
+	Enter dob : <form:input path="dob"/> <br>
+	<input type="submit">
+</form:form>
+
+
+
+
+
+Spring mvc form validation using JSR 303 
+Hibernate validator
+----------------------
+
+
+modified Customer class
+-------------------
+
+jsr 303: validation api
+	hibernate validator is a ref imp of validation api
+
+step :
+	1. validation jar in classpath 
+	2. put annotation on pojo
+
+
+public class Customer {
+    //id | name  | address | mobile    | email
+    private int id;
+    
+    @NotEmpty(message="customer name cant left blank")
+    private String name;
+    @NotEmpty(message="customer address cant left blank")
+    private String address;
+    @NotEmpty(message="customer mobile cant left blank")
+    private String mobile;
+    
+    @NotEmpty(message="customer email cant left blank")
+    @Email(message = "invalid email")
+    private String email;
+    
+    private String customertype;
+    @NotNull(message="dob can not be left blank")
+	@Past(message = "dob must be past date")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dob;
+}
+
+
+
+	
+@NotNull(message="price can not be null")
+@Min(value=10, message="min price should be more then 10")
+@Max(value=10000, message="max price should be less then 10000")
+private Double price;
+
+
+
+
+controller
+---------
+
+@PostMapping(path ="addcustomer")
+    public String addCustomerPost(@Valid @ModelAttribute(name="customer") Customer customer, 
+    		BindingResult bindingResult){
+    	if (bindingResult.hasErrors()) {
+			return "addcustomer";
+		} 
+    	int id=customer.getId();
+    	if(id==0) {
+    		customerService.addCustomer(customer);
+    	}else {
+    		customerService.updateCustomer(id, customer);
+    	}
+    	
+    	 return  "redirect:showall";
+    }
+    
+
+addcustomer.jsp
+-------------
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add Customer</title>
+<style>
+.error {
+color: #EF1313;
+font-style: italic;
+}
+</style>
+</head>
+<body>
+<form:form action="addcustomer" method="post" modelAttribute="customer">
+	<form:hidden path="id"/>
+	Enter Name : <form:input path="name"/> <form:errors path="name" class="error"/><br>
+	Enter Address : <form:input path="address"/> <form:errors path="address" class="error"/><br>
+	Enter Mobile : <form:input path="mobile"/> <form:errors path="mobile" class="error"/><br>
+	Enter Email : <form:input path="email"/> <form:errors path="email" class="error"/><br>
+	Enter customertype : <form:select path="customertype" items="${customertypes}"/><br/>
+	Enter dob : <form:input path="dob"/> <form:errors path="dob" class="error"/><br>
+	<input type="submit">
+</form:form>
+</body>
+</html>
+
+
+
+Putting messages from external file
+-----------------------------------
+messages.properties
+
+NotEmpty.customer.name=name can not be left blank!
+NotEmpty.customer.address=address can not be left blank!
+NotEmpty.customer.mobile=mobile can not be left blank!
+NotEmpty.customer.email=email can not be left blank!
+NotEmpty.customer.dob=email can not be left blank!
+Email.customer.email=email should be valid!
+typeMismatch.java.lang.Double=please only enter numbers
+
+
+How spring come to know about it?
+--------------------------------------
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+
+
+	<mvc:annotation-driven validator="validatorFactoryBean" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:custom_message" />
+	</bean>
+
+	<bean id="validatorFactoryBean"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+
+
+
+--------------------------------------------------------------------
+Spring MVC java configuration
+--------------------------------------------------------------
+
+
+Step 1: first we need to replace dispatcher-servlet.xml with java code
+
+	What we have mentioned in dispatcher-servlet.xml?
+	
+	1. which package to scan
+	2. view resolver
+
+
+
+
+configuration for bootstrapping
+
+
+@Configuration // replacement of xml file, telling spring it is configuration file
+@ComponentScan(basePackages={"com"})
+@EnableWebMvc
+public class AppConfig extends WebMvcConfigurerAdapter{
+
+    @Bean
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		 // Don't forget the ending "/" for location or you will hit 404.
+	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	 
+	}
+    
+}
+
+
+Or even we can replace everything from web.xml
+-------------------------------------------
+
+
+
+now how to replace web.xml?
+------------------------
+
+public class WebInitilizer extends
+		AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+
+		return null;
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+
+		return new Class[]{AppConfig.class};
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+
+		return new String[]{"/"};
+	}
+
+}
+
+
+
+hello world controller:
+-------------------------
+
+@Controller
+@RequestMapping("/")
+public class HelloWorldController { 
+	    @RequestMapping(method = RequestMethod.GET)
+	    public String sayHello(ModelMap model) {
+	        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
+	        return "welcome";
+	    }
+ }
+
+
+
+
+
+
+
+
+
+Reference:
+-----------------
+http://www.baeldung.com/spring-mvc-static-resources
+https://www.mkyong.com/spring-mvc/spring-mvc-how-to-include-js-or-css-files-in-a-jsp-page/
+mkyong
+http://codetutr.com/2013/03/24/simple-spring-mvc-web-application-using-gradle/
+Spring in action
+http://codetutr.com/2013/04/06/spring-mvc-form-submission/
+http://georgemao.wordpress.com/2013/02/14/comparsion-struts-2-vs-spring-3-mvc/
+http://viralpatel.net/blogs/spring-3-mvc-handling-forms
+http://viralpatel.net/blogs/spring-mvc-hashmap-form-example/
+http://viralpatel.net/blogs/spring-mvc-multi-row-submit-java-list/
+http://www.giuseppeurso.eu/en/check-authentication-using-spring-mvc-and-handler-interceptor/
+http://viralpatel.net/blogs/spring-mvc-interceptor-example/	
+http://viralpatel.net/blogs/spring-mvc-cookie-example/
+http://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc
+http://stackoverflow.com/questions/3423262/what-is-modelattribute-in-spring-mvc
+http://www.keepsnowballing.com/2013/06/spring-mvc-jquery-sample-tutorial.html
+http://www.codebeach.com/2008/06/spring-mvc-application-architecture.html
+http://www.intertech.com/Blog/understanding-spring-mvc-model-and-session-attributes/
+
+Spring mvc hello world! java configuration
+-------------------------------------------
+http://websystique.com/springmvc/spring-4-mvc-helloworld-tutorial-annotation-javaconfig-full-example/
+
