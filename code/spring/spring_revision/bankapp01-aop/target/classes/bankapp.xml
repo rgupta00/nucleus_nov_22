@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!--now we want to define the bean
+    @Required
+
+     autowire-candidate="false"
+    -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.bankapp"/>
+
+    <aop:aspectj-autoproxy/>
+
+   <!-- <bean id="accountService" class="com.bankapp.service.AccountServiceImpl" autowire="byType">
+    </bean>
+    <bean id="accountDao1" class="com.bankapp.dao.impl.AccountDaoImplMap" primary="true"/>
+    <bean id="accountDao2" class="com.bankapp.dao.impl.AccountDaoImplJdbc"/>-->
+<!--
+    <beans profile="dev">
+        <bean id="accountDao1" class="com.bankapp.dao.impl.AccountDaoImplMap"/>
+    </beans>
+    <beans profile="test">
+        <bean id="accountDao2" class="com.bankapp.dao.impl.AccountDaoImplJdbc"/>
+    </beans>-->
+</beans>
