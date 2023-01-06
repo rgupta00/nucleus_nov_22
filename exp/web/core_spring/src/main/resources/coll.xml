@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<util:list id="points" list-class="java.util.ArrayList" value-type="com.collection.Point">
+		<constructor-arg>
+			<list>
+				<ref bean="p1"/>
+				<ref bean="p2"/>
+			</list>
+		</constructor-arg>
+	</util:list>
+
+	
+	
+	<bean name="p1" class="com.collection.Point">
+		<constructor-arg index="0" value="1"/>
+		<constructor-arg index="1" value="1"/>
+	</bean>
+	
+	<bean name="p2" class="com.collection.Point">
+		<constructor-arg index="0" value="17"/>
+		<constructor-arg index="1" value="1"/>
+	</bean>
+
+
+	<!-- <bean id="shape" class="com.collection.Shape">
+		<property name="points">
+			<list>
+				<ref bean="p1"/>
+				<ref bean="p2"/>
+			</list>
+		</property>
+	</bean>
+	<bean name="p1" class="com.collection.Point">
+		<constructor-arg index="0" value="1"/>
+		<constructor-arg index="1" value="1"/>
+	</bean>
+	
+	<bean name="p2" class="com.collection.Point">
+		<constructor-arg index="0" value="17"/>
+		<constructor-arg index="1" value="1"/>
+	</bean>
+ -->
+</beans>

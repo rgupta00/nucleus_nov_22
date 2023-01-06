@@ -1,63 +1,45 @@
 package com.bankapp.basics;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
-@Table(name = "acc_table")
-public class Account {
+@Table(name = "acc_table_2")
+@Getter
+@Setter
+@ToString(exclude = {"tempCalcalation"}
+)
+@NoArgsConstructor
+@EqualsAndHashCode
+ public class Account {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "acc_id")
+    private Integer id;
+
+    @Column(name = "acc_holder_name", nullable = false, length = 40)
     private String name;
+    //XXXX.44
+    @Column(name = "acc_balance", nullable = false, precision = 8)
     private BigDecimal balance;
 
-    public Account() {}
+    @Enumerated(EnumType.STRING) //if not given it will take 0 onward
+    @Column(name = "customer_type")
+    private CustomerType customerType;
 
-    public Account(String name, BigDecimal balance) {
-        this.name = name;
-        this.balance = balance;
-    }
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
+    @Transient
+    private int tempCalcalation;
 
-    public Account(int id, String name, BigDecimal balance) {
-        this.id = id;
-        this.name = name;
-        this.balance = balance;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Account{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", balance=").append(balance);
-        sb.append('}');
-        return sb.toString();
-    }
-
-
+   public Account(String name, BigDecimal balance, CustomerType customerType, Date date) {
+      this.name = name;
+      this.balance = balance;
+      this.customerType = customerType;
+      this.date = date;
+   }
 }

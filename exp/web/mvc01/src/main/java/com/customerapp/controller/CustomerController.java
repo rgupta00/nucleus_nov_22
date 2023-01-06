@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.customerapp.dao.Customer;
 import com.customerapp.service.CustomerService;
 
-@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRES_NEW)
 @Controller
 public class CustomerController {
     private CustomerService customerService;

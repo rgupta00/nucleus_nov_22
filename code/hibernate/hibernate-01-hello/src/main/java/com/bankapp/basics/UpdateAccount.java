@@ -19,8 +19,8 @@ public class UpdateAccount {
        Transaction tx= session.getTransaction();
        try{
             tx.begin();
-           Account account=new Account("ravi", new BigDecimal(5000));
-           session.save(account);
+          // Account account=new Account("ravi", new BigDecimal(5000));
+          // session.save(account);
 
             tx.commit();
        }catch (HibernateException ex){
