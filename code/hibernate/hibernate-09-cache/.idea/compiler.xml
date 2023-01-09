@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hibernate-09-cache" />
+        <module name="untitled" />
+        <module name="hibernate-01-lifecycle-pk" />
+        <module name="hibernate-01-hello" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- database connection setting -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibdemo</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+
+		<!-- disable the second level cache -->
+		<!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+		<property name="show_sql">true</property>
+
+		<property name="format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- jdbc connection pool build in  -->
+		<property name="connection.pool_size">10</property>
+		<!-- <property name="current_session_context_class">thread</property> -->
+
+		<mapping class="com.demo.one2many.Employee" />
+		<mapping class="com.demo.one2many.Department" />
+
+		<!--<mapping class="com.demo.one2many_wrong.Employee" />
+		<mapping class="com.demo.one2many_wrong.Department" />-->
+
+	</session-factory>
+</hibernate-configuration>

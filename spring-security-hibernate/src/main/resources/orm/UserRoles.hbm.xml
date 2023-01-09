@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mkyong.users.model.UserRole" table="user_roles" catalog="test">
+        <id name="userRoleId" type="java.lang.Integer">
+            <column name="user_role_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="com.mkyong.users.model.User" fetch="select">
+            <column name="username" length="45" not-null="true" />
+        </many-to-one>
+        <property name="role" type="string">
+            <column name="role" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
