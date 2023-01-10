@@ -16,29 +16,48 @@ public class DemoTester {
 		Session session = factory.openSession();
 
 		List<Book> books = session.createQuery("select b from Book b").setCacheable(true).getResultList();
-
-//		Book book = session.get(Book.class, 2);
-//		System.out.println(book);
+		System.out.println("------------------");
 		session.close();
 
 		Session session2 = factory.openSession();
 		List<Book> books2 = session2.createQuery("select b from Book b").setCacheable(true).getResultList();
-//		Book book2 = session2.get(Book.class, 2);
-//		System.out.println(book2);
-		session.close();
+		System.out.println("------------");
+		session2.close();
+
 
 		factory.close();
 
+
+
+
+//		Book book=new Book("DAQ123", "vidhata old", "foo", new Date(), 600);
+//
+//		Book book2=new Book("DAQ223", "life is cool", "bar", new Date(), 500);
+//
+//		session.save(book);
+//		session.save(book2);
+//
+
+
+
+		//List<Book> books = session.createQuery("select b from Book b").setCacheable(true).getResultList();
+
+//		Book book = session.get(Book.class, 2);
+//		System.out.println(book);
+
+
+		//Session session2 = factory.openSession();
+		//List<Book> books2 = session2.createQuery("select b from Book b").setCacheable(true).getResultList();
+//		Book book2 = session2.get(Book.class, 2);
+//		System.out.println(book2);
+		//
+		//
+		// session.close();
+
+
+
 //		
-//		session.getTransaction().begin();
-////		Book book=new Book("DAQ123", "vidhata old", "foo", new Date(), 600);
-////		
-////		Book book2=new Book("DAQ223", "life is cool", "bar", new Date(), 500);
-////		
-////		session.save(book);
-////		session.save(book2);
-////		
-//		session.getTransaction().commit();
+
 
 	}
 }

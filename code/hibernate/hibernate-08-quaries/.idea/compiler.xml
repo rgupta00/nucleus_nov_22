@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hibernate-01-lifecycle-pk" />
         <module name="untitled" />
+        <module name="hibernate-08-quaries" />
+        <module name="hibernate-01-lifecycle-pk" />
         <module name="hibernate-01-hello" />
       </profile>
     </annotationProcessing>

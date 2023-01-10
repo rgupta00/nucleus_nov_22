@@ -4,12 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
 @Entity
-//@Table(name = "account_table_2") no effect of it
-@DiscriminatorValue(value = "S")
+@DiscriminatorValue("SAVE")
 public class SavingAccount extends Account {
-	
+
+	//@Column(nullable = false)
 	private double intrestRate;
 
 	public SavingAccount() {}
@@ -27,9 +26,16 @@ public class SavingAccount extends Account {
 	public double getIntrestRate() {
 		return intrestRate;
 	}
-
 	public void setIntrestRate(double intrestRate) {
 		this.intrestRate = intrestRate;
 	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("SavingAccount{");
+		sb.append(super.toString())
+		.append("intrestRate=").append(intrestRate);
+		sb.append('}');
+		return sb.toString();
+	}
 }

@@ -9,20 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "account_table")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn(name="accountType", discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "acc_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int accountId;
 	private String accountHolderName;
 	private double balance;
 
-	public Account() {
-	}
+	public Account() {}
 
 	public Account(String accountHolderName, double balance) {
 		this.accountHolderName = accountHolderName;
@@ -53,4 +50,13 @@ public abstract class Account {
 		this.balance = balance;
 	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Account{");
+		sb.append("accountId=").append(accountId);
+		sb.append(", accountHolderName='").append(accountHolderName).append('\'');
+		sb.append(", balance=").append(balance);
+		sb.append('}');
+		return sb.toString();
+	}
 }

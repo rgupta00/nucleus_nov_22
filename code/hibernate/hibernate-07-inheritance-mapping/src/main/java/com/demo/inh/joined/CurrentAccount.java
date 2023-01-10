@@ -1,13 +1,20 @@
 package com.demo.inh.joined;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
+//@DiscriminatorValue("CURR")
 public class CurrentAccount extends Account {
-	
+
+	//@Column(nullable = false)
 	private double overdraft;
+
+	public CurrentAccount() {}
+
+	public CurrentAccount(String accountHolderName, double balance) {
+		super(accountHolderName, balance);
+		// TODO Auto-generated constructor stub
+	}
 
 	public CurrentAccount(String accountHolderName, double balance, double overdraft) {
 		super(accountHolderName, balance);
@@ -22,13 +29,13 @@ public class CurrentAccount extends Account {
 		this.overdraft = overdraft;
 	}
 
-	public CurrentAccount() {}
 
 	@Override
 	public String toString() {
-		return   super.toString()+": "+ overdraft;
+		final StringBuilder sb = new StringBuilder("CurrentAccount{");
+		sb.append(super.toString())
+				.append("overdraft=").append(overdraft);
+		sb.append('}');
+		return sb.toString();
 	}
-
-
-	
 }

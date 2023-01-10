@@ -1,15 +1,35 @@
 package com.demo.many2many;
 
-import java.util.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
+import javax.persistence.*;
+import java.util.*;
+@Entity
+@Table(name = "project_table_m2m")
 public class Project {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int projectId;
 	private String projectName;
-	
+
+	@ManyToMany(mappedBy = "projects")
+	@LazyCollection(LazyCollectionOption.EXTRA)
 	private List<Employee> employees = new ArrayList<Employee>();
 
+//	public void addEmployeeToProject(Employee employee){
+//		employees.add(employee);
+//		employee.getProjects().add(this);
+//	}
 	public Project() {
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 	public Project(String projectName) {
@@ -32,13 +52,6 @@ public class Project {
 		this.projectName = projectName;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 
 	@Override
 	public String toString() {

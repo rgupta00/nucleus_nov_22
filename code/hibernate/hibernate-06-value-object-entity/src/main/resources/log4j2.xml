@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <!-- Console Appender -->
+    <Console name="c" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+    </Console>
+    <File name="f" fileName="logfile.log" append="true">
+      <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n"/>
+    </File>
+  </Appenders>
+  <Loggers>
+    <!-- Log everything in hibernate -->
+   <!-- <Logger name="org.hibernate" level="info" additivity="false">
+      <AppenderRef ref="Console" />
+    </Logger>
+ 
+    &lt;!&ndash; Log all SQL statements &ndash;&gt;
+    <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+      <AppenderRef ref="Console" />     
+    </Logger>-->
+ 
+    <Root level="info">
+      <AppenderRef ref="c" />
+      <AppenderRef ref="f" />
+    </Root>
+
+<!--   <Logger name="com.demo" level="info"/>-->
+  </Loggers>
+</Configuration>

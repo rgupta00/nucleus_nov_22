@@ -4,11 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
 @Entity
-@DiscriminatorValue(value = "C")
+@DiscriminatorValue("CURR")
 public class CurrentAccount extends Account {
-	
+
+	//@Column(nullable = false)
 	private double overdraft;
 
 	public CurrentAccount() {}
@@ -31,4 +31,13 @@ public class CurrentAccount extends Account {
 		this.overdraft = overdraft;
 	}
 
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("CurrentAccount{");
+		sb.append(super.toString())
+				.append("overdraft=").append(overdraft);
+		sb.append('}');
+		return sb.toString();
+	}
 }

@@ -14,8 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "book_table")
- public class Book {
+@Table(name = "book_table_jpa_hib2")
+ final public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -59,7 +59,7 @@ import javax.persistence.TemporalType;
 		this.rank = rank;
 	}
 
-	public Book() {}
+	//public Book() {}
 	
 	public Book(String isbn, String title, String author, Date pubDate, double price) {
 		super();

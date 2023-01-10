@@ -1,14 +1,20 @@
 package com.demo.inh.joined;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "account_table_2") no effect of it
+//@DiscriminatorValue("SAVE")
 public class SavingAccount extends Account {
-	
+
+	//@Column(nullable = false)
 	private double intrestRate;
+
+	public SavingAccount() {}
+
+	public SavingAccount(String accountHolderName, double balance) {
+		super(accountHolderName, balance);
+		// TODO Auto-generated constructor stub
+	}
 
 	public SavingAccount(String accountHolderName, double balance, double intrestRate) {
 		super(accountHolderName, balance);
@@ -18,18 +24,16 @@ public class SavingAccount extends Account {
 	public double getIntrestRate() {
 		return intrestRate;
 	}
-
 	public void setIntrestRate(double intrestRate) {
 		this.intrestRate = intrestRate;
 	}
 
 	@Override
 	public String toString() {
-		return   super.toString()+": "+ intrestRate;
+		final StringBuilder sb = new StringBuilder("SavingAccount{");
+		sb.append(super.toString())
+		.append("intrestRate=").append(intrestRate);
+		sb.append('}');
+		return sb.toString();
 	}
-
-	public SavingAccount() {}
-
-	
-
 }

@@ -18,7 +18,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 //@Cacheable
 @Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 @Entity
-@Table(name = "book_table_caching")
+@Table(name = "book_table_caching_2")
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
