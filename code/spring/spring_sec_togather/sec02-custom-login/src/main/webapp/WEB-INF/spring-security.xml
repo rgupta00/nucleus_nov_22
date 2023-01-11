@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/mgr/**" access="hasRole('MGR')"/>
+        <security:intercept-url pattern="/emp/**" access="hasRole('EMP')"/>
+        <security:form-login
+                login-page="/login"
+                default-target-url="/home" login-processing-url="/checkme" username-parameter="email"
+                password-parameter="password"
+                authentication-failure-url="/login?error=true"/>
+
+        <security:logout logout-url="/logout"  logout-success-url='/login'/>
+        <security:access-denied-handler error-page="/403"/>
+        <security:form-login/>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="raj" password="{noop}raj121" authorities="ROLE_EMP,ROLE_ADMIN,ROLE_MGR"/>
+                <security:user name="ekta" password="{noop}ekta121" authorities="ROLE_EMP,ROLE_MGR"/>
+                <security:user name="gun" password="{noop}gun121" authorities="ROLE_EMP"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
