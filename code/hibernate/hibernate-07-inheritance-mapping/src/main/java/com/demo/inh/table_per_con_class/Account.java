@@ -4,9 +4,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "account_table")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@DiscriminatorColumn(name = "acc_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int accountId;
 	private String accountHolderName;
 	private double balance;

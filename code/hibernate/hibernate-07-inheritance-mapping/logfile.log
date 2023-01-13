@@ -927,3 +927,256 @@ INFO  | 2023-01-10 10:59:12 | [main] dialect.Dialect (Dialect.java:172) - HHH000
 INFO  | 2023-01-10 10:59:12 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@184823ed] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
 INFO  | 2023-01-10 10:59:12 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 INFO  | 2023-01-10 10:59:13 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:08:42 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:08:42 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:08:43 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:08:43 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:08:43 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:08:43 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:08:43 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:08:43 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:08:43 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:08:44 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6e243175] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:08:44 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:08:44 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:10:07 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:10:07 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:10:07 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:10:07 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:10:07 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:10:07 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:10:07 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:10:07 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:10:08 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:10:09 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@113ee1ce] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:10:09 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+WARN  | 2023-01-12 16:10:09 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:137) - SQL Error: 1364, SQLState: HY000
+ERROR | 2023-01-12 16:10:09 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:142) - Field 'overdraft' doesn't have a default value
+INFO  | 2023-01-12 16:11:11 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:11:11 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:11:11 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:11:11 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:11:11 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:11:11 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:11:11 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:11:11 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:11:12 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:11:12 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6e243175] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:11:12 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+WARN  | 2023-01-12 16:11:12 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:137) - SQL Error: 1364, SQLState: HY000
+ERROR | 2023-01-12 16:11:12 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:142) - Field 'overdraft' doesn't have a default value
+INFO  | 2023-01-12 16:11:46 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:11:46 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:11:46 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:11:47 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:11:47 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:11:47 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:11:47 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:11:47 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:11:47 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:11:48 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7a1a3468] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:11:48 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:11:48 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:12:51 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:12:51 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:12:52 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:12:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:12:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:12:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:12:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:12:52 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:12:52 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:12:53 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@23e3f5cd] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:12:53 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6d963d70] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:12:53 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:12:53 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:13:40 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:13:40 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:13:40 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:13:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:13:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:13:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:13:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:13:41 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:13:41 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:13:42 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@16ee9aa7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:13:42 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:13:42 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:15:39 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:15:40 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:15:40 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:15:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:15:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:15:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:15:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:15:40 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:15:40 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:15:41 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7015ebef] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:15:41 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:15:42 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:16:40 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:16:41 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:16:41 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:16:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:16:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:16:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:16:41 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:16:41 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:16:42 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:16:42 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:17:37 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:17:38 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:17:38 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:17:38 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:17:38 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:17:38 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:17:38 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:17:38 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:17:38 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:17:39 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@44592c39] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:17:39 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:17:40 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:19:21 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:19:21 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:19:21 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:19:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:19:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:19:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:19:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:19:21 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:19:22 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:19:22 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7015ebef] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:19:22 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:19:22 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:19:39 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:19:39 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:19:40 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:19:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:19:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:19:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:19:40 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:19:40 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:19:40 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:19:41 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@44592c39] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:19:41 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:19:41 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:21:23 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:21:23 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:21:23 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:21:23 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:21:23 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:21:23 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:21:23 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:21:23 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:21:24 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:21:24 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@16ee9aa7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:21:24 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:21:48 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:21:49 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:21:49 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:21:49 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:21:49 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:21:49 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:21:49 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:21:49 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:21:49 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:21:50 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2443135] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+WARN  | 2023-01-12 16:21:50 | [main] internal.ExceptionHandlerLoggedImpl (ExceptionHandlerLoggedImpl.java:27) - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table CurrentAccount 
+       add constraint FKgalet053d4kldk7fnxf0rd71w 
+       foreign key (accountId) 
+       references account_table (accountId)" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table CurrentAccount 
+       add constraint FKgalet053d4kldk7fnxf0rd71w 
+       foreign key (accountId) 
+       references account_table (accountId)" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:320) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.boot.internal.MetadataImpl.buildSessionFactory(MetadataImpl.java:184) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at com.demo.factory.HibernateSessionFactory.getSessionFactory(HibernateSessionFactory.java:18) [classes/:?]
+	at com.demo.inh.joined.DemoTester.main(DemoTester.java:13) [classes/:?]
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`hibdemo`.`#sql-594_3b`, CONSTRAINT `FKgalet053d4kldk7fnxf0rd71w` FOREIGN KEY (`accountId`) REFERENCES `account_table` (`accountId`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	... 12 more
+WARN  | 2023-01-12 16:21:50 | [main] internal.ExceptionHandlerLoggedImpl (ExceptionHandlerLoggedImpl.java:27) - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table SavingAccount 
+       add constraint FK18kmwlwqwmgj1sw5ise2k0vbc 
+       foreign key (accountId) 
+       references account_table (accountId)" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table SavingAccount 
+       add constraint FK18kmwlwqwmgj1sw5ise2k0vbc 
+       foreign key (accountId) 
+       references account_table (accountId)" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:320) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at org.hibernate.boot.internal.MetadataImpl.buildSessionFactory(MetadataImpl.java:184) [hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	at com.demo.factory.HibernateSessionFactory.getSessionFactory(HibernateSessionFactory.java:18) [classes/:?]
+	at com.demo.inh.joined.DemoTester.main(DemoTester.java:13) [classes/:?]
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`hibdemo`.`#sql-594_3b`, CONSTRAINT `FK18kmwlwqwmgj1sw5ise2k0vbc` FOREIGN KEY (`accountId`) REFERENCES `account_table` (`accountId`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.9.Final.jar:5.4.9.Final]
+	... 12 more
+INFO  | 2023-01-12 16:21:50 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+WARN  | 2023-01-12 16:21:50 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:137) - SQL Error: 1364, SQLState: HY000
+ERROR | 2023-01-12 16:21:50 | [main] spi.SqlExceptionHelper (SqlExceptionHelper.java:142) - Field 'acc_type' doesn't have a default value
+INFO  | 2023-01-12 16:22:21 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:22:21 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:22:21 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:22:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:22:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:22:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:22:21 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:22:21 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:22:22 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:22:22 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2443135] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:22:23 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:22:23 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:24:31 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:24:31 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:24:31 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:24:32 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:24:32 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:24:32 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:24:32 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:24:32 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:24:32 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:24:33 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2443135] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:24:33 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:24:33 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:25:51 | [main] hibernate.Version (Version.java:46) - HHH000412: Hibernate Core {5.4.9.Final}
+WARN  | 2023-01-12 16:25:51 | [main] stax.LocalXmlResourceResolver (LocalXmlResourceResolver.java:91) - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+INFO  | 2023-01-12 16:25:52 | [main] java.JavaReflectionManager (JavaReflectionManager.java:49) - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  | 2023-01-12 16:25:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:72) - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+INFO  | 2023-01-12 16:25:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:115) - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hibdemo]
+INFO  | 2023-01-12 16:25:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:124) - HHH10001001: Connection properties: {password=****, user=root}
+INFO  | 2023-01-12 16:25:52 | [main] internal.DriverManagerConnectionProviderImpl (DriverManagerConnectionProviderImpl.java:129) - HHH10001003: Autocommit mode: false
+INFO  | 2023-01-12 16:25:52 | [main] internal.DriverManagerConnectionProviderImpl$PooledConnections (DriverManagerConnectionProviderImpl.java:249) - HHH000115: Hibernate connection pool size: 10 (min=1)
+INFO  | 2023-01-12 16:25:52 | [main] dialect.Dialect (Dialect.java:172) - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  | 2023-01-12 16:25:53 | [main] internal.DdlTransactionIsolatorNonJtaImpl (DdlTransactionIsolatorNonJtaImpl.java:47) - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@644d1b61] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+INFO  | 2023-01-12 16:25:53 | [main] internal.JtaPlatformInitiator (JtaPlatformInitiator.java:52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  | 2023-01-12 16:25:53 | [main] internal.DriverManagerConnectionProviderImpl$PoolState (DriverManagerConnectionProviderImpl.java:418) - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/hibdemo]

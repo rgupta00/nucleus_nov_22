@@ -14,16 +14,17 @@ public class DemoTester {
 
 		session.getTransaction().begin();
 		
-		Account account1=new SavingAccount("ravi", 5600, .4);
-		Account account2=new CurrentAccount("umesh", 5600, 400);
-//
-		session.save(account1);
-		session.save(account2);
+//		Account account1=new SavingAccount("ravi", 5600, .4);
+//		Account account2=new CurrentAccount("umesh", 5600, 400);
+////
+//		session.save(account1);
+//		session.save(account2);
 //
 		//it support poly quaries
 		
-//		List<Account> accounts=session.createQuery("select a from Account a").getResultList();
-//		accounts.forEach(System.out::println);
+		List<Account> accounts=session
+				.createQuery("select a from Account a").getResultList();
+		accounts.forEach(System.out::println);
 //
 		session.getTransaction().commit();
 		

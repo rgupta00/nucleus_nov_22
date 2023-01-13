@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <import resource="ds-servlet.xml"/>
+
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/mgr/**" access="hasRole('MGR')"/>
+        <security:intercept-url pattern="/emp/**" access="hasRole('EMP')"/>
+        <security:intercept-url pattern="/login/**" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <security:form-login
+                login-page="/login"
+                default-target-url="/showall" login-processing-url="/checkme" username-parameter="email"
+                password-parameter="password"
+                authentication-failure-url="/login?error=true" always-use-default-target="true"/>
+
+        <security:logout logout-url="/logout"  logout-success-url='/login'/>
+        <security:access-denied-handler error-page="/403"/>
+        <security:form-login/>
+      <!--  <security:csrf disabled="true" />-->
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:password-encoder ref="encoder"/>
+            <security:user-service>
+                <security:user name="raj" password="$2a$12$wf72.iIpcm5AD71viA0S9ed3ZnNQXiWKWmYDTaIy/riV3qfD18xPq" authorities="ROLE_EMP,ROLE_ADMIN,ROLE_MGR"/>
+                <security:user name="ekta" password="$2a$12$CrQ5Xoq.Dk0TeWkgCYz23OvJhItZybnUf5n1b6q/mtvDM655QA0di" authorities="ROLE_EMP,ROLE_MGR"/>
+                <security:user name="gun" password="$2a$12$Cks4TVUQmZYzePICh/EkI.cbnE9/AwzXHSCmJmuCufJhQ/GuJ3eNC" authorities="ROLE_EMP"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>

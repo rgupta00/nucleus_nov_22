@@ -21,10 +21,13 @@
 		<property name="connection.pool_size">10</property>
 		<!-- <property name="current_session_context_class">thread</property> -->
 
+<!--		<mapping class="com.demo.inh.joined.Account" />-->
+<!--		<mapping class="com.demo.inh.joined.CurrentAccount" />-->
+<!--		<mapping class="com.demo.inh.joined.SavingAccount" />-->
+
 		<mapping class="com.demo.inh.joined.Account" />
 		<mapping class="com.demo.inh.joined.CurrentAccount" />
 		<mapping class="com.demo.inh.joined.SavingAccount" />
-
 
 
 	</session-factory>

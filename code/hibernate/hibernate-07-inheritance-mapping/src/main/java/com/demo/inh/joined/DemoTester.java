@@ -14,7 +14,7 @@ public class DemoTester {
 		Session session = factory.openSession();// getCurrentSession (web application spring)
 
 		session.getTransaction().begin();
-		
+//
 //		Account account1=new SavingAccount("ravi", 5600, .4);
 //		Account account2=new SavingAccount("seema", 5690, .4);
 //
@@ -33,11 +33,12 @@ public class DemoTester {
 //
 		//it support poly quaries
 		
-		List<Account> accounts=session.createQuery("select a from Account a").getResultList();
-		accounts.forEach(System.out::println);
-////
-//		List<SavingAccount> accounts=session.createQuery("select a from SavingAccount a").getResultList();
+//		List<Account> accounts=session
+//				.createQuery("select a from Account a").getResultList();
 //		accounts.forEach(System.out::println);
+////
+		List<SavingAccount> accounts=session.createQuery("select a from SavingAccount a").getResultList();
+		accounts.forEach(System.out::println);
 //
 		
 		session.getTransaction().commit();
